@@ -3,8 +3,8 @@ Quel est le slogan du Front populaire ? A-« Avec la France, pour les Français 
 Quel parti ne compose pas le Front populaire ? A-Le Parti Radical B-La SFIO C-Le Bloc national D-Le Parti Communiste;;C
 Quel évènement de 1934 contribua à la création du Front populaire ? A-Le congrès de Tours B-Les émeutes des ligues C-Le Krach de Wall-Street D-La démission de Clémenceau;;B
 Quel événement est à l'origine de la crise des années 30 ? A-La révolution Russe B-La montée du fascisme C-La première guerre mondiale D-Le Krach de Wall-Street;;D
-Lequel de ces pays est une île ? A-France B-Pays-Bas C-Autralie D-Corée;;C
-Quel est la couleur du cheval blanc d'Henri 4 A-Vert B-Rouge C-Gris D-Blanc;;D
+Lequel de ces pays est une île ? A-France B-Pays-Bas C-Australie D-Corée;;C
+Quelle est la couleur du cheval blanc d'Henri 4 A-Vert B-Rouge C-Gris D-Blanc;;D
 Un octet correspond à A-1bit B-4 bits C-8 bits D-32 bits;;C
 Avec 1 octet on peut coder A-255 valeurs B-8 valeurs C-16 valeurs D-256 valeurs;;D
 Qu'est ce que Microsoft Windows ? A-Un type d'ordinateur B-Un système d'exploitation C-Un système de gestion de bases de données;;B
