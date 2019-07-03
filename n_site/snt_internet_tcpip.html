@@ -44,7 +44,7 @@
 			l'ordinateur A "utilise" le protocole TCP pour mettre en forme les données à envoyer.
 		</p>
 		<p>
-			Ensuite le protocole IP prend le relai et utilise les données mises en forme par le protocole TCP afin de créer des paquets des données.
+			Ensuite le protocole IP prend le relai et utilise les données mises en forme par le protocole TCP afin de créer des paquets de données.
 			Après quelques autres opérations qui ne seront non plus évoquées ici, les paquets de données pourront commencer leur voyage sur le réseau jusqu'à l'ordinateur B.
 			Il est important de bien comprendre que le protocole IP "encapsule" les données issues du protocole TCP afin de constituer des paquets de données.
 		</p>
@@ -66,7 +66,7 @@
 		<p>
 			Le protocole TCP permet de s'assurer qu'un paquet est bien arrivé à destination. En effet quand l'ordinateur B reçoit un paquet de données en provenance de l'ordinateur A,
 			l'ordinateur B envoie un accusé de réception à l'ordinateur A (un peu dans le genre "OK, j'ai bien reçu le paquet"). Si l'ordinateur A ne reçoit pas cet accusé de réception en provenance de B, après un temps prédéfini, l'ordinateur A renverra le paquet de données vers l'ordinateur B.
-			L'envoi de donner se faisant rarement en une seule fois, l'ordinateur A, après avoir envoyé à l'ordinateur B un paquet de données, attendra l'accusé de réception en provenance de B avant d'envoyer le paquet de données suivant.
+			L'envoi de données se faisant rarement en une seule fois, l'ordinateur A, après avoir envoyé à l'ordinateur B un paquet de données, attendra l'accusé de réception en provenance de B avant d'envoyer le paquet de données suivant.
 		</p>
 		<p>
 			Nous pouvons donc résumer le processus d'envoi d'un paquet de données comme suit :

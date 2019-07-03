@@ -48,7 +48,7 @@
 							<figcaption>différents switchs</figcaption>
 						</div>
 			<p>Un routeur permet de relier ensemble plusieurs réseaux, il est composé d’un nombre plus ou moins important d’interfaces réseau (cartes réseau).
-				Les routeurs les plus simples que l’on puisse rencontrer permettent de relier ensemble deux réseaux (il possède alors 2 interfaces réseau),
+				Les routeurs les plus simples que l’on puisse rencontrer permettent de relier ensemble deux réseaux (ils possèdent alors 2 interfaces réseau),
 				mais il existe des routeurs capables de relier ensemble une dizaine de réseaux.</p>
 						<p>Revenons maintenant à l’analyse de notre schéma :</p>
 						<p>Nous avons 6 réseaux locaux, chaque réseau local possède son propre switch (dans la réalité, un réseau local est souvent composé de plusieurs switchs
@@ -63,7 +63,7 @@
 						<hr>
 			<p>Voici quelques exemples de communications  entre 2 ordinateurs :</p>
 						<h4>cas n°1 : M1 veut communiquer avec M3</h4>
-			<p>Le paquet est envoyé de M1 vers le switch R1, R1 "constate" que M3 se trouve bien dans le réseau local 1, le paquet est donc envoyé directement vers M3. On peut résumé le trajet du paquet par :</p>
+			<p>Le paquet est envoyé de M1 vers le switch R1, R1 "constate" que M3 se trouve bien dans le réseau local 1, le paquet est donc envoyé directement vers M3. On peut résumer le trajet du paquet par :</p>
 			<p>M1→R1→M3</p>
 						 <h4>cas n°2 : M1 veut communiquer avec M6</h4>
 			<p>Le paquet est envoyé de M1 vers le switch R1, R1 « constate » que M6 n’est pas sur le réseau local 1, R1 envoie donc le paquet vers le routeur A. Le routeur A n'est pas connecté directement au réseau localR2 (réseau local de la machine M6),
@@ -97,12 +97,12 @@
 						<p>Exemple : Soit un ordinateur M4 ayant pour adresse IP 192.168.2.1 Dans cette adresse IP  "192.168.2" permet d’identifier le réseau (on dit que la machine M4 appartient au réseau ayant pour adresse 192.168.2.0) et "1" permet d’identifier la machine sur le réseau
 							(plus précisément sur le réseau 192.168.2.0). M4, M5 et M6 sont sur le même réseau,
 							l’adresse IP de M5 devra donc commencer par "192.168.2" (adresse IP possible pour M5 : 192.168.2.2). En revanche M7 n’est pas sur le même réseau que M4, M5 et M6, la partie réseau de son adresse IP ne pourra pas être "192.168.2" (IP possible pour M7 : 192.168.3.1).</p>
-						<p>En analysant la partie réseau des adresses IP des machines souhaitant rentrer en communication, les switchs et les routeurs sont capables d’aiguiller un paquet dans la bonne direction. Imaginons que le switch R2 reçoit un paquet qui est destiné à l’ordinateur M7 (adresse IP de M7 : 192.168.3.1).
+						<p>En analysant la partie réseau des adresses IP des machines souhaitant rentrer en communication, les switchs et les routeurs sont capables d’aiguiller un paquet dans la bonne direction. Imaginons que le switch R2 reçoive un paquet qui est destiné à l’ordinateur M7 (adresse IP de M7 : 192.168.3.1).
 							R2 "constate" que M7 n’est pas sur le même réseau que lui (R2 appartient au réseau d’adresse 192.168.2.0 alors que M7 appartient au réseau d’adresse 192.168.3.0), il envoie donc le paquet vers le routeur B...</p>
 						<h4>À faire vous-même 3</h4>
 						<p>En partant des exemples ci-dessus, donnez une adresse IP possible pour les ordinateurs suivants : M1, M6 et M8.</p>
 						<hr>
-						<p>Attention, les adresses IP (a.b.c.d) n’ont forcément pas les parties a, b et c consacrées à l’identification du réseau et la partie d consacrées à l’identification des machines sur le réseau. Dans les premières années d'Internet, les adresses ont été découpées en trois classes :</p>
+						<p>Attention, les adresses IP (a.b.c.d) n’ont forcément pas les parties a, b et c consacrées à l’identification du réseau et la partie d consacrée à l’identification des machines sur le réseau. Dans les premières années d'Internet, les adresses ont été découpées en trois classes :</p>
 						<ul>
 								<li>Certaines adresses ont les parties a, b et c consacrées à l’identification du réseau et la partie d consacrée à l’identification des machines sur le réseau (on parle d'adresse IP de classe C)</li>
 								<li>Certaines adresses ont la partie a et b consacrées à l’identification du réseau et les parties c et d consacrées à l’identification des machines sur le réseau (on parle d'adresse IP de classe B)</li>
