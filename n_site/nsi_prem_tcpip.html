@@ -79,7 +79,6 @@
 		<p>
 			Le protocole TCP permet de s'assurer qu'un paquet est bien arrivé à destination. En effet quand l'ordinateur B reçoit un paquet de données en provenance de l'ordinateur A,
 			l'ordinateur B envoie un accusé de réception à l'ordinateur A (un peu dans le genre "OK, j'ai bien reçu le paquet"). Si l'ordinateur A ne reçoit pas cet accusé de réception en provenance de B, après un temps prédéfini, l'ordinateur A renverra le paquet de données vers l'ordinateur B.
-			L'envoi de donner se faisant rarement en une seule fois, l'ordinateur A, après avoir envoyé à l'ordinateur B un paquet de données, attendra l'accusé de réception en provenance de B avant d'envoyer le paquet de données suivant.
 		</p>
 		<p>
 			Nous pouvons donc résumer le processus d'envoi d'un paquet de données comme suit :
@@ -87,7 +86,6 @@
 		<div class="centrer">
 		<img src="img/TCP_IP_4.png" />
 		</div>
-		<p>Une fois l'accusé de réception reçu par l'ordinateur A, ce dernier envoi un deuxième paquet vers B, et ainsi de suite...(jusqu'au moment où toutes les données auront été transmises) </p>
 		<p>
 			À noter qu'il existe aussi le protocole UDP qui ressemble beaucoup au protocole TCP. La grande différence entre UDP et TCP est que le protocole UDP ne gère pas les accusés de réception. Les échanges de données avec UDP sont donc moins fiables qu'avec TCP (un paquet "perdu" est définitivement "perdu" et ne sera pas renvoyé) mais beaucoup plus rapides (puisqu' il n'y a pas d'accusé de réception à transmettre).
 			UDP est donc très souvent utilisé pour les échanges de données qui doivent être rapides, mais où la perte d'un paquet de données de temps en temps n'est pas un gros problème (par exemple le streaming vidéo).
