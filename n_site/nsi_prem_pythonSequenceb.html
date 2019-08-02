@@ -3,7 +3,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Python : les séquences (tuples et tableau)</title>
+		<title>Python : les séquences (tuples et listes)</title>
 		<link rel="stylesheet" href="css/css/vendor/bootstrap.min.css">
 		<link rel="stylesheet" href="css/css/flat-ui.min.css">
 		<link rel="stylesheet" href="highlight/styles/tomorrow-night.css">
@@ -24,7 +24,7 @@
             <span class="icon-bar"></span>
           </button>
           <span class="navbar-brand">NSI première</span>
-					<span class="navbar-brand">Python : les séquences (tuples et tableaux)</span>
+					<span class="navbar-brand">Python : les séquences (tuples et listes)</span>
         </div>
       </div>
     </nav>
@@ -32,7 +32,7 @@
 		<h3>Les séquences en Python</h3>
 		<p>
 			Il est possible de "stocker" plusieurs grandeurs dans une même structure, ce type de structure est appelé une séquence. De façon plus précise, nous définirons une séquence comme un ensemble fini et ordonné d'éléments indicés de 0 à n-1 (si cette séquence comporte n éléments). Rassurez-vous,
-			nous reviendrons ci-dessous sur cette définition. Nous allons étudier plus particulièrement 2 types de séquences : les tuples et les tableaux (il en existe d'autres que nous n'évoquerons pas ici).
+			nous reviendrons ci-dessous sur cette définition. Nous allons étudier plus particulièrement 2 types de séquences : les tuples et les listes (il en existe d'autres que nous n'évoquerons pas ici).
 		</p>
 		<h3>Les tuples en Python</h3>
 		<p>
@@ -133,125 +133,121 @@ a, b, c, d = (5, 8, 6, 9)
 		<p>
 			Quelle est la valeur référencée par la variable a ? La variable b ? La variable c ? La variable d ? Vérifiez votre réponse à l'aide de la console Python.
 		</p>
-		<h3>Les tableaux en Python</h3>
-		<p>
-			ATTENTION : Dans la suite nous allons employer le terme "tableau". Pour parler de ces "tableaux" les concepteurs de Python ont choisi d'utiliser le terme de "list" ("liste" en français). Pour éviter toute confustion,
-			notamment par rapport à des notions qui seront abordées en terminale, le choix a été fait d'employer "tableau" à la place de "liste" (dans la documentation vous rencontrerez le terme "list", cela ne devra pas vous pertuber)
-		</p>
+		<h3>Les listes en Python</h3>
 		<p>
 		Il n'est pas possible de modifier un tuple après sa création (on parle d'objet "immutable"), si vous essayez de modifier un tuple existant, l'interpréteur Python vous renverra une erreur.
-		Les tableaux sont,comme les tuples, des séquences, mais à la différence des tuples, ils sont modifiables (on parle d'objets "mutables").
+		Les listes sont,comme les tuples, des séquences, mais à la différence des tuples, elles sont modifiables (on parle d'objets "mutables").
 	</p>
 		<p>
-			Pour créer un tableau, il existe différentes méthodes : une de ces méthodes ressemble beaucoup à la création d'un tuple :
+			Pour créer une liste, il existe différentes méthodes : une de ces méthodes ressemble beaucoup à la création d'un tuple :
 		</p>
 		<pre><code class='python'>
-mon_tab = [5, 8, 6, 9]
+ma_liste = [5, 8, 6, 9]
 		</code></pre>
 		<p>
 			Notez la présence des crochets à la place des parenthèses.
 		</p>
 		<p>
-			Un tableau est une séquence, il est donc possible de "récupérer" un élément d'un tableau à l'aide de son indice (de la même manière que pour un tuple)
+			Une liste est une séquence, il est donc possible de "récupérer" un élément d'une liste à l'aide de son indice (de la même manière que pour un tuple)
 		</p>
 		<h4>À faire vous-même 7</h4>
 		<p>Quelle est la valeur référencée par la variable ma_variable après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
 		<pre><code class='python'>
-mon_tab = [5, 8, 6, 9]
-ma_variable = mon_tab[2]
+ma_liste = [5, 8, 6, 9]
+ma_variable = ma_liste[2]
 		</code></pre>
 		<p>
-			N.B. Il est possible de saisir directement mon_tab[2] dans la console sans passer par l'intermédiaire de la variable ma_variable
+			N.B. Il est possible de saisir directement ma_liste[2] dans la console sans passer par l'intermédiaire de la variable ma_variable
 		</p>
 		<hr />
 		<p>
-			Il est possible de modifier un tableau à l'aide de la "notation entre crochets" :
+			Il est possible de modifier une liste à l'aide de la "notation entre crochets" :
 		</p>
 		<h4>À faire vous-même 8</h4>
-		<p>Quel est le contenu du tableau référencé par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
+		<p>Quel est le contenu de la liste référencée par la variable ma_liste après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
 		<pre><code class='python'>
-mon_tab = [5, 8, 6, 9]
-mon_tab[2] = 15
+ma_liste = [5, 8, 6, 9]
+ma_liste[2] = 15
 		</code></pre>
 		<p>
 			Comme vous pouvez le constater avec l'exemple ci-dessus, l'élément d'indice 2 (le nombre entier 6) a bien été remplacé par le nombre entier 15
 		</p>
 		<hr />
 		<p>
-			Il est aussi possible d'ajouter un élément en fin de tableau à l'aide de la méthode "append" :
+			Il est aussi possible d'ajouter un élément en fin de liste à l'aide de la méthode "append" :
 		</p>
 		<h4>À faire vous-même 9</h4>
-		<p>Quel est le contenu du tableau référencé par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
+		<p>Quel est le contenu de la liste référencée par la variable ma_liste après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
 		<pre><code class='python'>
-mon_tab = [5, 8, 6, 9]
-mon_tab.append(15)
+ma_liste = [5, 8, 6, 9]
+ma_liste.append(15)
 		</code></pre>
 		<hr />
 		<p>
-			L'instruction "del" permet de supprimer un élément d'un tableau en utilisant son index :
+			L'instruction "del" permet de supprimer un élément d'une liste en utilisant son index :
 		</p>
 		<h4>À faire vous-même 10</h4>
-		<p>Quel est le contenu du tableau référencé par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
+		<p>Quel est le contenu de la liste référencée par la variable ma_liste après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
 		<pre><code class='python'>
-mon_tab = [5, 8, 6, 9]
-del mon_tab[1]
+ma_liste = [5, 8, 6, 9]
+del ma_liste[1]
 		</code></pre>
 		<hr />
 		<p>
-			La fonction "len" permet de connaitre le nombre d’éléments présents dans une séquence (tableau et tuple)
+			La fonction "len" permet de connaitre le nombre d’éléments présents dans une séquence (liste et tuple)
 		</p>
 		<h4>À faire vous-même 11</h4>
 		<p>Quelle est la valeur référencée par la variable nb_len après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
 		<pre><code class='python'>
-mon_tab = [5, 8, 6, 9]
-nb_ele = len(mon_tab)
+ma_liste = [5, 8, 6, 9]
+nb_ele = len(ma_liste)
 		</code></pre>
 		<hr />
 		<p>
-			Une petite parenthèse : on pourrait s'interroger sur l'intérêt d'utiliser un tuple puisque le tableau permet plus de choses ! La réponse est simple : les opérations
-			sur les tuples sont plus "rapides". Quand vous savez que votre tableau ne sera pas modifié, il est préférable d'utiliser un tuple à la place d'un tableau.
+			Une petite parenthèse : on pourrait s'interroger sur l'intérêt d'utiliser un tuple puisque la liste permet plus de choses ! La réponse est simple : les opérations
+			sur les tuples sont plus "rapides". Quand vous savez que votre liste ne sera pas modifiée, il est préférable d'utiliser un tuple à la place d'une liste.
 		</p>
-		<h3>la boucle "for" : parcourir les éléments d'un tableau</h3>
+		<h3>la boucle "for" : parcourir les éléments d'une liste</h3>
 		<p>
-			La boucle for... in permet de parcourir chacun des éléments d’une séquence (tableau ou tuple) :
+			La boucle for... in permet de parcourir chacun des éléments d’une séquence (liste ou tuple) :
 		</p>
 		<h4>À faire vous-même 12</h4>
 		<p>Analysez puis testez le code suivant :</p>
 		<pre><code class='python'>
-mon_tab = [5, 8, 6, 9]
-for element in mon_tab:
+ma_liste = [5, 8, 6, 9]
+for element in ma_liste:
 	print(element)
 		</code></pre>
 		<p>
-			Quelques explications : comme son nom l'indique, la boucle "for" est une boucle ! Nous "sortirons" de la boucle une fois que tous les éléments du tableau mon_tab auront
+			Quelques explications : comme son nom l'indique, la boucle "for" est une boucle ! Nous "sortirons" de la boucle une fois que tous les éléments de la liste ma_liste auront
 			été parcourus. element est une variable qui va :
 		</p>
 		<ul>
 			<li>
-				au premier tour de boucle, référencer le premier élément du tableau (l'entier 5)
+				au premier tour de boucle, référencer le premier élément de la liste (l'entier 5)
 			</li>
 			<li>
-				au deuxième tour de boucle, référencer le deuxième élément du tableau (l'entier 8)
+				au deuxième tour de boucle, référencer le deuxième élément de la liste (l'entier 8)
 			</li>
 			<li>
-				au troisième tour de boucle, référencer le troisième élément du tableau (l'entier 6)
+				au troisième tour de boucle, référencer le troisième élément de la liste (l'entier 6)
 			</li>
 			<li>
-				au quatrième tour de boucle, référencer le quatrième élément de le tableau (l'entier 9)
+				au quatrième tour de boucle, référencer le quatrième élément de la liste (l'entier 9)
 			</li>
 		</ul>
 		<p>
-			Une chose importante à bien comprendre : le choix du nom de la variable qui va référencer les éléments du tableau les uns après les autres (element) est totalement arbitraire,
+			Une chose importante à bien comprendre : le choix du nom de la variable qui va référencer les éléments de la liste les uns après les autres (element) est totalement arbitraire,
 			il est possible de choisir un autre nom sans aucun problème, le code suivant aurait donné exactement le même résultat :
 		</p>
 		<pre><code class='python'>
-mon_tab = [5, 8, 6, 9]
-for toto in mon_tab:
+ma_liste = [5, 8, 6, 9]
+for toto in ma_liste:
 	print (toto)
 		</code></pre>
 		<hr />
 		<p>
-			Dans la boucle for... in il est possible d’utiliser la fonction prédéfinie range à la place d’un tableau d’entiers :
+			Dans la boucle for... in il est possible d’utiliser la fonction prédéfinie range à la place d’une liste d’entiers :
 		</p>
 		<h4>À faire vous-même 13</h4>
 		<p>Analysez puis testez le code suivant :</p>
@@ -260,11 +256,11 @@ for element in range(0, 5):
 	print (element)
 		</code></pre>
 		<p>
-			Comme vous pouvez le constater, "range(0,5)" est, au niveau de la boucle "for..in", équivalent au tableau [0,1,2,3,4], le code ci-dessous donnerait le même résultat que le programme vu dans le "À faire vous-même 12" :
+			Comme vous pouvez le constater, "range(0,5)" est, au niveau de la boucle "for..in", équivalent à la liste [0,1,2,3,4], le code ci-dessous donnerait le même résultat que le programme vu dans le "À faire vous-même 12" :
 		</p>
 		<pre><code class='python'>
-mon_tab = [0, 1, 2, 3, 4]
-for element in mon_tab:
+ma_liste = [0, 1, 2, 3, 4]
+for element in ma_liste:
 	print (element)
 		</code></pre>
 		<p>
@@ -272,77 +268,77 @@ for element in mon_tab:
 			que la borne supérieure est exclue.
 		</p>
 		<p>
-			Il est possible d'utiliser la méthode "range" pour "remplir" un tableau :
+			Il est possible d'utiliser la méthode "range" pour "remplir" une liste :
 		</p>
 		<h4>À faire vous-même 14</h4>
-		<p>Quel est le contenu du tableau référencé par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
+		<p>Quel est le contenu de la liste référencée par la variable ma_liste après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
 		<pre><code class='python'>
-mon_tab = []
+ma_liste = []
 for element in range(0, 5):
-	mon_tab.append(element)
+	ma_liste.append(element)
 		</code></pre>
 		<hr />
-		<h3>Créer un tableau par compréhension</h3>
+		<h3>Créer une liste par compréhension</h3>
 		<p>
-			Nous avons vu qu'il était possible de "remplir" un tableau en renseignant les éléments du tableau les uns après les autres :
+			Nous avons vu qu'il était possible de "remplir" une liste en renseignant les éléments de la liste les uns après les autres :
 		</p>
 		<pre><code class='python'>
-mon_tab = [5, 8, 6, 9]
+ma_liste = [5, 8, 6, 9]
 		</code></pre>
 		<p>
 			ou encore à l'aide de la méthode "append" (voir "À faire vous-même 13").
 		</p>
 		<p>
-			Il est aussi possible d'obtenir exactement le même résultat qu'au "À faire vous-même 13" en une seule ligne grâce à la compréhension de tableau :
+			Il est aussi possible d'obtenir exactement le même résultat qu'au "À faire vous-même 13" en une seule ligne grâce à la compréhension de liste :
 		</p>
 		<h4>À faire vous-même 15</h4>
-		<p>Quel est le contenu du tableau référencée par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
+		<p>Quel est le contenu de la liste référencée par la variable ma_liste après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
 		<pre><code class='python'>
-mon_tab = [p for p in range(0, 5)]
+ma_liste = [p for p in range(0, 5)]
 		</code></pre>
 		<hr />
 		<p>
-			Les compréhensions de tableau permettent de rajouter une condition (if) :
+			Les compréhensions de liste permettent de rajouter une condition (if) :
 		</p>
 		<h4>À faire vous-même 16</h4>
-		<p>Quel est le contenu du tableau référencé par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
+		<p>Quel est le contenu de la liste référencée par la variable ma_liste après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
 		<pre><code class='python'>
 l = [1, 7, 9, 15, 5, 20, 10, 8]
-mon_tab = [p for p in l if p &gt 10]
+ma_liste = [p for p in l if p &gt 10]
 		</code></pre>
 		<hr />
 		<p>
 			autre possibilité, utiliser des composants "arithmétiques" :
 		</p>
 		<h4>À faire vous-même 17</h4>
-		<p>Quel est le contenu du tableau référencé par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
+		<p>Quel est le contenu de la liste référencée par la variable ma_liste après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
 		<pre><code class='python'>
 l = [1, 7, 9, 15, 5, 20, 10, 8]
-mon_tab = [p**2 for p in l if p &lt 10]
+ma_liste = [p**2 for p in l if p &lt 10]
 		</code></pre>
 		<p>
 			Rappel : p**2 permet d’obtenir la valeur de p élevée au carrée
 		</p>
 		<p>
-			Comme vous pouvez le remarquer, nous obtenons un tableau (mon_tab) qui contient tous les éléments du tableau l élevés au carré à condition que ces éléments de l soient inférieurs à 10.
-			Comme vous pouvez le constater, la compréhension de tableau permet d'obtenir des combinaisons relativement complexes.
+			Comme vous pouvez le remarquer, nous obtenons une liste (ma_liste) qui contient tous les éléments de la liste l élevés au carré à condition que ces éléments de l soient inférieurs à 10.
+			Comme vous pouvez le constater, la compréhension de liste permet d'obtenir des combinaisons relativement complexes.
 		</p>
 		<hr />
-		<h3>Travailler sur des "tableaux de tableaux"</h3>
+		<h3>Travailler sur des "listes de listes"</h3>
 		<p>
-			Chaque élément d'un tableau peut être un tableau, on parle de tableau de tableau.
+			Chaque élément d'une liste peut être une liste, on parle de liste de liste.
 		</p>
 		<p>
-			Voici un exemple de tableau de tableau :
+			Voici un exemple de liste de liste :
 		</p>
 		<pre><code class='python'>
 m = [[1, 3, 4], [5 ,6 ,8], [2, 1, 3], [7, 8, 15]]
 		</code></pre>
 		<p>
-			Le premier élément du tableau ci-dessus est bien un tableau ([1, 3, 4]), le deuxième élément est aussi un tableau ([5, 6, 8])...
+			Le premier élément de la liste ci-dessus est bien une liste ([1, 3, 4]), le deuxième élément est aussi une liste ([5, 6, 8])...
 		</p>
 		<p>
-			Il est souvent plus pratique de présenter ces "tableaux de tableaux" comme suit :
+			Il est souvent plus pratique de présenter ces "listes de listes" comme suit :
 		</p>
 		<pre><code class='python'>
 m = [[1, 3, 4],
@@ -354,7 +350,7 @@ m = [[1, 3, 4],
 			Nous obtenons ainsi quelque chose qui ressemble beaucoup à un "objet mathématique" très utilisé : une matrice
 		</p>
 		<p>
-			Il est évidemment possible d'utiliser les indices de position avec ces "tableaux de tableaux". Pour cela nous allons considérer notre tableau de tableaux comme une matrice, c'est à dire
+			Il est évidemment possible d'utiliser les indices de position avec ces "listes de listes". Pour cela nous allons considérer notre liste de listes comme une matrice, c'est à dire
 			en utilisant les notions de "ligne" et de "colonne". Dans la matrice ci-dessus :
 		</p>
 		<p>
@@ -405,15 +401,15 @@ a = m[1][2]
 		</p>
 		<hr />
 		<h4>À faire vous-même 19</h4>
-		<p><p>Quel est le contenu du tableau référencé par la variable mm après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p></p>
+		<p><p>Quel est le contenu de la liste référencée par la variable mm après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p></p>
 		<pre><code class='python'>
 m = [1, 2, 3]
 mm = [m, m, m]
 m[0] = 100
 		</code></pre>
 		<p>
-			Comme vous pouvez le constater, la modification du tableau référencé par la variable m entraine la modification du tableau référencé par la variable mm (alors que
-			nous n'avons pas directement modifié le tableau référencé par mm).
+			Comme vous pouvez le constater, la modification de la liste référencée par la variable m entraine la modification de la liste référencée par la variable mm (alors que
+			nous n'avons pas directement modifié la liste référencée par mm).
 			Il faut donc être très prudent lors de ce genre de manipulation afin d'éviter des modifications non désirées.
 		</p>
 		<hr />
