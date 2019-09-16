@@ -1,0 +1,496 @@
+<!doctype html>
+<!-- Auteur : David Roche @davR74130 -->
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Langage SQL</title>
+		<link rel="stylesheet" href="css/css/vendor/bootstrap.min.css">
+		<link rel="stylesheet" href="css/css/flat-ui.min.css">
+		<link rel="stylesheet" href="highlight/styles/tomorrow-night.css">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="highlight/highlight.pack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+    <script src="./css/js/vendor/jquery.min.js"></script>
+    <script src="./css/js/flat-ui.min.js"></script>
+	</head>
+	<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="navbar-brand">NSI terminale</span>
+					<span class="navbar-brand">Langage SQL</span>
+        </div>
+      </div>
+    </nav>
+    <div class="container act">
+			<p>
+				Nous avons eu l'occasion d'étudier la structure d'une base de données relationnelle, nous allons maintenant apprendre à réaliser des requêtes,
+				c'est-à-dire que nous allons apprendre à créer une base de données, créer des attributs, ajouter de données, modifier des données et enfin, nous allons surtout apprendre à interroger une base de données afin d'obtenir des informations.
+			</p>
+			<p>
+				Pour réaliser toutes ces requêtes, nous allons devoir apprendre un langage de requêtes : SQL (Structured Query Language). SQL est propre aux bases de données relationnelles, les autres types de bases de données utilisent d'autres langages pour effectuer des requêtes.
+			</p>
+			<p>Pour créer une base de données et effectuer des requêtes sur cette dernière, nous allons utiliser le logiciel "DB Browser for SQLite" : <a href="https://sqlitebrowser.org/" target="_blank">https://sqlitebrowser.org/</a>.</p>
+			<p>
+				SQLite est le système de gestion de base de données relationnelle le plus utilisé au monde. Noter qu'il existe d'autres systèmes de gestion de base de données relationnelle comme MySQL ou PostgreSQL. Dans tous les cas, le langage de requête utilisé est le SQL (même si parfois on peut noter quelques petites différences).
+				Ce qui sera vu ici avec SQLite pourra, à quelques petites modifications près, être utilisé avec, par exemple, MySQL.
+			</p>
+			<p>Nous allons commencer par créer notre base de données :</p>
+			<h4>À faire vous-même 1</h4>
+			<p>
+				Après avoir lancé le logiciel "DB Browser for SQLite", vous devriez obtenir ceci :
+			</p>
+			<div class="centrer">
+				<img src="img/nsi_term_bd_sql_1.png" alt="DB Browser for SQLite"/>
+			</div>
+			<p>
+				Cliquez sur Nouvelle base de données. Après avoir choisi un nom pour votre base de données (par exemple "db_livres.db"), vous devriez avoir la fenêtre suivante :
+			</p>
+			<div class="centrer">
+				<img src="img/nsi_term_bd_sql_2.png" alt="DB Browser for SQLite"/>
+			</div>
+			<p>
+				Cliquez alors sur Annuler
+			</p>
+			<p>
+				Notre base de données a été créée :
+			</p>
+			<div class="centrer">
+				<img src="img/nsi_term_bd_sql_3.png" alt="DB Browser for SQLite"/>
+			</div>
+			<p>
+				mais pour l'instant elle ne contient aucune table (aucune relation), pour créer une table, cliquez sur l'onglet "Exécuter le SQL". On obtient alors :
+			</p>
+			<div class="centrer">
+				<img src="img/nsi_term_bd_sql_4.png" alt="DB Browser for SQLite"/>
+			</div>
+			<p>
+				Copiez-collez le texte ci-dessous dans la fenêtre "SQL 1"
+			</p>
+ 			<pre><code class="sql">
+	CREATE TABLE LIVRES
+	(id INT, titre TEXT, auteur TEXT, ann_publi INT, note INT);
+			</code></pre>
+			<p>Cliquez ensuite sur le petit triangle situé au-dessus de la fenêtre SQL 1 (ou appuyez sur F5), vous devriez avoir ceci :</p>
+			<div class="centrer">
+				<img src="img/nsi_term_bd_sql_5.png" alt="DB Browser for SQLite"/>
+			</div>
+			<p>
+				Comme indiqué dans la fenêtre, "Requête exécutée avec succès" !
+			</p>
+			<p>
+				Vous venez de créer votre première table.
+			</p>
+			<hr>
+			<p>Revenons sur cette première requête :</p>
+			<p>Le <i>CREATE TABLE LIVRES</i> ne devrait pas vous poser de problème : nous créons une nouvelle table nommée "LIVRES".</p>
+			<p>La suite est à peine plus complexe :</p>
+			<p>nous créons ensuite les attributs :</p>
+			<ul>
+					<li>id</li>
+					<li>titre</li>
+					<li>auteur</li>
+					<li>ann_pulbi</li>
+					<li>note</li>
+			</ul>
+			<p>
+				Comme vous l'avez sans doute remarqué, nous avons pour chaque attribut précisé son domaine : id : entier (INT), titre : chaîne de caractères (TEXT), auteur : chaîne de caractères, ann_publi : entier et note : entier
+			</p>
+			<p>
+				Nous allons maintenant ajouter des données :
+			</p>
+			<h4>À faire vous-même 2</h4>
+			<p>Toujours dans l'onglet "Exécuter le SQL", après avoir effacé la fenêtre SQL 1, copiez-collez dans cette même fenêtre la requête ci-dessous :</p>
+			<pre><code class="sql">
+	INSERT INTO LIVRES
+	(id,titre,auteur,ann_publi,note)
+	VALUES
+	(1,'1984','Orwell',1949,10),
+	(2,'Dune','Herbert',1965,8),
+	(3,'Fondation','Asimov',1951,9),
+	(4,'Le meilleur des mondes','Huxley',1931,7),
+	(5,'Fahrenheit 451','Bradbury',1953,7),
+	(6,'Ubik','K.Dick',1969,9),
+	(7,'Chroniques martiennes','Bradbury',1950,8),
+	(8,'La nuit des temps','Barjavel',1968,7),
+	(9,'Blade Runner','K.Dick',1968,8),
+	(10,'Les Robots','Asimov',1950,9),
+	(11,'La Planète des singes','Boulle',1963,8),
+	(12,'Ravage','Barjavel',1943,8),
+	(13,'Le Maître du Haut Château','K.Dick',1962,8),
+	(14,'Le monde des Ā','Van Vogt',1945,7),
+	(15,'La Fin de l’éternité','Asimov',1955,8),
+	(16,'De la Terre à la Lune','Verne',1865,10);
+			</code></pre>
+			<hr />
+			<p>
+				Ici aussi, aucun problème, la requête a bien été exécutée :
+			</p>
+			<div class="centrer">
+				<img src="img/nsi_term_bd_sql_6.png" alt="DB Browser for SQLite"/>
+			</div>
+			<p>
+				La table LIVRES contient bien les données souhaitées (onglet "Parcourir les données") :
+			</p>
+			<div class="centrer">
+				<img src="img/nsi_term_bd_sql_7.png" alt="DB Browser for SQLite"/>
+			</div>
+			<p>Nous allons apprendre à effectuer des requêtes d'interrogation sur la base de données que nous venons de créer.</p>
+			<p>
+				Toutes les requêtes se feront dans la fenêtre SQL 1 de l'onglet "Exécuter le SQL"
+			</p>
+			<h4>À faire vous-même 3</h4>
+			<p>Saisissez la requête SQL suivante :</p>
+			<pre><code class="sql">
+SELECT id, titre, auteur, ann_publi, note
+FROM LIVRES
+			</code></pre>
+			<p>puis appuyez sur le triangle (ou la touche F5)</p>
+			<hr>
+			<p>Après un temps plus ou moins long, vous devriez voir s'afficher ceci :</p>
+			<div class="centrer">
+				<img src="img/nsi_term_bd_sql_8.png" alt="DB Browser for SQLite"/>
+			</div>
+			<p>Comme vous pouvez le constater, notre requête SQL a permis d'afficher tous les livres. Nous avons ici 2 mots clés du langage SQL <i>SELECT</i> qui permet de sélectionner les attributs qui devront être "affichés" (je mets "affichés" entre guillemets, car le but d'une requête sql n'est pas forcément d'afficher les données) et <i>FROM</i> qui indique la table qui doit être utilisée.</p>
+			<p>Il est évidemment possible d'afficher seulement certains attributs (ou même un seul) :</p>
+			<h4>À faire vous-même 4</h4>
+			<p>Saisissez la requête SQL suivante :</p>
+			<pre><code class="sql">
+SELECT titre, auteur
+FROM LIVRES
+			</code></pre>
+			<p>Vérifiez que vous obtenez bien uniquement les titres et les auteurs des livres</p>
+			<hr>
+			<h4>À faire vous-même 5</h4>
+			<p>Écrivez et testez une requête permettant d'obtenir uniquement les titres des livres.</p>
+			<hr>
+			<p>N.B. Si vous désirez sélectionner tous les attributs, vous pouvez écrire :</p>
+			<pre><code class="sql">
+SELECT *
+FROM LIVRES
+			</code></pre>
+			<p>à la place de :</p>
+			<pre><code class="sql">
+SELECT id, titre, auteur, ann_publi, note
+FROM meslivres
+			</code></pre>
+			<p>Pour l'instant nos requêtes affichent tous les livres, il est possible d'utiliser la clause <i>WHERE</i> afin d'imposer une (ou des) condition(s) permettant de sélectionner uniquement certaines lignes.</p>
+			<p>La condition doit suivre le mot-clé <i>WHERE</i> :</p>
+			<h4>À faire vous-même 6</h4>
+			<p>Saisissez et testez la requête SQL suivante :</p>
+			<pre><code class="sql">
+SELECT titre, ann_publi
+FROM LIVRES
+WHERE auteur='Asimov'
+			</code></pre>
+			<p>Vérifiez que vous obtenez bien uniquement les livres écrits par Isaac Asimov.</p>
+			<h4>À faire vous-même 7</h4>
+			<p>Écrivez et testez une requête permettant d'obtenir uniquement les titres des livres écrits par Philip K.Dick.</p>
+			<hr>
+			<p>Il est possible de combiner les conditions à l'aide d'un <i>OR</i> ou d'un <i>AND</i></p>
+			 <h4>À faire vous-même 8</h4>
+			<p>Saisissez et testez la requête SQL suivante :</p>
+			<pre><code class="sql">
+SELECT titre, ann_publi
+FROM LIVRES
+WHERE auteur='Asimov' AND ann_publi>1953
+			</code></pre>
+			<p>Vérifiez que nous obtenons bien le livre écrit par Asimov publié après 1953 (comme vous l'avez sans doute remarqué, il est possible d'utiliser les opérateurs d'inégalités).</p>
+			<h4>À faire vous-même 9</h4>
+			<p>D'après vous, quel est le résultat de cette requête :</p>
+			<pre><code class="sql">
+SELECT titre
+FROM LIVRES
+WHERE auteur='K.Dick' OR note>=8
+			</code></pre>
+			<h4>À faire vous-même 10</h4>
+			<p>Écrire une requête permettant d'obtenir les titres livres publiés après 1945 qui ont une note supérieure ou égale à 9.</p>
+			<hr />
+			<p>
+				Il est aussi possible de rajouter la clause SQL <i>ORDER BY</i> afin d'obtenir les résultats classés dans un ordre précis.
+			</p>
+			<h4>À faire vous-même 11</h4>
+			<p>Saisissez et testez la requête SQL suivante :</p>
+			<pre><code class="sql">
+SELECT titre
+FROM LIVRES
+WHERE auteur='K.Dick' ORDER BY ann_publi
+			</code></pre>
+			<p>
+				Nous obtenons les livres de K.Dick classés du plus ancien ou plus récent.
+			</p>
+			<hr />
+			<p>
+				Il est possible d'obtenir un classement en sens inverse à l'aide de la clause DESC
+			</p>
+			<h4>À faire vous-même 12</h4>
+			<p>Saisissez et testez la requête SQL suivante :</p>
+			<pre><code class="sql">
+SELECT titre
+FROM LIVRES
+WHERE auteur='K.Dick' ORDER BY ann_publi DESC
+			</code></pre>
+			<p>
+				Nous obtenons les livres de K.Dick classés du plus récent au plus ancien.
+			</p>
+			<h4>À faire vous-même 13</h4>
+			<p>
+				Que se passe-t-il quand la clause ORDER BY porte sur un attribut de type TEXT ?
+			</p>
+			<hr />
+			<p>
+				Vous pouvez constater qu'une requête du type :
+			</p>titre
+			<pre><code class="sql">
+SELECT auteur
+FROM LIVRES
+			</code></pre>
+			<p>
+				affiche plusieurs fois certains auteurs (les auteurs qui ont écrit plusieurs livres présents dans la base de données)
+			</p>
+			<p>
+				Il est possible d'éviter les doublons grâce à la clause DISTINCT
+			</p>
+			<h4>À faire vous-même 14</h4>
+			<p>Saisissez et testez la requête SQL suivante :</p>
+			<pre><code class="sql">
+SELECT DISTINCT auteur
+FROM LIVRES
+			</code></pre>
+			<p>
+				Nous avons vu précédemment qu'une base de données peut contenir plusieurs relations (plusieurs tables).
+			</p>
+			<h4>À faire vous-même 15</h4>
+			<p>
+				Créez une nouvelle base de données que vous nommerez par exemple db_livres_auteurs.db
+			</p>
+			<hr />
+			<h4>À faire vous-même 16</h4>
+			<p>
+				Créez une table AUTEURS à l'aide de la requête SQL suivante :
+			</p>
+			<pre><code class="sql">
+CREATE TABLE AUTEURS
+(id INT, nom TEXT, prenom TEXT, ann_naissance INT, langue_ecriture TEXT);
+			</code></pre>
+			<h4>À faire vous-même 17</h4>
+			<p>
+				Créez une table LIVRES à l'aide de la requête SQL suivante :
+			</p>
+			<pre><code class="sql">
+CREATE TABLE LIVRES
+(id INT, titre TEXT, id_auteur INT, ann_publi INT, note INT);
+			</code></pre>
+			<h4>À faire vous-même 18</h4>
+			<p>
+				Ajoutez des données à la table AUTEURS à l'aide de la requête SQL suivante :
+			</p>
+			<pre><code class="sql">
+INSERT INTO AUTEURS
+(id,nom,prenom,ann_naissance,langue_ecriture)
+VALUES
+(1,'Orwell','George',1903,'anglais'),
+(2,'Herbert','Frank',1920,'anglais'),
+(3,'Asimov','Isaac',1920,'anglais'),
+(4,'Huxley','Aldous',1894,'anglais'),
+(5,'Bradbury','Ray',1920,'anglais'),
+(6,'K.Dick','Philip',1928,'anglais'),
+(7,'Barjavel','René',1911,'français'),
+(8,'Boulle','Pierre',1912,'français'),
+(9,'Van Vogt','Alfred Elton',1912,'anglais'),
+(10,'Verne','Jules',1828,'français');
+			</code></pre>
+			<h4>À faire vous-même 19</h4>
+			<p>
+				Ajoutez des données à la table LIVRES à l'aide de la requête SQL suivante :
+			</p>
+			<pre><code class="sql">
+INSERT INTO LIVRES
+(id,titre,id_auteur,ann_publi,note)
+VALUES
+(1,'1984',1,1949,10),
+(2,'Dune',2,1965,8),
+(3,'Fondation',3,1951,9),
+(4,'Le meilleur des mondes',4,1931,7),
+(5,'Fahrenheit 451',5,1953,7),
+(6,'Ubik',6,1969,9),
+(7,'Chroniques martiennes',5,1950,8),
+(8,'La nuit des temps',7,1968,7),
+(9,'Blade Runner',6,1968,8),
+(10,'Les Robots',3,1950,9),
+(11,'La Planète des singes',8,1963,8),
+(12,'Ravage',7,1943,8),
+(13,'Le Maître du Haut Château',6,1962,8),
+(14,'Le monde des Ā',9,1945,7),
+(15,'La Fin de l’éternité',3,1955,8),
+(16,'De la Terre à la Lune',10,1865,10);
+		</code></pre>
+		<hr />
+		<p>
+			Nous avons 2 tables, grâce aux jointures nous allons pouvoir associer ces 2 tables dans une même requête.
+		</p>
+		<p>
+			En général, les jointures consistent à associer des lignes de 2 tables. Elles permettent d'établir un lien entre 2 tables. Qui dit lien entre 2 tables dit souvent clef étrangère et clef primaire.
+		</p>
+		<h4>À faire vous-même 20</h4>
+		<p>Saisissez et testez la requête SQL suivante :</p>
+		<pre><code class="sql">
+SELECT *
+FROM LIVRES
+INNER JOIN AUTEURS ON LIVRES.id_auteur = AUTEURS.id
+		</code></pre>
+		<p>
+			Le "FROM LIVRES INNER JOIN AUTEURS" permet de créer une jointure entre les tables LIVRES et AUTEURS ("rassembler" les tables LIVRES et AUTEURS en une seule grande table).
+			Le  "ON LIVRES.id_auteur = AUTEURS.id" signifie qu'une ligne quelconque A de la table LIVRES devra être fusionnée avec la ligne B de la table AUTEURS à condition que l'attribut id de la ligne A soit égal à l'attribut id_auteur de la ligne B.
+		</p>
+		<p>
+			Par exemple, la ligne 1 (id=1) de la table LIVRES (que l'on nommera dans la suite ligne A) sera fusionnée avec la ligne 1 (id=1) de la table AUTEURS (que l'on nommera dans la suite B) car l'attribut id_auteur de la ligne A est égal à 1 et l'attribut id de la ligne B est aussi égal à 1.
+		</p>
+		<p>
+			Autre exemple, la ligne 1 (id=1) de la table LIVRES (que l'on nommera dans la suite ligne A) ne sera pas fusionnée avec la ligne 2 (id=2) de la table AUTEURS (que l'on nommera dans la suite B') car l'attribut id_auteur de la ligne A est égal à 1 alors que l'attribut id de la ligne B' est égal à 2.
+		</p>
+		<p>
+			Cette notion de jointure n'est pas évidente, prenez votre temps pour bien réfléchir et surtout n'hésitez pas à poser des questions.
+		</p>
+		<h4>À faire vous-même 21</h4>
+		<p>Saisissez et testez la requête SQL suivante :</p>
+		<pre><code class="sql">
+SELECT *
+FROM AUTEURS
+INNER JOIN LIVRES ON LIVRES.id_auteur = AUTEURS.id
+		</code></pre>
+		<p>
+			Comme vous pouvez le constater, le résultat est différent, cette fois-ci ce sont les lignes de la table LIVRES qui viennent se greffer sur la table AUTEURS.
+		</p>
+		<hr />
+		<p>
+			Dans le cas d'une jointure, il est tout à fait possible de sélectionner certains attributs et pas d'autres :
+		</p>
+		<h4>À faire vous-même 22</h4>
+		<p>Saisissez et testez la requête SQL suivante :</p>
+		<pre><code class="sql">
+SELECT nom, prenom, titre
+FROM AUTEURS
+INNER JOIN LIVRES ON LIVRES.id_auteur = AUTEURS.id
+		</code></pre>
+		<h4>À faire vous-même 23</h4>
+		<p>Saisissez et testez la requête SQL suivante :</p>
+		<pre><code class="sql">
+SELECT titre,nom, prenom
+FROM LIVRES
+INNER JOIN AUTEURS ON LIVRES.id_auteur = AUTEURS.id
+		</code></pre>
+		<p>
+			Si un même nom d'attribut est présent dans les 2 tables (par exemple ici l'attribut id), il est nécessaire d'ajouter le nom de la table devant afin de pouvoir les distinguer (AUTEURS.id et LIVRES.id)
+		</p>
+		<h4>À faire vous-même 24</h4>
+		<p>Saisissez et testez la requête SQL suivante :</p>
+		<pre><code class="sql">
+SELECT titre,AUTEURS.id,nom, prenom
+FROM LIVRES
+INNER JOIN AUTEURS ON LIVRES.id_auteur = AUTEURS.id
+		</code></pre>
+		<p>
+			Il est possible d'utiliser la clause WHERE dans le cas d'une jointure :
+		</p>
+		<h4>À faire vous-même 25</h4>
+		<p>Saisissez et testez la requête SQL suivante :</p>
+		<pre><code class="sql">
+SELECT titre,nom, prenom
+FROM LIVRES
+INNER JOIN AUTEURS ON LIVRES.id_auteur = AUTEURS.id
+WHERE ann_publi>1950
+		</code></pre>
+		<p>
+			Enfin, pour terminer avec les jointures, vous devez savoir que nous avons abordé la jointure la plus simple (INNER JOIN). Il existe des jointures plus complexes (CROSS JOIN, LEFT JOIN, RIGHT JOIN), ces autres jointures ne seront pas abordées ici.
+		</p>
+		<p>
+			Nous en avons terminé avec les requêtes d'interrogation, intéressons-nous maintenant aux requêtes de mise à jour (INSERT, UPDATE, DELETE).
+		</p>
+		<p>
+			Nous allons repartir avec une base de données qui contient une seule table :
+		</p>
+		<h4>À faire vous-même 26</h4>
+		<p>
+			Créez une nouvelle base de données que vous nommerez par exemple db_livres.db
+		</p>
+		<hr />
+		<h4>À faire vous-même 27</h4>
+		<p>
+			Créez une table LIVRES à l'aide de la requête SQL suivante :
+		</p>
+		<pre><code class="sql">
+CREATE TABLE LIVRES
+(id INT, titre TEXT, auteur TEXT, ann_publi INT, note INT);
+		</code></pre>
+		<h4>À faire vous-même 28</h4>
+		<p>
+			Ajoutez des données à la table LIVRES à l'aide de la requête SQL suivante :
+		</p>
+		<pre><code class="sql">
+INSERT INTO LIVRES
+(id,titre,auteur,ann_publi,note)
+VALUES
+(1,'1984','Orwell',1949,10),
+(2,'Dune','Herbert',1965,8),
+(3,'Fondation','Asimov',1951,9),
+(4,'Le meilleur des mondes','Huxley',1931,7),
+(5,'Fahrenheit 451','Bradbury',1953,7),
+(6,'Ubik','K.Dick',1969,9),
+(7,'Chroniques martiennes','Bradbury',1950,8),
+(8,'La nuit des temps','Barjavel',1968,7),
+(9,'Blade Runner','K.Dick',1968,8),
+(10,'Les Robots','Asimov',1950,9),
+(11,'La Planète des singes','Boulle',1963,8),
+(12,'Ravage','Barjavel',1943,8),
+(13,'Le Maître du Haut Château','K.Dick',1962,8),
+(14,'Le monde des Ā','Van Vogt',1945,7),
+(15,'La Fin de l’éternité','Asimov',1955,8),
+(16,'De la Terre à la Lune','Verne',1865,10);
+		</code></pre>
+		<hr />
+		<p>Nous avons déjà eu l'occasion de voir la requête permettant d'ajouter une entrée (utilisation d'INSERT)</p>
+		<h4>À faire vous-même 29</h4>
+		<p>Que va faire cette requête ? Vérifiez votre réponse en l'exécutant et en faisant une requête "SELECT * FROM LIVRES".</p>
+		<pre><code class="sql">
+INSERT INTO LIVRES
+(id,titre,auteur,ann_publi,note)
+VALUES
+(17,'Hypérion','Simmons',1989,8);
+		</code></pre>
+		<hr>
+		<h4>À faire vous-même 30</h4>
+		<p>Écrivez et testez une requête permettant d'ajouter le livre de votre choix à la table LIVRES.</p>
+		<hr>
+		<p>"UPDATE" va permettre de modifier une ou des entrées. Nous utiliserons "WHERE", comme dans le cas d'un "SELECT", pour spécifier les entrées à modifier.</p>
+		<p>Voici un exemple de modification :</p>
+		<h4>À faire vous-même 31</h4>
+		<p>Que va faire cette requête ? Vérifiez votre réponse en l'exécutant et en faisant une requête "SELECT * FROM LIVRES".</p>
+		<pre><code class="sql">
+UPDATE LIVRES
+SET note=7
+WHERE titre = 'Hypérion'
+		</code></pre>
+		<hr>
+		<h4>À faire vous-même 32</h4>
+		<p>Écrivez une requête permettant d'attribuer la note de 10 à tous les livres écrits par Asimov publiés après 1950. Testez cette requête.</p>
+		<hr>
+		<p>"DELETE" est utilisée pour effectuer la suppression d'une (ou de plusieurs) entrée(s). Ici aussi c'est le "WHERE" qui permettra de sélectionner les entrées à supprimer.</p>
+		<h4>À faire vous-même 33</h4>
+		<p>Que va faire cette requête ? Vérifiez votre réponse en l'exécutant et en faisant une requête "SELECT * FROM LIVRES".</p>
+		<pre><code class="sql">
+DELETE FROM LIVRES
+WHERE titre='Hypérion'
+		</code></pre>
+		<hr>
+		<h4>À faire vous-même 34</h4>
+		<p>Écrivez une requête permettant de supprimer les livres publiés avant 1945. Testez cette requête.</p>
+</div>
+</div>
+</html>
