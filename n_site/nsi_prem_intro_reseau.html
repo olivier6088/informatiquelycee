@@ -12,6 +12,15 @@
 		<script>hljs.initHighlightingOnLoad();</script>
     <script src="./css/js/vendor/jquery.min.js"></script>
     <script src="./css/js/flat-ui.min.js"></script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53303169-1"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+
+  		gtag('config', 'UA-53303169-1');
+	</script>
 	</head>
 	<body>
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -127,7 +136,7 @@
 			</ul>
 			<p>Cette partition étant peu flexible, elle a progressivement été remplacée par un découpage plus fin où la séparation réseaux/machine peut se trouver à l'intérieur d'une partie, dépendant de ce que l’on appelle le « masque de sous-réseau », mais cette notion ne sera pas abordée ici.</p>
 			<p>
-				Remarque : vous avez sans doute remarqué que l'on passe de "126" pour la "fin" des réseaux de classe A à "128" pour le "début" des réseaux de classe B, le "127" est réservé et ne peut être utilisé (nous aurons l'occasion de revenir là-dessus plus tard).  
+				Remarque : vous avez sans doute remarqué que l'on passe de "126" pour la "fin" des réseaux de classe A à "128" pour le "début" des réseaux de classe B, le "127" est réservé et ne peut être utilisé (nous aurons l'occasion de revenir là-dessus plus tard).
 			</p>
 			<h4>À faire vous-même 1</h4>
 			<p>
