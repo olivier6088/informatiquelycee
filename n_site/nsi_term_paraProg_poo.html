@@ -1,0 +1,401 @@
+<!doctype html>
+<!-- Auteur : David Roche @davR74130 -->
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>La programmation orientée objet</title>
+		<link rel="stylesheet" href="css/css/vendor/bootstrap.min.css">
+		<link rel="stylesheet" href="css/css/flat-ui.min.css">
+		<link rel="stylesheet" href="highlight/styles/tomorrow-night.css">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="highlight/highlight.pack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+    <script src="./css/js/vendor/jquery.min.js"></script>
+    <script src="./css/js/flat-ui.min.js"></script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53303169-1"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+
+  		gtag('config', 'UA-53303169-1');
+	</script>
+	</head>
+	<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="navbar-brand">NSI terminale</span>
+					<span class="navbar-brand">La programmation orientée objet</span>
+        </div>
+      </div>
+    </nav>
+    <div class="container act">
+			<p>
+				La programmation orientée objet repose, comme son nom l'indique, sur le concept d'objet.
+			</p>
+			<p>
+        Un objet dans la vie de tous les jours, vous connaissez, mais en informatique, qu'est ce que c'est ? Une variable ? Une fonction ?
+			</p>
+			<p>
+        Ni l'un ni l'autre.
+			</p>
+			<p>
+        Imaginez un objet (de la vie de tous les jours) très complexe (par exemple un moteur de voiture) : il est évident qu'en regardant cet objet, on est frappé par sa complexité (pour un non spécialiste).
+				Imaginez que l'on enferme cet objet dans une caisse et que l'utilisateur de l'objet n'ait pas besoin d'en connaître son principe de fonctionnement interne pour pouvoir l'utiliser. L'utilisateur a, à sa disposition, des boutons, des manettes et des écrans de contrôle pour faire fonctionner l'objet, ce qui rend son utilisation relativement simple.
+				La mise au point de l'objet (par des ingénieurs) a été très complexe, en revanche son utilisation est relativement simple.
+				Programmer de manière orientée objet, c'est un peu reprendre cette idée : utiliser des objets sans se soucier de leur complexité interne. Pour utiliser ces objets, nous n'avons pas à notre disposition des boutons, des manettes ou encore des écrans de contrôle, mais  des attributs et des méthodes (nous aurons l'occasion de revenir longuement sur ces 2 concepts).
+				Un des nombreux avantages de la programmation orientée objet (POO), est qu'il existe des milliers d'objets (on parle plutôt de classes, mais là aussi nous reviendrons sur ce terme de classe est peu plus loin) prêts à être utilisés (vous en avez déjà utilisé de nombreuses fois sans le savoir). On peut réaliser des programmes extrêmement complexes uniquement en utilisant des classes préexistantes.
+			</p>
+			<p>
+				Les idées sous-tendant le paradigme objet datent des années 60. Mais il faudra attendre le début des années 70 et la mise au point du langage Smalltalk pour que le paradigme objet gagne en popularité chez les informaticiens. Ajourdh'hui de nombreux langages permettent d'utiliser le paradigme objet : C++, Java,...
+			</p>
+			<p>
+				Pour nous initier à la programmation orientée objet nous allons utiliser un langage que vous connaissez bien : Python. Python permet d'utiliser le paradigme impératif (comme nous l'avons fait jusqu'à présent), mais il permet aussi d'utiliser le paradigme objet. Il est même possible, comme nous le verrons plus loin, d'utiliser les 2 paradigmes dans un même programme.
+			</p>
+			<p>
+				<p>
+					La création d'une classe en python commence toujours par le mot class. Ensuite toutes les instructions de la classe seront indentées :
+				</p>
+				<pre><code class='python'>
+	class LeNomDeMaClasse:
+	    #instructions de la classe
+	#La définition de la classe est terminée.
+				</code></pre>
+				<p>
+					La classe est une espèce de moule (nous reviendrons plus tard sur cette analogie qui a ses limites), à partir de ce moule nous allons créer des objets (plus exactement nous parlerons d'instances). Par exemple, nous pouvons créer une classe voiture, puis créer différentes instances de cette classe (Peugeot407, Renault Espace,...). Pour créer une de ces instances, la procédure est relativement simple :
+				</p>
+				<pre><code class='python'>
+peugeot407 = Voiture()
+				</code></pre>
+				<p>
+					Cette ligne veut tout simplement dire : "crée un objet (une instance) de la classe Voiture que l'on nommera peugeot407."
+				</p>
+				<p>
+					Ensuite, rien ne nous empêche de créer une deuxième instance de la classe Voiture :
+				</p>
+				<pre><code class='python'>
+renaultEspace = Voiture()
+				</code></pre>
+				<p>
+					Nous rencontrons ici la limite de notre analogie avec le moule. En effet 2 objets fabriqués avec le même moule seront (définitivement) identiques, alors qu'ici nos 2 instances pourront évoluer différemment.
+				</p>
+				<p>
+					Pour développer toutes ces notions (et d'autres), nous allons écrire un  premier programme :
+				</p>
+				<p>
+					Nous allons commencer par écrire une classe Personnage (qui sera dans un premier temps une coquille vide) et, à partir de cette classe créer 2 instances : bilbo et gollum.
+				</p>
+				<h4>À faire vous-même 1</h4>
+				<p>
+					Saisissez, analysez et testez ce code
+				</p>
+				<pre><code class='python'>
+class Personnage:
+  pass
+gollum = personnage()
+bilbo = personnage()
+				</code></pre>
+			<hr>
+	      <p>
+	        Pour l'instant, notre classe ne sert à rien et nos instances d'objet ne peuvent rien faire. Comme il n'est pas possible de créer une classe
+					totalement vide, nous avons utilisé l'instruction pass qui ne fait rien. Ensuite nous avons créé 2 instances de la classe Personnage : gollum et bilbo.
+				</p>
+				<p>
+					Comme expliqué précédemment, une instance de classe possède des attributs et des méthodes. Commençons par les attributs :
+				</p>
+				<p>
+					Un attribut possède une valeur (un peu comme une variable). Nous allons associer un attribut vie à notre classe personnage (chaque instance aura un attribut vie, quand la valeur de vie deviendra nulle, le personnage sera mort !)
+				</p>
+				<p>
+					Ces attributs s'utilisent comme des variables, l'attribut vie pour bilbo sera noté</p>
+				</p>
+				<pre><code class='python'>
+bilbo.vie
+				</code></pre>
+				<p>
+					de la même façon l'attribut vie de l'instance gollum sera noté
+				</p>
+				<pre><code class='python'>
+gollum.vie
+				</code></pre>
+				<h4>À faire vous-même 2</h4>
+				<p>
+					Saisissez, analysez et testez ce code
+				</p>
+				<pre><code class='python'>
+class Personnage:
+  pass
+gollum=Personnage()
+gollum.vie=20
+bilbo=Personnage()
+bilbo.vie=20
+				</code></pre>
+				<p>
+					Comme pour une variable il est possible d'utiliser la console Python pour afficher la valeur référencée par un attribut. Il suffit de taper dans la console gollum.vie ou bilbo.vie (sans bien sûr avoir oublié d'exécuter le programme au préalable.)
+				</p>
+			<hr>
+	      <p>
+					Cette façon de faire n'est pas très "propre" et n'est pas une bonne pratique
+				</p>
+				<p>En effet, nous ne respectons pas un principe de base de la POO : l'encapsulation</p>
+				<p>Il ne faut pas oublier que notre classe doit être "enfermée dans une caisse" pour que l'utilisateur puisse l'utiliser facilement sans se préoccuper de ce qui se passe à l'intérieur, or, ici, ce n'est pas vraiment le cas.</p>
+				<p>En effet, les attributs (gollum.vie et bilbo.vie), font partie de la classe et devraient donc être enfermés dans la "caisse" !</p>
+				<p>Pour résoudre ce problème, nous allons définir les attributs, dans la classe, à l'aide d'une méthode (une méthode est une fonction définie dans une classe) d'initialisation des attributs.</p>
+				<p>Cette méthode est définie dans le code source par la ligne :
+				<pre><code class='python'>
+	def __init__ (self)
+				</code></pre>
+				<p>La méthode __init__ est automatiquement exécutée au moment de la création d'une instance. Le mot self est obligatoirement le premier argument d'une méthode (nous reviendrons ci-dessous sur ce mot self)</p>
+				<p>Nous retrouvons ce mot self lors de la définition des attributs. La définition des attributs sera de la forme :</p>
+				<pre><code class='python'>
+	self.vie=20
+				</code></pre>
+				<p>Le mot self représente l'instance. Quand vous définissez une instance de classe (bilbo ou gollum) le nom de votre instance va remplacer le mot self.</p>
+				<p>Dans le code source, nous allons avoir :</p>
+				<pre><code class='python'>
+class Personnage:
+  def __init__ (self):
+    self.vie=20
+				</code></pre>
+				<p>Ensuite lors de la création de l'instance gollum, python va automatiquement remplacer self par gollum et ainsi créer un attribut gollum.vie qui aura pour valeur de départ la valeur donnée à self.vie dans la méthode __init__</p>
+				<p>Il se passera exactement la même chose au moment de la création de l'instance bilbo, on aura automatiquement la création de l'attribut bilbo.vie.</p>
+				<h4>À faire vous-même 3</h4>
+				<p>
+					Saisissez, analysez et testez ce code
+				</p>
+				<pre><code class='python'>
+class Personnage:
+  def __init__(self):
+    self.vie=20
+gollum=Personnage()
+bilbo=Personnage()
+				</code></pre>
+				<p>
+					Utilisez la console Python comme dans le "À faire vous-même 2"
+				</p>
+			<hr>
+			<p>Le résultat du "À faire vous-même 3" est identique au résultat de l'exemple du "À faire vous-même 2". Mais cette fois nous n'avons pas défini l'attribut gollum.vie=20 et bilbo.vie=20 en dehors de la classe, nous avons utilisé une méthode __init__.</p>
+			</p>
+			<p>
+				Imaginons que nos 2 personnages n'aient pas au départ les mêmes points de vie ! Pour l'instant, impossible d'introduire cette contrainte (self.vie=20)
+			</p>
+			<p>
+				Une méthode, comme une fonction, peut prendre des paramètres.
+			</p>
+			<p>
+				Le passage de paramètres se fait au moment de la création de l'instance :
+			</p>
+			<h4>À faire vous-même 4</h4>
+			<p>
+				Saisissez, analysez et testez ce code
+			</p>
+			<pre><code class='python'>
+class Personnage:
+  def __init__(self,nbreDeVie)
+    self.vie=nbreDeVie
+gollum=Personnage(20)
+bilbo=Personnage(15)
+			</code></pre>
+			<p>
+				Utilisez la console Python pour vérifier que gollum.vie est égal à 20 et bilbo.vie est égal à 15
+			</p>
+			<hr>
+      <p>
+			</p>
+			<p>Au moment de la création de l'instance gollum, on passe comme argument le nombre de vies (gollum=Personnage (20)). Ce nombre de vies est attribué au premier argument de la méthode __init__ , la variable nbreDeVie (nbreDeVie n'est pas tout à fait le premier argument de la méthode __init__  puisque devant il y a self, mais bon, self étant obligatoire, nous pouvons dire que nbreDeVie est le premier argument non obligatoire).</p>
+			<p>N.B. Je parle bien de variable pour nbreDeVie (car ce n'est pas un attribut de la classe personnage puisqu'elle ne commence pas par self).</p>
+			<p>Nous pouvons passer plusieurs arguments à la méthode __init__ (comme pour n'importe quelle fonction).</p>
+
+			<p>Nous allons créer 2 nouvelles méthodes :<p>
+			<ul>
+				<li>Une méthode qui enlèvera un point de vie au personnage blessé</li>
+				<li>Une méthode qui renverra le nombre de vies restantes</li>
+			</ul>
+			<h4>À faire vous-même 5</h4>
+			<p>
+				Saisissez, analysez et testez ce code
+			</p>
+			<pre><code class='python'>
+class Personnage:
+  def __init__(self, nbreDeVie):
+    self.vie=nbreDeVie
+  def donneEtat (self):
+    return self.vie
+  def perdVie (self):
+    self.vie=self.vie-1
+gollum = Personnage(20)
+bilbo = Personnage(15)
+			</code></pre>
+			<p>
+					Pour tester ce programme, dans la console, tapez successivement les instructions suivantes :
+			</p>
+			<ul>
+				<li>
+					gollum.donneEtat()
+				</li>
+				<li>
+					bilbo.donneEtat()
+				</li>
+				<li>
+					gollum.perdVie()
+				</li>
+				<li>
+					gollum.donneEtat()
+				</li>
+				<li>
+					bilbo.perdVie()
+				</li>
+				<li>
+					bilbo.donneEtat()
+				</li>
+			</ul>
+			<hr>
+			<p>
+				Vous avez sans doute remarqué que lors de "l'utilisation" des instances biblo et gollum, nous avons uniquement utilisé des méthodes et nous n'avons plus directement utilisé des attributs (plus de "gollum.vie").
+				Il est important de savoir qu'en dehors de la classe l'utilisation des attributs est une mauvaise pratique en programmation orientée objet : les attributs doivent rester "à l'intérieur" de la classe, l'utilisateur de la classe ne doit pas les utiliser directement. Il peut les manipuler, mais uniquement par l'intermédiaire d'une méthode (la méthode self.perdVie() permet de manipuler l'attribut self.vie)
+			</p>
+			<p>
+				Pour l'instant nous avons utilisé les méthodes uniquement en tapant des instructions dans la console, il est évidemment possible d'utiliser ces méthodes directement dans votre programme :
+			</p>
+			<h4>À faire vous-même 6</h4>
+			<p>
+				Saisissez, analysez et testez ce code
+			</p>
+			<pre><code class='python'>
+class Personnage:
+  def __init__(self, nbreDeVie):
+    self.vie=nbreDeVie
+  def donneEtat (self):
+    return self.vie
+  def perdVie (self):
+    self.vie=self.vie-1
+
+bilbo = Personnage(15)
+bilbo.perdVie()
+point=bilbo.donneEtat()
+			</code></pre>
+			<p>
+				Évaluez la variable point à l'aide de la console.
+			</p>
+			<h4>À faire vous-même 7</h4>
+			<p>
+				Nos personnages peuvent boire une potion qui leur ajoute un point de vie. Modifiez le programme du "À faire vous-même 5" en ajoutant une méthode boirePotion. Testez ensuite cette modification à l'aide de la console.
+			</p>
+			<hr />
+			<p>
+				Selon le type d'attaque subit, le personnage peut perdre plus ou moins de points de vie. Pour tenir compte de cet élément, il est possible d'ajouter un paramètre à la méthode perdVie :
+			</p>
+			<h4>À faire vous-même 8</h4>
+			<p>
+				Saisissez, analysez et testez ce code
+			</p>
+			<pre><code class='python'>
+class Personnage:
+  def __init__(self, nbreDeVie):
+    self.vie=nbreDeVie
+  def donneEtat (self):
+    return self.vie
+  def perdVie (self,nbPoint):
+    self.vie=self.vie-nbPoint
+bilbo = Personnage(15)
+bilbo.perdVie(2)
+point=bilbo.donneEtat()
+			</code></pre>
+			<p>
+				Évaluez la variable point à l'aide de la console.
+			</p>
+		<hr>
+		<p>
+			Il est possible d'ajouter une part d'aléatoire dans la méthode perdVie :
+		</p>
+		<h4>À faire vous-même 9</h4>
+		<p>
+			Saisissez, analysez et testez ce code
+		</p>
+		<pre><code class='python'>
+import random
+class Personnage:
+  def __init__(self, nbreDeVie):
+	  self.vie=nbreDeVie
+  def donneEtat (self):
+	  return self.vie
+  def perdVie (self):
+	  if random.random()>0.5:
+	    nbPoint = 1
+	  else :
+	    nbPoint = 2
+	  self.vie=self.vie-nbPoint
+bilbo = Personnage(15)
+bilbo.perdVie()
+bilbo.perdVie()
+bilbo.perdVie()
+point=bilbo.donneEtat()
+		</code></pre>
+		<p>
+			Évaluez la variable point à l'aide de la console.
+		</p>
+		<p>
+			N.B : random.random() renvoie une valeur aléatoire comprise entre 0 et 1
+		</p>
+		<p>
+			Expliquez le fonctionnement de la méthode perdVie
+		</p>
+		<hr />
+		<p>
+			Comme vous l'avez remarqué, il est possible d'utiliser une instruction conditionnelle (if / else) dans une méthode. Il est donc possible d'utiliser dans le même programme
+			le paradigme objet et le paradigme impératif.
+		</p>
+		<p>
+			Nous allons maintenant organiser un combat virtuel entre nos 2 personnages :
+		</p>
+		<h4>À faire vous-même 10</h4>
+		<p>
+			Saisissez, analysez ce code
+		</p>
+		<pre><code class='python'>
+import random
+class Personnage:
+  def __init__(self, nbreDeVie):
+	  self.vie=nbreDeVie
+  def donneEtat (self):
+	  return self.vie
+  def perdVie (self):
+	  if random.random()>0.5:
+	    nbPoint = 1
+	  else :
+	    nbPoint = 2
+	  self.vie=self.vie-nbPoint
+def game():
+  bilbo = Personnage(20)
+  gollum = Personnage(20)
+  while bilbo.donneEtat()>0 and gollum.donneEtat()>0 :
+    bilbo.perdVie()
+    gollum.perdVie()
+  if bilbo.donneEtat()<=0 and gollum.donneEtat()>0:
+    msg = f"Gollum est vainqueur, il lui reste encore {gollum.donneEtat()} points alors que Bilbo est mort"
+  elif gollum.donneEtat()<=0 and bilbo.donneEtat()>0:
+	  msg = f"Bilbo est vainqueur, il lui reste encore {bilbo.donneEtat()} points alors que Gollum est mort"
+  else :
+    msg = "Les deux combattants sont morts en même temps"
+  return msg
+		</code></pre>
+		<p>
+			Pour tester le programme, exécutez la fonction game dans une console. Vérifiez que l'on peut obtenir des résultats différents en exécutant plusieurs fois la fonction game.
+		</p>
+		<p>
+			Nous avons encore ici la démonstration qu'il est possible d'utiliser le paradigme objet et le paradigme impératif dans un même programme.
+		</p>
+		<h4>À faire vous-même 11</h4>
+		<p>
+			Améliorez le programme développé au "À faire vous-même 10" en modifiant des méthodes ou en implémentant vos propres méthodes.
+		</p>
+		</div>
+</html>
