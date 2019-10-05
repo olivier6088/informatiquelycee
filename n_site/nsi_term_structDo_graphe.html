@@ -72,10 +72,13 @@
 			</p>
 			<div class="centrer">
 				<img src="img/graphe.png" alt="graphe 1"/>
-				<figcaption>graphe 1</figcaption>
+				<figcaption>graphe réseau social</figcaption>
 			</div>
 			<p>
-				Ce genre de figure s'appelle un graphe. Les graphes sont des objets mathématiques très utilisés, notamment en informatique. Les cercles sont appelés des sommets et les segments de droites des arêtes.
+				Ce genre de figure s'appelle un graphe. Les graphes sont des objets mathématiques très utilisés, notamment en informatique. Les cercles sont appelés des sommets et les segments de droites qui relient 2 sommets des arêtes.
+			</p>
+			<p>
+				Plus formellement on dira qu'un graphe G est un couple G = (V,E) avec V un ensemble de sommets et E un ensemble d'arêtes
 			</p>
 			<h4>À faire vous-même 1</h4>
 			<p>
@@ -102,5 +105,280 @@
 				</li>
 			</ul>
 			<hr />
+			<p>
+				Autre utilisation possible des graphes : les logiciels de cartographie (ces logiciels sont souvent utilisés couplés à des récepteurs GPS). Ces logiciels de cartographie permettant, connaissant votre position grâce à un récepteur GPS, d'indiquer la route à suivre pour se rendre à endroit B.
+				Comment modéliser l'ensemble des lieux et des routes ? Simplement à l'aide d'un graphe ! Chaque lieu est un sommet et les routes qui relient les lieux entre eux sont des arêtes.
+			</p>
+			<p>
+				Soit les lieux suivants : A, B, C, D, E, F et G.
+			</p>
+			<p>
+				Les différents lieux sont reliés par les routes suivantes :
+			</p>
+			<ul>
+				<li>
+					il existe une route entre A et C
+				</li>
+				<li>
+					il existe une route entre A et B
+				</li>
+				<li>
+					il existe une route entre A et D
+				</li>
+				<li>
+					il existe une route entre B et F
+				</li>
+				<li>
+					il existe une route entre B et E
+				</li>
+				<li>
+					il existe une route entre B et G
+				</li>
+				<li>
+					il existe une route entre D et G
+				</li>
+				<li>
+					il existe une route entre E et F
+				</li>
+			</ul>
+			<p>
+				Ici aussi, la représentation sous forme de graphe s'impose :
+			</p>
+			<div class="centrer">
+				<img src="img/nsi_term_structDo_graphe_1.png" alt="graphe_2"/>
+				<figcaption>graphe cartographie</figcaption>
+			</div>
+			<p>
+				Problème : avec cette représentation du réseau routier sous forme de graphe, il est impossible de tenir compte des routes en sens unique (par exemple il est possible d'aller de A vers D mais pas de D vers A)
+			</p>
+			<p>
+				Voici de nouvelles contraintes :
+			</p>
+			<ul>
+				<li>
+					il existe une route entre A et C (double sens)
+				</li>
+				<li>
+					il existe une route entre A et B (sens unique B->A)
+				</li>
+				<li>
+					il existe une route entre A et D (sens unique A->D)
+				</li>
+				<li>
+					il existe une route entre B et F (sens unique B->F)
+				</li>
+				<li>
+					il existe une route entre B et E (sens unique E->B)
+				</li>
+				<li>
+					il existe une route entre B et G (double sens)
+				</li>
+				<li>
+					il existe une route entre D et G (double sens)
+				</li>
+				<li>
+					il existe une route entre E et F (double)
+				</li>
+			</ul>
+			<p>
+				Pour tenir compte de ces nouvelles contraintes, on utilisera un graphe orienté :
+			</p>
+			<div class="centrer">
+				<img src="img/nsi_term_structDo_graphe_2.png" alt="graphe_3"/>
+				<figcaption>graphe orienté cartographie</figcaption>
+			</div>
+			<p>
+				Dans un graphe orienté, les arêtes possèdent une orientation. Ces "arêtes orientées" sont souvent appelées "arcs". On dira qu'un graphe orienté G est un couple G = (V,A) avec V un ensemble de sommets et A un ensemble d'arcs.
+			</p>
+			<p>
+				Parfois il est intéressant d'associer aux arrêtes ou aux arcs des valeurs, on parle alors de graphes pondérés. Si nous revenons à notre "graphe cartographie", il est possible d'associer à chaque arête la distance en Km entre les 2 lieux :
+			</p>
+			<div class="centrer">
+				<img src="img/nsi_term_structDo_graphe_3.png" alt="graphe_3"/>
+				<figcaption>graphe pondéré (Km) cartographie</figcaption>
+			</div>
+			<p>
+				Il est aussi possible d'associer à chaque arête la durée du trajet entre 2 points :
+			</p>
+			<div class="centrer">
+				<img src="img/nsi_term_structDo_graphe_4.png" alt="graphe_4"/>
+				<figcaption>graphe pondéré (minutes) cartographie</figcaption>
+			</div>
+			<p>
+				En fonction du choix fait par le conducteur (trajet le plus court "en distance" ou trajet le plus court "en temps"), l'algorithme permettant de déterminer le "chemin le plus court entre 2 points" travaillera sur le graphe "graphe pondéré (Km) cartographie" ou sur le graphe "graphe pondéré (minutes) cartographie".
+				À noter que le "graphe pondéré (minutes) cartographie" peut évoluer au cours du temps en fonction du trafic routier : une application comme Waze utilise les données en en provenance des utilisateurs de l'application afin de mettre à jour en temps réél leur "graphe pondéré (minutes) cartographie".
+			</p>
+			<p>
+				Il existe deux méthodes permettant d'implémenter un graphe : les matrices d'adjacences et les listes d'adjacences.
+			</p>
+			<h4>Implémentation d'un graphe à l'aide d'une matrice d'adjacence</h4>
+			<p>
+				Une matrice est un tableau à double entrée :
+			</p>
+			<div class="centrer">
+				<img src="img/nsi_term_structDo_graphe_5.png" alt="matrice"/>
+				<figcaption>exemple de matrice</figcaption>
+			</div>
+				<p>
+					La matrice A ci-dessus est constitué de 5 lignes et 4 colonnes. On appelle matrice carrée une matrice qui comporte le même nombre de lignes et de colonnes. Les matrices d'adjacences sont des matrices carrées.
+				</p>
+				<p>
+					Reprenons l'exemple du "graphe cartographie" :
+				</p>
+				<div class="centrer">
+					<img src="img/nsi_term_structDo_graphe_1.png" alt="graphe_2"/>
+					<figcaption>graphe cartographie</figcaption>
+				</div>
+				<p>
+					Voici la matrice d'adjacence de ce graphe :
+				</p>
+				<div class="centrer">
+					<img src="img/nsi_term_structDo_graphe_6.png" alt="graphe_2"/>
+					<figcaption>matrice d'adjacence du graphe cartographie</figcaption>
+				</div>
+				<p>
+					Comment construire une matrice d'adjacence ?
+				</p>
+				<p>
+					Il faut savoir qu'à chaque ligne correspond un sommet du graphe et qu'à chaque colonne correspond aussi un sommet du graphe.
+					À chaque intersection ligne i-colonne j (ligne i correspond au sommet i et colonne j correspond au sommet j), on place un 1 s'il existe une arête entre le sommet i et le sommet j, et un zéro s'il n'existe pas d'arête entre le sommet i et le sommet j.
+				</p>
+				<div class="centrer">
+					<img src="img/nsi_term_structDo_graphe_7.png" alt="graphe_2"/>
+					<figcaption>matrice d'adjacence du graphe cartographie</figcaption>
+				</div>
+				<ul>
+					<li>
+						Il existe une arête entre le sommet E et le sommet F, nous avons donc placé un 1 à l'intersection de la ligne E et de la colonne F (il en est de même à l'intersection de la ligne F et de la colonne E)
+					</li>
+					<li>
+						Il n'existe pas d'arête entre le sommet D et le sommet C, nous avons donc placé un 0 à l'intersection de la ligne D et de la colonne C (il en est de même à l'intersection de la ligne C et de la colonne D)
+					</li>
+				</ul>
+				<h4>À faire vous-même 2</h4>
+				<p>
+					Vérifiez que la matrice d'adjacence proposée ci-dessus correspond bien au graphe "cartographie".
+				</p>
+				<hr />
+				<p>
+					Il est aussi possible d'établir une matrice d'adjacence pour un graphe orienté. Le principe reste le même : si le sommet i (ligne) est lié au sommet j (colonne), nous avons un 1 à l'intersection (0 dans le cas contraire).
+				</p>
+				<div class="centrer">
+					<img src="img/nsi_term_structDo_graphe_2.png" alt="graphe_3"/>
+					<figcaption>graphe orienté cartographie</figcaption>
+				</div>
+				<div class="centrer">
+					<img src="img/nsi_term_structDo_graphe_8.png" alt="graphe_2"/>
+					<figcaption>matrice d'adjacence du graphe orienté cartographie</figcaption>
+				</div>
+				<h4>À faire vous-même 3</h4>
+				<p>
+					Vérifiez que la matrice d'adjacence proposée ci-dessus correspond bien au graphe orienté "cartographie".
+				</p>
+				<hr />
+				<p>
+					Il est aussi possible d'utiliser une matrice d'adjacence pour implémenter un graphe pondéré : on remplace les 1 par les valeurs liées à chaque arc.
+				</p>
+				<div class="centrer">
+					<img src="img/nsi_term_structDo_graphe_4.png" alt="graphe_3"/>
+					<figcaption>graphe pondéré (minutes) cartographie</figcaption>
+				</div>
+				<div class="centrer">
+					<img src="img/nsi_term_structDo_graphe_9.png" alt="graphe_2"/>
+					<figcaption>matrice d'adjacence du graphe pondéré (minutes) cartographie</figcaption>
+				</div>
+				<h4>À faire vous-même 4</h4>
+				<p>
+					Vérifiez que la matrice d'adjacence proposée ci-dessus correspond bien au graphe pondéré (minutes) "cartographie".
+				</p>
+				<hr />
+				<h4>À faire vous-même 5</h4>
+				<p>
+					Établissez la matrice d'adjacence du graphe ci-dessous.
+				</p>
+				<div class="centrer">
+					<img src="img/graphe.png" alt="graphe 1"/>
+					<figcaption>graphe réseau social</figcaption>
+				</div>
+				<hr />
+				<p>
+					Il est assez simple d'utiliser les matrices d'adjacence en Python grâce aux tableaux de tableaux vus <a href="nsi_prem_pythonSequence.html" target="_blank">l'année dernière</a>
+				</p>
+				<pre><code class='python'>
+#matrice d'ajacence pour le graphe cartographie
+m = [[0, 1, 1, 1, 0, 0, 0],
+     [1, 0, 0, 0, 1, 1, 1],
+     [1, 0, 0, 0, 0, 0, 0],
+     [1, 0, 0, 0, 0, 0, 1],
+     [0, 1, 0, 0, 0, 1, 0],
+     [0, 1, 0, 0, 1, 0, 0],
+     [0, 1, 0, 1, 0, 0, 0]]
+				</code></pre>
+				<h4>Implémentation d'un graphe à l'aide de listes d'adjacence</h4>
+				<p>
+					Pour commencer, on définit une liste des sommets du graphe. À chaque élément de cette liste, on associe une autre liste qui contient les sommets lié à cet élément :
+				</p>
+				<p>
+					Reprenons l'exemple du "graphe cartographie" :
+				</p>
+				<div class="centrer">
+					<img src="img/nsi_term_structDo_graphe_1.png" alt="graphe_2"/>
+					<figcaption>graphe cartographie</figcaption>
+				</div>
+				<p>
+					Voici la liste d'adjacence de ce graphe :
+				</p>
+				<div class="centrer">
+					<img src="img/nsi_term_structDo_graphe_10.png" alt="graphe_2"/>
+					<figcaption>liste d'adjacence du graphe cartographie</figcaption>
+				</div>
+				<p>
+					Pour les graphes orientés, il est nécessaire de définir 2 listes : la liste des successeurs et la liste des prédécesseurs.
+					Soit un arc allant d'un sommet A vers un sommet B (flèche de A vers B). On dira que B est un successeur de A et que A est un prédécesseur de B.
+				</p>
+				<div class="centrer">
+					<img src="img/nsi_term_structDo_graphe_2.png" alt="graphe_3"/>
+					<figcaption>graphe orienté cartographie</figcaption>
+				</div>
+				<div class="centrer">
+					<img src="img/nsi_term_structDo_graphe_11.png" alt="graphe_2"/>
+					<figcaption>liste d'adjacence successeurs du graphe orienté cartographie</figcaption>
+				</div>
+				<div class="centrer">
+					<img src="img/nsi_term_structDo_graphe_12.png" alt="graphe_2"/>
+					<figcaption>liste d'adjacence prédécesseurs du graphe orienté cartographie</figcaption>
+				</div>
+				<h4>À faire vous-même 6</h4>
+				<p>
+					Vérifiez que les listes "successeurs-prédécesseurs" proposées ci-dessus correspondent bien au graphe orienté "cartographie".
+				</p>
+				<hr />
+				<h4>À faire vous-même 7</h4>
+				<p>
+					Établissez la liste d'adjacence du graphe ci-dessous.
+				</p>
+				<div class="centrer">
+					<img src="img/graphe.png" alt="graphe 1"/>
+					<figcaption>graphe réseau social</figcaption>
+				</div>
+				<hr />
+				<p>
+					Il est possible de travailler avec des listes d'adjacences en Python en utilisant les dictionnaires :
+				</p>
+				<pre><code class='python'>
+#liste d'ajacence pour le graphe cartographie
+l = {'A':('B','C','D'), 'B':('A', 'E', 'F', 'G'), 'C':('A'), 'D':('A', 'G'), 'E':('B', 'F'), 'F':('B', 'E'), 'G':('B', 'D')}
+				</code></pre>
+				<p>
+					Comment choisir l'implémentation à utiliser (matrice d'adjacence ou liste d'adjacence) ?
+				</p>
+				<ul>
+					<li>
+						le choix se fait en fonction de la densité du graphe, c'est-à-dire du rapport entre le nombre d'arêtes et le nombre de sommets. Pour un graphe dense on utilisera plutôt une matrice d'adjacence.
+					</li>
+					<li>
+						certains algorithmes travaillent plutôt avec les listes d'adjacences alors que d'autres travaillent plutôt avec les matrices d'adjacences. Le choix doit donc aussi dépendre des algorithmes utilisés (nous aurons très prochainement l'occasion d'étudier plusieurs de ces algorithmes).
+					</li>
+				</ul>
 		</div>
 </html>
