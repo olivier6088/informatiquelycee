@@ -492,6 +492,9 @@
 			Il est donc impossible d'avoir deux romans avec le même id. Ajouter un attribut "id" afin qu'il puisse jouer le rôle de clef primaire est une pratique courante (mais non obligatoire) dans les bases de données relationnelles.
 			Dans le cas précis qui nous intéresse, il aurait été possible de ne pas utiliser d'attribut "id", car chaque livre édité possède un numéro qui lui est propre : l'ISBN, cet ISBN aurait donc pu jouer le rôle de clef primaire.
 		</p>
+		<p>
+			À noter qu'en toute rigueur, une clef primaire peut être constituée de plusieurs attributs, par exemple le couple "auteur" + "titre" pourrait jouer le rôle de clé primaire (à moins qu'un auteur écrive 2 romans différents, mais portant tous les deux le même titre), mais nous n'étudierons pas cet aspect des choses ici.
+		</p>
 		<h4>À faire vous-même 3</h4>
 		<p>
 			Voici un extrait d'une relation référençant des films :
