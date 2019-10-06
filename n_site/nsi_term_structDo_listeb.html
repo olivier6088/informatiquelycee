@@ -45,93 +45,61 @@
 		</p>
 		<h3>Les listes</h3>
 		<p>
-			Une liste est une structure de données permettant de regrouper des données. Une liste L est composée de 2 parties : sa tête (souvent noté <i>car</i>), qui correspond au dernier élément ajouté à la liste, et sa queue (souvent noté <i>cdr</i>) qui correspond au reste de la liste.
-			Le langage de programmation Lisp (inventé par John McCarthy en 1958) a été un des premiers langages de programmation à introduire cette notion de liste (Lisp signifie "list processing"). Voici les opérations qui peuvent être effectuées sur une liste :
+			Une liste est une structure de données permettant de regrouper des données de manière à pouvoir y accéder librement. L'ordre des éléments dans une liste est fondamental.
+			En effet, chaque élément d'une liste est repéré par un indice de position. Le premier élément d'une liste a pour indice de position 1, le deuxième élément l'indice de position 2...
+			Une liste peut être vide. Voici les opérations qui peuvent être effectuées sur une liste :
 		</p>
 		<ul>
 			<li>
-				créer une liste vide (L=vide() on a créé une liste L vide)
+				accéder à l'élément d'indice de position k (acc)
 			</li>
 			<li>
-				tester si une liste est vide (estVide(L) renvoie vrai si la liste L est vide)
+				supprimer l'élément d'indice de position k (suppr)
 			</li>
 			<li>
-				ajouter un élément en tête de liste (ajouteEnTete (x,L) avec L une liste et x l'élément à ajouter)
-			</li>
-			<li>
-				supprimer la tête x d'une liste L et renvoyer cette tête x (supprEnTete(L))
-			</li>
-			<li>
-				Compter le nombre d'éléments présents dans une liste (compte(L) renvoie le nombre d'éléments présents dans la liste L)
+				insérer un élément l'indice de position k (insert)
 			</li>
 		</ul>
 		<p>
-			La fonction <i>cons</i> permet d'obtenir une nouvelle liste à partir d'une liste et d'un élément (L1 = cons(x,L)).
-			Il est possible "d'enchaîner" les cons et d'obtenir ce genre de structure : cons(x, cons(y, cons(z,L)))
+			Il est aussi possible de savoir si une liste est vide (liste_vide?) ou bien encore de connaitre le nombre d'éléments présents dans une liste (longueur).
 		</p>
 		<p>
 			Exemples :
 		</p>
 		<p>
-			Voici une série d'instructions (les instructions ci-dessous s'enchaînent):
+			Soit une liste L composée des éléments suivants (attention l'ordre est important) : 12, 14, 8, 7, 19 et 22. Pour chaque exemple ci-dessous on repart de la liste d'origine :
 		</p>
 		<ul>
 			<li>
-				L=vide() => on a créé une liste vide
+				acc(L,3) renvoie 8
 			</li>
 			<li>
-				estVide(L) => renvoie vrai
+				suppr(L,2) la liste L est désormais composée des éléments suivants : 12, 8, 7, 19 et 22
 			</li>
 			<li>
-				ajoutEnTete(3,L) => La liste L contient maintenant l'élément 3
+				insert(L,3,42) la liste L est désormais composée des éléments suivants : 12, 14, 42, 8, 7, 19 et 22
 			</li>
 			<li>
-				estVide(L) => renvoie faux
+				liste_vide?(L) renvoie faux
 			</li>
 			<li>
-				ajoutEnTete(5,L) => la tête de la liste L correspond à 5, la queue contient l'élément 3
-			</li>
-			<li>
-				ajoutEnTete(8,L) => la tête de la liste L correspond à 8, la queue contient les éléments 3 et 5
-			</li>
-			<li>
-				t = supprEnTete(L) => la variable t vaut 8, la tête de L correspond à 5 et la queue contient l'élément 3
-			</li>
-			<li>
-				L1 = vide()
-			</li>
-			<li>
-				L2 = cons(8, cons(5, cons(3, L1))) => La tête de L2 correspond à 8 et la queue contient les éléments 3 et 5
+				longueur(L) renvoie 6
 			</li>
 		</ul>
 		<h4>À faire vous-même 1</h4>
 		<p>
-			Voici une série d'instructions (les instructions ci-dessous s'enchaînent), expliquez ce qui se passe à chacune des étapes :
+			Soit une liste L composée des éléments suivants : 12, 14, 8, 7, 19 et 22. Quel est l'effet de l'instruction suppr(L,4) ?
 		</p>
-		<ul>
-			<li>
-				L = vide()
-			</li>
-		<li>
-			ajoutEnTete(10,L)
-		</li>
-		<li>
-			ajoutEnTete(9,L)
-		</li>
-		<li>
-			ajoutEnTete(7,L)
-		</li>
-		<li>
-			L1 = vide()
-		</li>
-		<li>
-			L2 = cons(5, cons(4, cons(3, cons (2, cons(1, cons(0,L1))))))
-		</li>
-		</ul>
 		<hr />
+		<p>
+			L'écriture des fonctions vues ci-dessus n'est pas standard :
+			il n'existe aucun consensus sur l'utilisation de ces fonctions dans l'écriture d'algorithme en langage naturel. Le nom d'une fonction et les paramètres qu'elle accepte changent souvent d'un ouvrage à un autre.
+			Dans certains ouvrages on trouvera par exemple un L.long() à la place d'un longeur(L). L'essentiel est d'être bien clair dès le départ et de se faire comprendre.
+		</p>
 		<h3>Les piles</h3>
 		<p>
-			On retrouve dans les piles une partie des propriétés vues sur les listes. Dans les piles, il est uniquement possible de manipuler le dernier élément introduit dans la pile. On prend souvent l'analogie avec une pile d'assiettes : dans une pile d'assiettes la seule assiette
+			On retrouve dans les piles une partie des propriétés vues sur les listes. Dans les piles, au contraire des listes, il n'est pas possible de travailler sur n'importe quel élément :
+			il est uniquement possible de manipuler le dernier élément introduit dans la pile. On prend souvent l'analogie avec une pile d'assiettes : dans une pile d'assiettes la seule assiette
 			directement accessible et la dernière assiette qui a été déposée sur la pile.
 		</p>
 		<div class="centrer">
@@ -258,7 +226,7 @@
 			les "outils" fournis par son langage de programmation.
 		</p>
 		<p>
-			Pour implémenter les listes (ou les piles et les files), beaucoup de langages de programmation utilisent 2 structures : les tableaux et les listes chaînées.
+			Pour implémenter les listes (ou les piles et les files), la plupart des langages de programmation utilisent 2 structures : les tableaux et les listes chaînées.
 		</p>
 		<p>
 			Un tableau est une suite contiguë de cases mémoires (les adresses des cases mémoire se suivent) :
@@ -279,12 +247,17 @@
 			Dans certains langages de programmation, on trouve une version "évoluée" des tableaux : les tableaux dynamiques. Les tableaux dynamiques ont une taille qui peut varier. Il est donc relativement simple d'insérer des éléments dans le tableau. Ce type de tableaux permet d'implémenter facilement le type abstrait liste (de même pour les piles et les files)
 		</p>
 		<p>
-			À noter que les "listes Python" (<a href="https://docs.python.org/fr/3/tutorial/datastructures.html" target="_blank">listes Python</a>) sont des tableaux dynamiques. Attention de ne pas confondre avec le type abstrait liste défini ci-dessus, ce sont de "faux amis".
+			À noter que les "listes Python" (<a href="https://docs.python.org/fr/3/tutorial/datastructures.html" target="_blank">listes Python</a>) sont des tableaux dynamiques.
 		</p>
 		<div class="centrer">
 			<img src="img/nsi_term_structDo_liste_5.png" alt="File"/>
 			<figcaption>tableau dynamique</figcaption>
 		</div>
+		<h4>À faire vous-même 4</h4>
+		<p>
+			Étudiez l'implémentation des piles et des files en Python en vous aidant de la <a href="https://docs.python.org/fr/3/tutorial/datastructures.html" target="_blank">documentation officielle</a>.
+		</p>
+		<hr />
 		<p>
 			Autre type de structure que l'on rencontre souvent et qui permet d'implémenter les listes, les piles et les files : les listes chaînées.
 		</p>
@@ -300,81 +273,5 @@
 		<div class="centrer">
 			<img src="img/nsi_term_structDo_liste_7.png" alt="File"/>
 		</div>
-		<p>
-			Il est aussi possible d'implémenter les types abstraits en utilisant des structures plus complexes que les tableaux et les listes chaînées.
-			Par exemple, en Python, il est possible d'utiliser les tuples pour implémenter le type abstrait liste :
-		</p>
-		<h4>À faire vous-même 4</h4>
-		<p>
-			Étudiez attentivement les fonctions suivantes :
-		</p>
-		<pre><code class='python'>
-def vide():
-    return None
-def cons(x,L):
-    return(x,L)
-def ajouteEnTete(L,x):
-    return cons(x,L)
-def supprEnTete(L):
-    return (L[0],L[1])
-def estVide(L):
-    return L is None
-def compte(L):
-    if estVide(L):
-        return 0
-    return 1 + compte(L[1])
-		</code></pre>
-		<hr />
-		<h4>À faire vous-même 5</h4>
-		<p>
-			Après avoir saisi et exécuté le programme étudié au "À faire vous-même 4", tapez successivement les commandes suivantes dans une console Python :
-		</p>
-		<ul>
-			<li>
-				L = vide()
-			</li>
-			<li>
-				estVide(L)
-			</li>
-			<li>
-				L = cons(5, cons(4, cons(3, cons(2, cons(1, cons(0,L))))))
-			</li>
-			<li>
-				estVide(L)
-			</li>
-			<li>
-				compte(L)
-			</li>
-			<li>
-				L = ajouteEnTete(L,6)
-			</li>
-			<li>
-				compte(L)
-			</li>
-			<li>
-				x, L=supprEnTete(L)
-			</li>
-			<li>
-				x
-			</li>
-			<li>
-				compte(L)
-			</li>
-			<li>
-				x, L=supprEnTete(L)
-			</li>
-			<li>
-				x
-			</li>
-			<li>
-				compte(L)
-			</li>
-		</ul>
-		<hr />
-		<h4>À faire vous-même 6</h4>
-		<p>
-			Étudiez l'implémentation des piles et des files en Python en vous aidant de la <a href="https://docs.python.org/fr/3/tutorial/datastructures.html" target="_blank">documentation officielle</a> (5.1.1 et 5.1.2).
-		</p>
-		<hr />
 		</div>
 </html>
