@@ -3,7 +3,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Python : les bases</title>
+		<title>Formation Python - niveau 1</title>
 		<link rel="stylesheet" href="css/css/vendor/bootstrap.min.css">
 		<link rel="stylesheet" href="css/css/flat-ui.min.css">
 		<link rel="stylesheet" href="highlight/styles/tomorrow-night.css">
@@ -12,32 +12,10 @@
 		<script>hljs.initHighlightingOnLoad();</script>
     <script src="./css/js/vendor/jquery.min.js"></script>
     <script src="./css/js/flat-ui.min.js"></script>
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53303169-1"></script>
-	<script>
-  		window.dataLayer = window.dataLayer || [];
-  		function gtag(){dataLayer.push(arguments);}
-  		gtag('js', new Date());
-
-  		gtag('config', 'UA-53303169-1');
-	</script>
 	</head>
 	<body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <span class="navbar-brand">NSI première</span>
-					<span class="navbar-brand">Python : les bases</span>
-        </div>
-      </div>
-    </nav>
     <div class="container act">
+			<h1>Formation Python - niveau 1</h1>
 			<h3>Programmer un ordinateur, c'est quoi ?</h3>
 			<p>
 				Programmer, c'est créer des programmes (suite d'instructions données à l'ordinateur) ! Un ordinateur sans programme ne sait rien faire.
@@ -58,16 +36,13 @@
 				</li>
 			</ul>
 			<p>
-				En NSI, notre langage de prédilection sera Python.
-			</p>
-			<p>
-				Pour écrire nos programmes, nous utiliserons le logiciel Spyder.
+				Pour écrire nos programmes, nous utiliserons le logiciel Spyder (mais il existe beaucoup d'autres logiciels permettant de faire la même chose : IDLE, Pycharm...).
 			</p>
 			<h3>Prise en main de Spyder</h3>
 			<p>Une fois Spyder lancé, vous devriez obtenir quelque chose qui ressemble à cela :</p>
 			<img src="img/nsi_spyder.png">
 			<p>Spyder se divise en plusieurs fenêtres, deux fenêtres vont principalement nous intéresser : la fenêtre "éditeur" et la fenêtre "console".</p>
-			<h4>À faire vous-même 1</h4>
+			<h4>E1</h4>
 			<p>Dans la fenêtre "éditeur", saisissez le programme suivante :</p>
 			<pre><code class='python'>
 print("hello world !")
@@ -117,7 +92,7 @@ print("hello world !")
 i = 12
 			</code></pre>
 			<p>Grâce à cette ligne, nous avons défini une variable qui porte le nom i et qui "contient" le nombre entier 12. Plus précisément, nous dirons que la variable i référence le nombre entier 12.</p>
-			<h4>À faire vous-même 2</h4>
+			<h4>E2</h4>
 			<p>Dans la partie "éditeur" de Spyder, saisissez le code suivant :</p>
 			<pre><code class='python'>
 point_de_vie = 15
@@ -146,7 +121,7 @@ point_de_vie = 15
 				</li>
 			</ul>
 			<hr>
-			<h4>À faire vous-même 3</h4>
+			<h4>E3</h4>
 			<p>
 				Écrire un programme dans lequel on attribue la valeur 12 à la variable point_de_force. La valeur référencée par la variable point_de_force devra ensuite être affichée dans la console.
 			</p>
@@ -164,7 +139,7 @@ i = 5.2
 				Une variable peut donc référencer plusieurs types d'entités (pour l'instant nous n'en avons vu que deux, mais nous en verrons d'autres plus loin) : les nombres entiers ("integer" en anglais, abrégé en "int") et les nombres à virgule ("float" en anglais).
 				Il est possible de connaitre le type de l'entité référencé par une variable à l'aide de l'instruction "type".
 			</p>
-			<h4>À faire vous-même 4</h4>
+			<h4>E4</h4>
 			<p>
 				<p>Testez le programme suivant :</p>
 			</p>
@@ -190,14 +165,14 @@ b = 12
 			<p>
 				Il est tout à fait possible d'effectuer des opérations directement avec des nombres, mais il est aussi possible d'utiliser des variables.
 			</p>
-			<h4>À faire vous-même 5</h4>
+			<h4>E5</h4>
 			<p>
 				Essayez d'écrire un programme qui additionnera le contenu de 2 variables (nom des variables : a et b). Le résultat de cette opération devra être référencé par une troisième variable nommée resultat (atention pas d'accent dans les noms de variable).
 
 				Testez votre programme en utilisant la console pour vérifier la valeur référencée par la variable resultat.
 			</p>
 			<hr>
-			<h4>À faire vous-même 6</h4>
+			<h4>E6</h4>
 			<p>D'après vous, que fait ce programme ?</p>
 			<pre><code class='python'>
 a = 11
@@ -206,7 +181,7 @@ a = a + 1
 			<p>Vérifiez votre réponse en exécutant le Programme (utilisation dans console pour déterminer la valeur référencée par la variable a à la fin du programme)</p>
 			<hr>
 			<p>
-				Détaillons ce qui se passe dans le "À faire vous-même 6":
+				Détaillons ce qui se passe dans le "E6":
 			</p>
 			<ul>
 				<li>nous créons une variable a qui référence l'entier 11</li>
@@ -234,7 +209,7 @@ import math
 				<li>math.sqrt(x) permet de calculer la racine carrée de x</li>
 			</ul>
 			<p>Si vous avez besoin d'autres fonctions mathématiques, je vous invite à consulter la documentation de Python : <a href="https://docs.python.org/3/library/math.html" target="_blank">https://docs.python.org/3/library/math.html</a>
-			<h4>À faire vous-même 7</h4>
+			<h4>E7</h4>
 			<p>Quelles sont les valeurs référencées par les variables d, e, f, g, h et i après l'exécution du programme suivant :</p>
 			<pre><code class='python'>
 import math
@@ -255,7 +230,7 @@ i = math.sin(c)
 			<p>
 				À noter qu'il est tout à fait possible de "mélanger" des nombres entiers et des nombres à virgules ("3.14 / 2") dans une opération.
 			</p>
-			<h4>À faire vous-même 8</h4>
+			<h4>E8</h4>
 			<p>
 				Écrire un programme permettant de répondre à la question suivante : "Quel est le type du résultat d'une addition d'un integer et d'un float ?"
 			</p>
@@ -264,7 +239,7 @@ i = math.sin(c)
 			<p>
 				Les variables peuvent aussi référencer des suites de caractères, que l'on appelle "chaîne de caractères".
 			</p>
-			<h4>À faire vous-même 9</h4>
+			<h4>E9</h4>
 			<p>Tester le code suivant :</p>
 			<pre><code class='python'>
 ma_chaine = "Bonjour le monde !"
@@ -286,7 +261,7 @@ ma_chaine = "Bonjour le monde !"
 			<p>
 				Comme vous avez pu le deviner en lisant la définition ci-dessus, la concaténation va concerner les chaînes de caractères.
 			</p>
-			<h4>À faire vous-même 10</h4>
+			<h4>E10</h4>
 			<p>Quelle est la chaîne de caractère référencée par la variable mon_expression après l'exécution du programme ci-dessous ? Validez votre réponse en testant ce programme.</p>
 			<pre><code class='python'>
 a = "Hello"
@@ -298,7 +273,7 @@ mon_expression = a + b
 			<p>
 				Il est aussi possible de concaténer une chaîne de caractères et une ou plusieurs variables :
 			</p>
-			<h4>À faire vous-même 11</h4>
+			<h4>E11</h4>
 			<p>Testez le code suivant :</p>
 			<pre><code class='python'>
 ma_chaine_1 = "Bonjour "
@@ -312,7 +287,7 @@ res = ma_chaine_1 + ma_chaine_2 + "monde!"
 			<p>
 				Mais que se passe-t-il si la variable référence un nombre (entier ou flottant) ?
 			</p>
-			<h4>À faire vous-même 12</h4>
+			<h4>E12</h4>
 			<p>Testez le code suivant :</p>
 			<pre><code class='python'>
 mon_nombre = 5
@@ -333,9 +308,9 @@ res = "Nombre de personnes : " + mon_nombre
 				</li>
 			</ul>
 			<p>
-				La méthode (nous verrons plus loin la notion de méthode) "str" permet de transformer un nombre en chaîne de caractères (si la transformation n'est pas possible, nous aurons une erreur)
+				L'instruction "str" permet de transformer un nombre en chaîne de caractères (si la transformation n'est pas possible, nous aurons une erreur)
 			</p>
-			<h4>À faire vous-même 13</h4>
+			<h4>E13</h4>
 			<p>Testez le code suivant :</p>
 			<pre><code class='python'>
 mon_nombre = 5
@@ -345,7 +320,7 @@ mon_nombre = str(mon_nombre)
 				Quel est le type de la valeur référencée par la variable mon_nombre après l'exécution du programme ci-dessus ?
 			</p>
 			<hr />
-			<h4>À faire vous-même 14</h4>
+			<h4>E14</h4>
 			<p>Testez le code suivant :</p>
 			<pre><code class='python'>
 mon_nombre = 5
@@ -358,7 +333,7 @@ res = "Nombre de personnes : "  + str(mon_nombre)
 			<p>
 				Les "fstring" (nouveauté de Python 3.5), permettent de résoudre ce problème de combinaison variable-chaîne de caractères.
 			</p>
-			<h4>À faire vous-même 15</h4>
+			<h4>E15</h4>
 			<p>Testez le code suivant :</p>
 			<pre><code class='python'>
 mon_nombre = 5
@@ -400,7 +375,7 @@ def ma_fonction(x):
 	return y
 			</code></pre>
 			<p>Pour "utiliser" la fonction ma_fonction, il suffit d'écrire : ma_fonction (4) (dans ce cas précis, notre fonction renverra le nombre 14).</p>
-			<h4>À faire vous-même 16</h4>
+			<h4>E16</h4>
 			<p>
 				Testez le programme suivant (quelle est la valeur référencée par la variable solution après l'exécution du programme) :
 			</p>
@@ -415,7 +390,7 @@ solution = ma_fonction(4)
 				remplacé par la valeur renvoyée par la fonction (toujours dans notre exemple le ma_fonction(4) sera remplacé par le nombre 14).
 			</p>
 			<hr>
-			<h4>À faire vous-même 17</h4>
+			<h4>E17</h4>
 			<p>Codez en Python la fonction y = x<sup>2</sup>+2x+10</p>
 			<hr>
 			<p>
@@ -427,7 +402,7 @@ solution = ma_fonction(4)
 			</p>
 			<img src="img/nsi_spyder_9.png">
 			<p>Il est possible de faire passer plusieurs paramètres à une fonction.</p>
-			<h4>À faire vous-même 18</h4>
+			<h4>E18</h4>
 			<p>Quel est le résultat renvoyé par la fonction ci-dessous si l'on saisit dans la console une_autre_fonction(5, 3)</p>
 			<pre><code class='python'>
 def une_autre_fonction(x, b):
@@ -435,7 +410,7 @@ def une_autre_fonction(x, b):
 	return y
 			</code></pre>
 			<p>Les paramètres peuvent être des chaînes de caractères (ainsi que la valeur retournée)</p>
-			<h4>À faire vous-même 19</h4>
+			<h4>E19</h4>
 			<p>Quel est le résultat attendu après l'exécution du programme ci-dessous et la saisie dans la console de "dit_bonjour("toto", 14)" ?</p>
 			<pre><code class='python'>
 def dit_bonjour(nom, age):
@@ -445,7 +420,7 @@ def dit_bonjour(nom, age):
 			<p>Attention : remarquez bien les guillemets autour du paramètre "toto" (c'est une chaîne de caractères)</p>
 			<hr>
 			<p>Les paramètres ne sont pas obligatoires.</p>
-			<h4>À faire vous-même 20</h4>
+			<h4>E20</h4>
 			<p>Testez la fonction suivante :</p>
 			<pre><code class='python'>
 def ma_fon():
@@ -453,7 +428,7 @@ def ma_fon():
 			</code></pre>
 			<hr>
 			<p>Il faut aussi savoir qu'une fonction ne renvoie pas forcément de valeur (le mot clé return n'est pas obligatoire). Mais si elle ne renvoie pas de valeur, que fait-elle ? Elle peut faire plein de choses, par exemple elle peut tout simplement afficher une chaîne de caractères à l'aide d'un "print". Sachez que dans certains langages, on utilise les termes méthode ou procédure pour qualifier une fonction "qui ne renvoie rien".</p>
-			<h4>À faire vous-même 21</h4>
+			<h4>E21</h4>
 			<p>Soit le programme suivant :</p>
 			<pre><code class='python'>
 def dit_bonjour(nom, age):
@@ -467,7 +442,7 @@ def dit_bonjour(nom, age):
 				Si quelqu'un vous dit que "4 est égal à 5", vous lui répondez quoi ? "c'est faux". Si maintenant la même personne vous dit que "7 est égal à 7", vous lui répondrez bien évidemment que "c'est vrai".
 			</p>
 			<p>En Python, ces deux «affirmations» ("4 est égal à 5" et "7 est égal à 7") s'écriront "4 == 5" et "7 == 7" (notez bien le double signe égal).</p>
-			<h4>À faire vous-même 22</h4>
+			<h4>E22</h4>
 			<p>Dans la console, tapez :</p>
 			<pre><code class='python'>
 4 == 5
@@ -484,7 +459,7 @@ def dit_bonjour(nom, age):
 			<p>
 				ATTENTION : notez le double égal "==" qui permet de distinguer une expression et une affectation (référencement d'une valeur par une variable). Le fait de confondre le "simple égal" et le "double égal" est une erreur classique qu'il faut éviter.
 			</p>
-			<h4>À faire vous-même 23</h4>
+			<h4>E23</h4>
 			<p>
 				Soit le programme suivant :
 			</p>
@@ -495,7 +470,7 @@ b = 7
 			<p>Quel est le résultat attendu après l'exécution de ce programme si vous saisissez dans la console "a==b" ?</p>
 			<hr>
 			<p>Il est possible d'utiliser aussi l'opérateur "différent de" !=</p>
-			<h4>À faire vous-même 24</h4>
+			<h4>E24</h4>
 			<p>
 				Soit le programme suivant :
 			</p>
@@ -513,7 +488,7 @@ b = 7
 				<li>"supérieur ou égal à" &gt=</li>
 			</ul>
 			<p>À chaque fois ces opérateurs sont True (vrai) ou False (faux).</p>
-			<h4>À faire vous-même 25</h4>
+			<h4>E25</h4>
 			<p>
 				Soit le programme suivant :
 			</p>
@@ -537,7 +512,7 @@ sinon:
 			<p>Si "expression" est True alors "suite_instruction1" est exécuté et "suite_instruction2" est ignoré.</p>
 			<p>Sinon (sous-entendu que "expression" est False) "suite_instruction2" est exécuté et "suite_instruction1" est ignoré.</p>
 			<p>Notez l'indentation «suite_instruction1» et de « suite_instruction2»</p>
-			<h4>À faire vous-même 26</h4>
+			<h4>E26</h4>
 			<p>Soit le programme suivant :</p>
 			<pre><code class='python'>
 a = 4
@@ -553,12 +528,12 @@ print("En revanche, j'aime le Python.")
 			<p>Quel est le résultat attendu après l'exécution de ce programme ?</p>
 			<p>Vérifiez votre hypothèse en testant le programme.</p>
 			<hr>
-			<h4>À faire vous-même 27</h4>
+			<h4>E27</h4>
 			<p>
 				Écrire une fonction qui prend en paramètre un age. Si age est supérieur ou égal à 18 ans, la fonction devra renvoyer la chaîne de caractères "Bonjour, vous êtes majeur.". Si age est inférieur à 18 ans, la fonction devra renvoyer "Bonjour, tu es mineur."
 			</p>
 			<hr>
-			<h4>À faire vous-même 28</h4>
+			<h4>E28</h4>
 			<p>Soit le programme suivant :</p>
 			<pre><code class='python'>
 def annonce(num, prov, dest):
@@ -570,7 +545,7 @@ def annonce(num, prov, dest):
 			</code></pre>
 			<p>Quel est le résultat attendu après l'exécution de ce programme si vous saisissez dans la console annonce("4557", "Paris", "Marseille") ? Et si vous saisissez dans la console annonce("5768", "Bonneville", "0") ?  Vérifiez votre réponse en testant ce programme.</p>
 			<hr>
-			<h4>À faire vous-même 29</h4>
+			<h4>E29</h4>
 			<p>Vous êtes gérant d'un magasin et vous désirez écrire un programme Python qui calculera automatiquement le montant de la facture des clients. Tout client qui achète au moins 5 fois le même article se voit octroyer une remise de 5 % (uniquement sur le montant de l'achat de cet article). Afin de simplifier le problème, on considère qu'un client n'achète qu'un seul type d'article.
 				Écrire une fonction qui prend en paramètre le prix unitaire de l'article et le nombre d'articles achetés. Cette fonction doit renvoyer le montant de la facture.</p>
 			<hr>
@@ -643,7 +618,7 @@ sinon:
 					<td>faux</td>
 				</tr>
 			</table>
-			<h4>À faire vous-même 30</h4>
+			<h4>E30</h4>
 			<p>Soit le programme suivant :</p>
 			<pre><code class='python'>
 a = 5
@@ -671,7 +646,7 @@ while expression:
 suite programme
 			</code></pre>
 			<p>Tant que l'expression s'évalue à "True", les instructions à l'intérieur du bloc (partie indentée) seront exécutées.</p>
-			<h4>À faire vous-même 31</h4>
+			<h4>E31</h4>
 			<p>Soit le programme suivant :</p>
 			<pre><code class='python'>
 i = 0
@@ -683,9 +658,9 @@ print("C'est terminé.")
 			<p>Quel est le résultat attendu après l'exécution de ce programme ?
 				Vérifiez votre réponse en testant le programme</p>
 			<hr>
-			<h4>À faire vous-même 32</h4>
+			<h4>E32</h4>
 			<p>
-			Vous allez créer "un générateur automatique de punition" :
+				 Vous allez créer "un générateur automatique de punition" :
 			</p>
 			<p>Écrire une fonction qui prendra 2 paramètres : une chaîne de caractère et un nombre entier</p>
 			<p>Par exemple :</p>
@@ -695,7 +670,7 @@ print("C'est terminé.")
 			<p>Je ne dois pas discuter en classe</p>
 			<p>Je ne dois pas discuter en classe</p>
 			<hr>
-			<h4>À faire vous-même 33</h4>
+			<h4>E33</h4>
 			<p>
 				Écrire une fonction permettant d'afficher une table de multiplication.
 				Cette fonction devra prendre en paramètre la table désirée.
@@ -709,6 +684,673 @@ print("C'est terminé.")
 			<p>...</p>
 			<p>10 x 3 = 30</p>
 			<hr>
+			<h3>Les séquences en Python</h3>
+			<p>
+				Il est possible de "stocker" plusieurs grandeurs dans une même structure, ce type de structure est appelé une séquence. De façon plus précise, nous définirons une séquence comme un ensemble fini et ordonné d'éléments indicés de 0 à n-1 (si cette séquence comporte n éléments). Rassurez-vous,
+				nous reviendrons ci-dessous sur cette définition. Nous allons étudier plus particulièrement 2 types de séquences : les tuples et les tableaux (il en existe d'autres que nous n'évoquerons pas ici).
+			</p>
+			<h3>Les tuples en Python</h3>
+			<p>
+				Comme déjà dit ci-dessus, un tuple est une séquence. Voici un exemple très simple :
+			</p>
+			<pre><code class='python'>
+	mon_tuple = (5, 8, 6, 9)
+			</code></pre>
+			<p>
+				Dans le code ci-dessus, la variable "mon_tuple" référence un tuple, ce tuple est constitué des entiers 5, 8, 6 et 9. Comme indiqué dans la définition, chaque élément du tuple est indicé (il possède un indice):
+			</p>
+			<ul>
+				<li>
+					le premier élément du tuple (l'entier 5) possède l'indice 0
+				</li>
+				<li>
+					le deuxième élément du tuple (l'entier 8) possède l'indice 1
+				</li>
+				<li>
+						le troisième élément du tuple (l'entier 6) possède l'indice 2
+				</li>
+				<li>
+					le quatrième élément du tuple (l'entier 9) possède l'indice 3
+				</li>
+			</ul>
+			<p>
+				Comment accéder à l'élément d'indice i dans un tuple ?
+			</p>
+			<p>
+				Simplement en utilisant la "notation entre crochets" :
+			</p>
+			<h4>E34</h4>
+			<p>Testez le code suivant :</p>
+			<pre><code class='python'>
+	mon_tuple = (5, 8, 6, 9)
+	a = mon_tuple[2]
+			</code></pre>
+			<p>
+				Quelle est la valeur référencée par la variable a (utilisez la console pour répondre à cette question)?
+			</p>
+			<p>
+				La variable mon_tuple référence le tuple (5, 8, 6, 9), la variable a référence l'entier 6 car cet entier 6 est bien le troisième élément du tuple, il possède donc l'indice 2
+			</p>
+			<hr />
+			<p>
+				ATTENTION : dans les séquences les indices commencent toujours à 0 (le premier élément de la séquence a pour indice 0), oublier cette particularité est une source d'erreur "classique".
+			</p>
+			<h4>E35</h4>
+			<p>Complétez le code ci-dessous (en remplaçant les ..) afin qu'après l'exécution de ce programme la variable a référence l'entier 8.</p>
+			<pre><code class='python'>
+	mon_tuple = (5, 8, 6, 9)
+	a = mon_tuple[..]
+			</code></pre>
+			<hr />
+			<p>
+				Un tuple ne contient pas forcément des nombres entiers, il peut aussi contenir des nombres décimaux, des chaînes de caractères, des booléens...
+			</p>
+			<h4>E36</h4>
+			<p>Quel est le résultat attendu après l'exécution de ce programme ?</p>
+			<p>Vérifiez votre hypothèse en testant ce programme</p>
+			<pre><code class='python'>
+	mon_tuple = ("le", "monde", "bonjour")
+	print(mon_tuple[2] + " " + mon_tuple[0] + " " + mon_tuple[1] + "!")
+			</code></pre>
+			<hr/>
+			<p>
+				Grâce au tuple, une fonction peut renvoyer plusieurs valeurs :
+			</p>
+			<h4>E37</h4>
+			<p>Analysez puis testez le code suivant :</p>
+			<pre><code class='python'>
+	def add(a, b):
+		c = a + b
+		return (a, b, c)
+	mon_tuple = add(5, 8)
+	print(f"{mon_tuple[0]} + {mon_tuple[1]} = {mon_tuple[2]}")
+			</code></pre>
+			<p>
+				Il faut bien comprendre dans l'exemple ci-dessus que la variable mon_tuple référence un tuple (puisque la fonction "add" renvoie un tuple), d'où la "notation entre crochets" utilisée avec mon_tuple (mon_tuple[1]...)
+			</p>
+			<hr />
+			<p>
+				La console permet d'afficher les éléments présents dans un tuple simplement en  :
+			</p>
+			<h4>E38</h4>
+			<p>Après avoir exécuté le programme ci-dessous, saisissez mon_tuple dans la console.</p>
+			<pre><code class='python'>
+	mon_tuple = (5, 8, 6, 9)
+			</code></pre>
+			<hr />
+			<p>
+				Il est possible d'assigner à des variables les valeurs contenues dans un tuple :
+			</p>
+			<h4>E39</h4>
+			<pre><code class='python'>
+	a, b, c, d = (5, 8, 6, 9)
+			</code></pre>
+			<p>
+				Quelle est la valeur référencée par la variable a ? La variable b ? La variable c ? La variable d ? Vérifiez votre réponse à l'aide de la console Python.
+			</p>
+			<h3>Les tableaux en Python</h3>
+			<p>
+				ATTENTION : Dans la suite nous allons employer le terme "tableau". Pour parler de ces "tableaux" les concepteurs de Python ont choisi d'utiliser le terme de "list" ("liste" en français). Par souci "d'universalité" par rapport à d'autres langages
+				de programmation, nous utiliserons le terme "tableau" à la place du terme "list"
+			</p>
+			<p>
+			Il n'est pas possible de modifier un tuple après sa création (on parle d'objet "immutable"), si vous essayez de modifier un tuple existant, l'interpréteur Python vous renverra une erreur.
+			Les tableaux sont,comme les tuples, des séquences, mais à la différence des tuples, ils sont modifiables (on parle d'objets "mutables").
+		</p>
+			<p>
+				Pour créer un tableau, il existe différentes méthodes : une de ces méthodes ressemble beaucoup à la création d'un tuple :
+			</p>
+			<pre><code class='python'>
+	mon_tab = [5, 8, 6, 9]
+			</code></pre>
+			<p>
+				Notez la présence des crochets à la place des parenthèses.
+			</p>
+			<p>
+				Un tableau est une séquence, il est donc possible de "récupérer" un élément d'un tableau à l'aide de son indice (de la même manière que pour un tuple)
+			</p>
+			<h4>E40</h4>
+			<p>Quelle est la valeur référencée par la variable ma_variable après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
+			<pre><code class='python'>
+	mon_tab = [5, 8, 6, 9]
+	ma_variable = mon_tab[2]
+			</code></pre>
+			<p>
+				N.B. Il est possible de saisir directement mon_tab[2] dans la console sans passer par l'intermédiaire de la variable ma_variable
+			</p>
+			<hr />
+			<p>
+				Il est possible de modifier un tableau à l'aide de la "notation entre crochets" :
+			</p>
+			<h4>E41</h4>
+			<p>Quel est le contenu du tableau référencé par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
+			<pre><code class='python'>
+	mon_tab = [5, 8, 6, 9]
+	mon_tab[2] = 15
+			</code></pre>
+			<p>
+				Comme vous pouvez le constater avec l'exemple ci-dessus, l'élément d'indice 2 (le nombre entier 6) a bien été remplacé par le nombre entier 15
+			</p>
+			<hr />
+			<p>
+				Il est aussi possible d'ajouter un élément en fin de tableau à l'aide de la méthode "append" :
+			</p>
+			<h4>E42</h4>
+			<p>Quel est le contenu du tableau référencé par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
+			<pre><code class='python'>
+	mon_tab = [5, 8, 6, 9]
+	mon_tab.append(15)
+			</code></pre>
+			<hr />
+			<p>
+				L'instruction "del" permet de supprimer un élément d'un tableau en utilisant son index :
+			</p>
+			<h4>E43</h4>
+			<p>Quel est le contenu du tableau référencé par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
+			<pre><code class='python'>
+	mon_tab = [5, 8, 6, 9]
+	del mon_tab[1]
+			</code></pre>
+			<hr />
+			<p>
+				La fonction "len" permet de connaitre le nombre d’éléments présents dans une séquence (tableau et tuple)
+			</p>
+			<h4>E44</h4>
+			<p>Quelle est la valeur référencée par la variable nb_len après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
+			<pre><code class='python'>
+	mon_tab = [5, 8, 6, 9]
+	nb_ele = len(mon_tab)
+			</code></pre>
+			<hr />
+			<p>
+				Une petite parenthèse : on pourrait s'interroger sur l'intérêt d'utiliser un tuple puisque le tableau permet plus de choses ! La réponse est simple : les opérations
+				sur les tuples sont plus "rapides". Quand vous savez que votre tableau ne sera pas modifié, il est préférable d'utiliser un tuple à la place d'un tableau.
+			</p>
+			<h3>la boucle "for" : parcourir les éléments d'un tableau</h3>
+			<p>
+				La boucle for... in permet de parcourir chacun des éléments d’une séquence (tableau ou tuple) :
+			</p>
+			<h4>E45</h4>
+			<p>Analysez puis testez le code suivant :</p>
+			<pre><code class='python'>
+	mon_tab = [5, 8, 6, 9]
+	for element in mon_tab:
+		print(element)
+			</code></pre>
+			<p>
+				Quelques explications : comme son nom l'indique, la boucle "for" est une boucle ! Nous "sortirons" de la boucle une fois que tous les éléments du tableau mon_tab auront
+				été parcourus. element est une variable qui va :
+			</p>
+			<ul>
+				<li>
+					au premier tour de boucle, référencer le premier élément du tableau (l'entier 5)
+				</li>
+				<li>
+					au deuxième tour de boucle, référencer le deuxième élément du tableau (l'entier 8)
+				</li>
+				<li>
+					au troisième tour de boucle, référencer le troisième élément du tableau (l'entier 6)
+				</li>
+				<li>
+					au quatrième tour de boucle, référencer le quatrième élément de le tableau (l'entier 9)
+				</li>
+			</ul>
+			<p>
+				Une chose importante à bien comprendre : le choix du nom de la variable qui va référencer les éléments du tableau les uns après les autres (element) est totalement arbitraire,
+				il est possible de choisir un autre nom sans aucun problème, le code suivant aurait donné exactement le même résultat :
+			</p>
+			<pre><code class='python'>
+	mon_tab = [5, 8, 6, 9]
+	for toto in mon_tab:
+		print (toto)
+			</code></pre>
+			<hr />
+			<p>
+				Dans la boucle for... in il est possible d’utiliser la fonction prédéfinie range à la place d’un tableau d’entiers :
+			</p>
+			<h4>E46</h4>
+			<p>Analysez puis testez le code suivant :</p>
+			<pre><code class='python'>
+	for element in range(0, 5):
+		print (element)
+			</code></pre>
+			<p>
+				Comme vous pouvez le constater, "range(0,5)" est, au niveau de la boucle "for..in", équivalent au tableau [0,1,2,3,4], le code ci-dessous donnerait le même résultat que le programme vu dans le "E46" :
+			</p>
+			<pre><code class='python'>
+	mon_tab = [0, 1, 2, 3, 4]
+	for element in mon_tab:
+		print (element)
+			</code></pre>
+			<p>
+				ATTENTION : si vous avez dans un programme "range(a,b)", a est la borne inférieure et b a borne supérieure. Vous ne devez surtout pas perdre de vu que la borne inférieure est incluse, mais
+				que la borne supérieure est exclue.
+			</p>
+			<p>
+				Il est possible d'utiliser la méthode "range" pour "remplir" un tableau :
+			</p>
+			<h4>E47</h4>
+			<p>Quel est le contenu du tableau référencé par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
+			<pre><code class='python'>
+	mon_tab = []
+	for element in range(0, 5):
+		mon_tab.append(element)
+			</code></pre>
+			<hr />
+			<h3>Créer un tableau par compréhension</h3>
+			<p>
+				Nous avons vu qu'il était possible de "remplir" un tableau en renseignant les éléments du tableau les uns après les autres :
+			</p>
+			<pre><code class='python'>
+	mon_tab = [5, 8, 6, 9]
+			</code></pre>
+			<p>
+				ou encore à l'aide de la méthode "append" (voir "E47").
+			</p>
+			<p>
+				Il est aussi possible d'obtenir exactement le même résultat qu'au "E47" en une seule ligne grâce à la compréhension de tableau :
+			</p>
+			<h4>E48</h4>
+			<p>Quel est le contenu du tableau référencé par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
+			<pre><code class='python'>
+	mon_tab = [p for p in range(0, 5)]
+			</code></pre>
+			<hr />
+			<p>
+				Les compréhensions de tableau permettent de rajouter une condition (if) :
+			</p>
+			<h4>E49</h4>
+			<p>Quel est le contenu du tableau référencé par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
+			<pre><code class='python'>
+	l = [1, 7, 9, 15, 5, 20, 10, 8]
+	mon_tab = [p for p in l if p &gt 10]
+			</code></pre>
+			<hr />
+			<p>
+				autre possibilité, utiliser des composants "arithmétiques" :
+			</p>
+			<h4>E50</h4>
+			<p>Quel est le contenu du tableau référencé par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
+			<pre><code class='python'>
+	l = [1, 7, 9, 15, 5, 20, 10, 8]
+	mon_tab = [p**2 for p in l if p &lt 10]
+			</code></pre>
+			<p>
+				Rappel : p**2 permet d’obtenir la valeur de p élevée au carrée
+			</p>
+			<p>
+				Comme vous pouvez le remarquer, nous obtenons un tableau (mon_tab) qui contient tous les éléments du tableau l élevés au carré à condition que ces éléments de l soient inférieurs à 10.
+				Comme vous pouvez le constater, la compréhension de tableau permet d'obtenir des combinaisons relativement complexes.
+			</p>
+			<hr />
+			<h3>Travailler sur des "tableaux de tableaux"</h3>
+			<p>
+				Chaque élément d'un tableau peut être un tableau, on parle de tableau de tableau.
+			</p>
+			<p>
+				Voici un exemple de tableau de tableau :
+			</p>
+			<pre><code class='python'>
+	m = [[1, 3, 4], [5 ,6 ,8], [2, 1, 3], [7, 8, 15]]
+			</code></pre>
+			<p>
+				Le premier élément du tableau ci-dessus est bien un tableau ([1, 3, 4]), le deuxième élément est aussi un tableau ([5, 6, 8])...
+			</p>
+			<p>
+				Il est souvent plus pratique de présenter ces "tableaux de tableaux" comme suit :
+			</p>
+			<pre><code class='python'>
+	m = [[1, 3, 4],
+	     [5, 6, 8],
+	     [2, 1, 3],
+	     [7, 8, 15]]
+			</code></pre>
+			<p>
+				Nous obtenons ainsi quelque chose qui ressemble beaucoup à un "objet mathématique" très utilisé : une matrice
+			</p>
+			<p>
+				Il est évidemment possible d'utiliser les indices de position avec ces "tableaux de tableaux". Pour cela nous allons considérer notre tableau de tableaux comme une matrice, c'est à dire
+				en utilisant les notions de "ligne" et de "colonne". Dans la matrice ci-dessus :
+			</p>
+			<p>
+				En ce qui concerne les lignes :
+			</p>
+			<ul>
+				<li>
+					1, 3, 4 constituent la première ligne
+				</li>
+				<li>
+					5, 6, 8 constituent la deuxième ligne
+				</li>
+				<li>
+					2, 1, 3 constituent la troisième ligne
+				</li>
+				<li>
+					7, 8, 15 constituent la quatrième ligne
+				</li>
+			</ul>
+			<p>
+				En ce qui concerne les colonnes :
+			</p>
+			<ul>
+				<li>
+					1, 5, 2, 7 constituent la première colonne
+				</li>
+				<li>
+					3, 6, 1, 8 constituent la deuxième colonne
+				</li>
+				<li>
+				 	4, 8, 3, 15 constituent la troisième colonne
+				</li>
+			</ul>
+			<p>
+				Pour cibler un élément particulier de la matrice, on utilise la notation avec "doubles crochets" : m[ligne][colonne] (sans perdre de vu que la première ligne et la première colonne ont pour indice 0)
+			</p>
+			<h4>E51</h4>
+			<p><p>Quelle est la valeur référencée par la variable a après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p></p>
+			<pre><code class='python'>
+	m = [[1, 3, 4],
+	     [5, 6, 8],
+	     [2, 1, 3],
+	     [7, 8, 15]]
+	a = m[1][2]
+			</code></pre>
+			<p>
+				Comme vous pouvez le constater, la variable a référence bien l'entier situé à la 2e ligne (indice 1) et à la 3e colonne (indice 2), c'est-à-dire 8.
+			</p>
+			<hr />
+			<h4>E52</h4>
+			<p><p>Quel est le contenu du tableau référencé par la variable mm après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p></p>
+			<pre><code class='python'>
+	m = [1, 2, 3]
+	mm = [m, m, m]
+	m[0] = 100
+			</code></pre>
+			<p>
+				Comme vous pouvez le constater, la modification du tableau référencé par la variable m entraine la modification du tableau référencé par la variable mm (alors que
+				nous n'avons pas directement modifié le tableau référencé par mm).
+				Il faut donc être très prudent lors de ce genre de manipulation afin d'éviter des modifications non désirées.
+			</p>
+			<hr />
+			<p>
+				Il est possible de parcourir l'ensemble des éléments d'une matrice à l'aide d'une "double boucle for" :
+			</p>
+			<h4>E53</h4>
+			<p>Analysez puis testez le code suivant :</p>
+			<pre><code class='python'>
+	m = [[1, 3, 4],
+	     [5, 6, 8],
+	     [2, 1, 3],
+	     [7, 8, 15]]
+	nb_colonne = 3
+	nb_ligne = 4
+	for i in range(0, nb_ligne):
+		for j in range(0, nb_colonne):
+			a = m[i][j]
+			print(a)
+			</code></pre>
+			<hr />
+			<h1>Projet "Jeu du pendu"</h1>
+			<p>
+				Vous allez maintenant travailler sur un projet : le but de ce projet est de créer un jeu du pendu. Avant de pouvoir travailler sur ce projet, nous allons devoir étudier quelques nouvelles instructions Python.
+			</p>
+			<h3>L'instruction input</h3>
+			<p>
+				l'instruction input va permettre aux utilisateurs de saisir des données au clavier.
+			</p>
+			<h4>E54</h4>
+			<p>
+				Testez ce programme à l'aide de Spyder :
+			</p>
+			<pre><code class='python'>
+age=input("Quel est votre âge ? ")
+			</code></pre>
+			<p>
+				Quel est le contenu de la variable age après avoir exécuté le programme ci-dessus (utilisez la console pour répondre à cette question) ? Quel est le type de la valeur référencée par la variable age ?
+			</p>
+			<hr />
+			<p>
+				Comme vous avez pu le constater, la valeur saisie par l'utilisateur sera toujours de type "string".
+			</p>
+			<h4>E55</h4>
+			<p>
+				Testez ce programme à l'aide de Spyder :
+			</p>
+			<pre><code class='python'>
+a=input("Entrez un nombre")
+a=a+1
+			</code></pre>
+			<p>
+				Comme vous l'avez remarqué, nous avons une erreur puisque la valeur référencée par la variable a est de type string, la ligne "a=a+1" puisque nous avons un entier avec 1 et une chaîne de caractères avec la variable a, séparés par un signe +,
+				(le signe + correspond à une concaténation ou à une addition ?) Python n'est pas capable de gérer le problème, nous avons donc une erreur.
+			</p>
+			<p>
+				Pour éviter ce genre de problème, il peut être nécessaire de "transformer" notre chaîne de caractères en entier :
+			</p>
+			<h4>E56</h4>
+			<p>
+				Testez ce programme à l'aide de Spyder :
+			</p>
+			<pre><code class='python'>
+a=input("Entrez un nombre")
+a=int(a)
+a=a+1
+			</code></pre>
+			<h3>Lire des données dans un fichier externe</h3>
+			<p>Il est possible de lire des données contenues dans un fichier extérieur.</p>
+
+			<h4>E57</h4>
+			<p>
+				Téléchargez le fichier suivant : <a href="asset/fic1.txt" target="_blank">fic1.txt</a> et placez-le dans votre répertoire de travail.
+			</p>
+			<p>
+				Ouvrez ce fichier à l'aide d'un éditeur de texte. Vous pouvez constater qu'il contient une simple phrase : "Bonjour le monde"
+			</p>
+			<hr />
+			<p>
+				Nous allons maintenant récupérer les données contenues dans ce fichier afin de pouvoir les utiliser dans un programme Python
+			</p>
+			<p>La première des choses à faire est d'ouvrir notre fichier texte. Pour ce faire nous utiliserons la méthode open.
+			</p>
+			<pre><code class='python'>
+with open('nomDuFichier', 'r') as f :
+			</code></pre>
+			<p>
+				Nous utilisons ici une structure particulière que nous n'avons encore jamais rencontrée : le "with". Ce "with" indique que nous allons utiliser un "context manager".
+				Cette notion de "context manager" n'est pas une "notion de base", nous n'allons donc pas l'étudier en tant que telle. Vous avez juste besoin de savoir que son utilisation permet
+				de manipuler des fichiers externes "proprement".
+			</p>
+			<p>
+				La méthode open prend 2 paramètres : le nom du fichier et le mode d'ouverture du fichier, dans le cas qui nous intéresse, le mode d'ouverture sera r (comme read)
+			</p>
+			<p>Une fois le fichier ouvert, il est possible de lire son contenu (à l'aide de read).</p>
+			<h4>E58</h4>
+			<p>
+				Étudiez et testez le programme suivant :
+			</p>
+			<pre><code class='python'>
+with open('fic1.txt','r') as f :
+  ligne=f.read()
+</code></pre>
+			<p>Que va contenir la variable ligne après l'exécution de ce programme ? Vérifiez votre réponse à l'aide de la console.</p>
+			<hr>
+			<p>
+				Vous avez sans doute remarqué que la chaîne renvoyée par la console est 'Bonjour le monde\n'.
+			</p>
+			<p>
+				Le '\n' est un caractère spécial que l'on appelle caractère d'échappement,  il signifie "retour à la ligne". Quand le fichier fic1.txt a été créé, après avoir écrit "Bonjour le monde", le créateur
+				du fichier a appuyé sur la touche "Entrée" afin d'aller à la ligne. Ce retour à la ligne est matérialisé par un "\n" dans la chaîne de caractères. Ce caractère d'échappement peut être gênant, il est souvent nécessaire de la supprimer.
+				Pour cela nous allons utiliser l'instruction Python replace
+			</p>
+			<h4>E59</h4>
+			<p>Étudiez et testez le programme suivant :</p>
+			<pre><code class='python'>
+with open('fic1.txt','r') as f :
+  ligne=f.read()
+  ligne=ligne.replace("\n","")
+			</code></pre>
+			<p>
+				L'utilisation de replace est relativement intuitive et n'appelle pas de commentaires supplémentaires (on remplace "\n" par une chaîne vide "")
+			</p>
+			<hr />
+			<p>
+				Il est possible de travailler avec un fichier texte contenant plusieurs lignes de données :
+			</p>
+			<h4>E60</h4>
+			<p>
+				Téléchargez le fichier suivant : <a href="asset/fic2.txt" target="_blank">fic2.txt</a> et placez-le dans votre répertoire de travail.
+			</p>
+			<p>
+				Ouvrez ce fichier à l'aide d'un éditeur de texte. Vous pouvez constater qu'il contient plusieurs lignes de données.
+			</p>
+			<hr>
+			<p>
+				Il est possible de récupérer les données ligne par ligne à l'aide d'une boucle for :
+			</p>
+			<p>
+				<h4>E61</h4>
+				<p>Étudiez et testez le programme suivant :</p>
+				<pre><code class='python'>
+with open('fic2.txt','r') as f :
+  for ligne in f:
+    ligne=ligne.replace("\n","")
+    print(ligne)
+				</code></pre>
+			<p>
+				Comme vous pouvez le constater, avec la boucle for, le "f.read()" est devenu inutile.
+			</p>
+			<hr />
+			<p>
+				Il est possible de placer les différentes lignes du fichier texte dans un tableau :
+			</p>
+			<h4>E62</h4>
+			<p>Étudiez et testez le programme suivant :</p>
+			<pre><code class='python'>
+tab=[]
+with open('fic2.txt','r') as f :
+	for ligne in f:
+		ligne=ligne.replace("\n","")
+		tab.append(ligne)
+			</code></pre>
+				<p>Que va contenir le tableau tab après l'exécution de ce programme ? Vérifiez votre réponse à l'aide de la console.</p>
+				<hr />
+			<h3>Commenter son code</h3>
+			<p>Afin de rendre votre programme plus clair, il est nécessaire, dès que votre code dépasse une dizaine de lignes, d'introduire des commentaires. Bien sûr cela peut permettre à une personne qui n'a pas écrit
+				le programme de comprendre ce que vous avez voulu faire, mais cela peut aussi vous permettre, quelques mois après avoir terminé d'écrire votre code, de vous "rafraîchir la mémoire".</p>
+			<p>En Python, toute ligne commençant par le caractère dièse (#) sera considérée comme un commentaire par le système interpréteur/compilateur.</p>
+			<p>Voici un exemple de programme commenté :</p>
+			<pre><code class='python'>
+# la fonction monMessage permet d'afficher un message
+#****************début de la fonction monMessage******************
+def monMessage(nom):
+	return f"Bonjour {nom}"
+#****************fin de la fonction monMessage********************
+# interrogation de l'utilisateur
+monNom=input("Quel est votre nom ? ")
+# appel de la fonction monMessage
+msg=monMessage(monNom)
+			</code></pre>
+			<p>Attention, dans l'exemple ci-dessus j'ai volontairement alourdi le programme avec des commentaires inutiles vu la simplicité de ce dernier.</p>
+			<p>
+				Pour réaliser le projet ci-dessous, vous allez avoir besoin de tirage aléatoire. L'aléatoire en Python est géré au niveau du module random.
+				Je vous propose d'étudier par vous même ce module : voir <a href="https://docs.python.org/3/library/random.html" target="_blank">ici</a>
+			</p>
+			<h3>Jeu du pendu</h3>
+			<p>
+				Voici une vidéo qui va vous permettre de comprendre ce qui est attendu :
+			</p>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/99bOICGsEME" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<p>
+				Vous avez à votre disposition :
+			</p>
+			<ul>
+				<li>
+					un fichier texte contenant une liste de mot (contient un peu plus de 800 mots), vous pouvez le télécharger <a href="asset/dico.txt" target="_blank">ici</a>
+				</li>
+				<li>
+					une fonction Python vous permettant de dessiner le pendu (voir ci-dessous)
+				</li>
+			</ul>
+			<pre><code>
+def dessinPendu(nb):
+    tab=[
+    """
+       +-------+
+       |
+       |
+       |
+       |
+       |
+    ==============
+    """,
+    """
+       +-------+
+       |       |
+       |       O
+       |
+       |
+       |
+    ==============
+    """
+        ,
+    """
+       +-------+
+       |       |
+       |       O
+       |       |
+       |
+       |
+    ==============
+    """,
+    """
+       +-------+
+       |       |
+       |       O
+       |      -|
+       |
+       |
+    ==============
+    """,
+    """
+       +-------+
+       |       |
+       |       O
+       |      -|-
+       |
+       |
+    ==============
+    """,
+    """
+       +-------+
+       |       |
+       |       O
+       |      -|-
+       |      |
+       |
+    ==============
+    """,
+    """
+       +-------+
+       |       |
+       |       O
+       |      -|-
+       |      | |
+       |
+    ==============
+    """
+    ]
+    return tab[nb]
+			</code></pre>
+			<p>
+				Pour information les "triples guillemets" """ permettent de délimiter une chaîne de caractères située sur plusieurs lignes (chaîne de caractères multi-lignes).
+			</p>
+			<p>
+				Je vous laisse le soin d'étudier cette fonction dessinPendu afin de comprendre par vous même son principe de fonctionnement.
+			</p>
+			<p>
+				S'il vous manque des éléments, n'hésitez pas à faire des recherches sur le web, notamment dans la <a href="https://docs.python.org/fr/3/" target="_blank">documentation Python</a>.
+			</p>
+		</div>
 		</div>
 	</body>
 </html>
