@@ -1,0 +1,72 @@
+<!doctype html>
+<!-- Auteur : David Roche @davR74130 -->
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Algorithmes sur les arbres binaires aide "À faire vous-même 1"</title>
+		<link rel="stylesheet" href="css/css/vendor/bootstrap.min.css">
+		<link rel="stylesheet" href="css/css/flat-ui.min.css">
+		<link rel="stylesheet" href="highlight/styles/tomorrow-night.css">
+		<link rel="stylesheet" href="css/style.css">
+    <script src="./css/js/vendor/jquery.min.js"></script>
+    <script src="./css/js/flat-ui.min.js"></script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53303169-1"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+
+  		gtag('config', 'UA-53303169-1');
+	</script>
+	</head>
+	<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="navbar-brand">NSI terminale</span>
+					<span class="navbar-brand">Algorithmes sur les arbres binaires aide "À faire vous-même 1"</span>
+        </div>
+      </div>
+    </nav>
+    <div class="container act">
+		<p>
+			Algorithme :
+		</p>
+		<pre class="algo"><code >
+VARIABLE
+T : arbre
+x : noeud
+
+DEBUT
+HAUTEUR(T) :
+  si T ≠ NIL :
+    x ← T.racine
+    renvoyer 1 + max(HAUTEUR(x.gauche), HAUTEUR(x.droit))
+  sinon :
+    renvoyer 0
+FIN
+		</code></pre>
+		<p>
+			Arbre :
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_arbre_1.png" alt=""/>
+		</div>
+		<hr />
+		<p>
+			Calculs :
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_arbre_3.png" alt=""/>
+		</div>
+		</div>
+	</body>
+
+</html>

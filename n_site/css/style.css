@@ -133,4 +133,7 @@ body {background-color: rgba(255,255,255)}
   padding-top: 20px;
   padding-bottom: 20px;
 }
-
+.algo{
+  color: white;
+  background-color: black;
+}

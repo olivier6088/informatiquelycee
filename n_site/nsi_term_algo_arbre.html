@@ -1,0 +1,495 @@
+<!doctype html>
+<!-- Auteur : David Roche @davR74130 -->
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Algorithmes sur les arbres binaires</title>
+		<link rel="stylesheet" href="css/css/vendor/bootstrap.min.css">
+		<link rel="stylesheet" href="css/css/flat-ui.min.css">
+		<link rel="stylesheet" href="highlight/styles/tomorrow-night.css">
+		<link rel="stylesheet" href="css/style.css">
+    <script src="./css/js/vendor/jquery.min.js"></script>
+    <script src="./css/js/flat-ui.min.js"></script>
+		<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		extensions: ["tex2jax.js"],
+		jax: ["input/TeX","output/HTML-CSS"],
+		tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+	});
+</script>
+		<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53303169-1"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+
+  		gtag('config', 'UA-53303169-1');
+	</script>
+	</head>
+	<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="navbar-brand">NSI terminale</span>
+					<span class="navbar-brand">Algorithmes sur les arbres binaires</span>
+        </div>
+      </div>
+    </nav>
+    <div class="container act">
+		<p>
+			Il est conseillé de relire au moins une fois le cours consacré aux <a href="nsi_term_structDo_arbre.html">arbres</a>.
+		</p>
+		<p>
+			Avant d'entrer dans le vif du sujet (les algorithmes), nous allons un peu approfondir la notion d'arbre binaire :
+		</p>
+		<p>
+			À chaque noeud d'un arbre binaire, on associe une clé ("valeur" associée au noeud), un "sous-arbre gauche" et un "sous-arbre droit"
+		</p>
+		<p>
+			Soit l'arbre binaire suivant :
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_arbre_1.png" alt=""/>
+		</div>
+		<p>
+			si on prend le noeud ayant pour clé A (le noeud racine de l'arbre) on a :
+		</p>
+		<ul>
+			<li>
+				le sous-arbre gauche est composé du noeud ayant pour clé B, du noeud ayant pour clé C, du noeud ayant pour clé D et du noeud ayant pour clé E
+			</li>
+			<li>
+				le sous-arbre droit est composé du noeud ayant pour clé F, du noeud ayant pour clé G, du noeud ayant pour clé H,  du noeud ayant pour clé I et du noeud ayant pour clé J
+			</li>
+		</ul>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_arbre_2.png" alt=""/>
+		</div>
+		<p>
+			si on prend le noeud ayant pour clé B on a :
+		</p>
+		<ul>
+			<li>
+				le sous-arbre gauche est composé du noeud ayant pour clé C et du noeud ayant pour clé E
+			</li>
+			<li>
+				le sous-arbre droit est uniquement composé du noeud ayant pour clé D
+			</li>
+		</ul>
+		<p>
+			Un arbre (ou un sous-arbre) vide est noté NIL (NIL est une abréviation du latin nihil qui veut dire "rien")
+		</p>
+		<p>
+			si on prend le noeud ayant pour clé G on a :
+		</p>
+		<ul>
+			<li>
+				le sous-arbre gauche est uniquement composé du noeud ayant pour clé I
+			</li>
+			<li>
+				le sous-arbre droit est vide (NIL)
+			</li>
+		</ul>
+		<p>
+			Il faut bien avoir en tête qu'un sous-arbre (droite ou gauche) est un arbre (même s'il contient un seul noeud ou pas de noeud de tout (NIL)).
+		</p>
+		<p>
+			Soit un arbre T : T.racine correspond au noeud racine de l'arbre T
+		</p>
+		<p>
+			Soit un noeud x :
+		</p>
+		<ul>
+			<li>
+				x.gauche correspond au sous-arbre gauche du noeud x
+			</li>
+			<li>
+				x.droit correspond au sous-arbre droit du noeud x
+			</li>
+			<li>
+				x.clé correspond à la clé du noeud x
+			</li>
+		</ul>
+		<p>
+			Il faut noter que si le noeud x est une feuille, x.gauche et x.droite sont des arbres vides (NIL)
+		</p>
+		<h4>Calculer la hauteur d'un arbre</h4>
+		<p>
+			Nous allons commencer à travailler sur les algorithmes en nous intéressant à l'algorithme qui permet de calculer la hauteur d'un arbre :
+		</p>
+		<h4>À faire vous-même 1</h4>
+		<p>
+			Étudiez cet algorithme :
+		</p>
+		<pre class="algo"><code >
+VARIABLE
+T : arbre
+x : noeud
+
+DEBUT
+HAUTEUR(T) :
+  si T ≠ NIL :
+    x ← T.racine
+    renvoyer 1 + max(HAUTEUR(x.gauche), HAUTEUR(x.droit))
+  sinon :
+    renvoyer 0
+  fin si
+FIN
+		</code></pre>
+		<p>
+			N.B. la fonction max renvoie la plus grande valeur des 2 valeurs passées en paramètre (exemple : max(5,6) renvoie 6)
+		</p>
+		<p>
+			Cet algorithme est loin d'être simple, n'hésitez pas à écrire votre raisonnement sur une feuille de brouillon. Vous pourrez par exemple essayer d'appliquer cet algorithme sur l'arbre binaire ci-dessous. N'hésitez pas à poser des questions si nécessaire.
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_arbre_1.png" alt=""/>
+		</div>
+		<p>
+			Si vraiment vous avez des difficultés à comprendre le fonctionnement de l'algorithme sur l'arbre ci-dessus, vous trouverez <a href="nsi_term_algo_arbre_corr1.html" target="_blank">ici</a> un petit calcul qui pourrait vous aider.
+		</p>
+		<hr />
+		<p>
+			Comme vous l'avez sans doute remarqué, nous avons dans l'algorithme ci-dessus une fonction récursive.
+			Vous aurez l'occasion de constater que c'est souvent le cas dans les algorithmes qui travaillent sur des structures de données telles que les arbres.
+		</p>
+		<h4>Calculer la taille d'un arbre</h4>
+		<p>
+			Nous allons maintenant étudier un algorithme qui permet de calculer le nombre de noeuds présents dans un arbre.
+		</p>
+		<h4>À faire vous-même 2</h4>
+		<p>
+			Étudiez cet algorithme :
+		</p>
+		<pre class="algo"><code >
+VARIABLE
+T : arbre
+x : noeud
+
+DEBUT
+TAILLE(T) :
+  si T ≠ NIL :
+    x ← T.racine
+    renvoyer 1 + TAILLE(x.gauche) + TAILLE(x.droit)
+  sinon :
+    renvoyer 0
+  fin si
+FIN
+		</code></pre>
+		<p>
+			Cet algorithme ressemble beaucoup à l'algorithme étudié au "À faire vous-même 1", son étude ne devrait donc pas vous poser de problème.
+		</p>
+		<p>
+			Appliquez cet algorithme à l'exemple suivant :
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_arbre_1.png" alt=""/>
+		</div>
+		<hr />
+		<p>
+			Il existe plusieurs façons de parcourir un arbre (parcourir un arbre = passer par tous les noeuds), nous allons en étudier quelques-unes :
+		</p>
+		<h4>Parcourir un arbre dans l'ordre infixe</h4>
+		<h4>À faire vous-même 3</h4>
+		<p>
+			Étudiez cet algorithme :
+		</p>
+		<pre class="algo"><code >
+VARIABLE
+T : arbre
+x : noeud
+
+DEBUT
+PARCOURS-INFIXE(T) :
+  si T ≠ NIL :
+    x ← T.racine
+    PARCOURS-INFIXE(x.gauche)
+    affiche x.clé
+    PARCOURS-INFIXE(x.droit)
+  fin si
+FIN
+		</code></pre>
+		<p>
+			Vérifiez qu'en applicant l'algorithme ci-dessus, l'arbre ci-dessous est bien parcouru dans l'ordre suivant : C, E, B, D, A, I, G, F, H, J
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_arbre_1.png" alt=""/>
+		</div>
+		<hr />
+		<h4>Parcourir un arbre dans l'ordre préfixe</h4>
+		<h4>À faire vous-même 4</h4>
+		<p>
+			Étudiez cet algorithme :
+		</p>
+		<pre class="algo"><code >
+VARIABLE
+T : arbre
+x : noeud
+
+DEBUT
+PARCOURS-PREFIXE(T) :
+  si T ≠ NIL :
+    x ← T.racine
+    affiche x.clé
+    PARCOURS-PREFIXE(x.gauche)
+    PARCOURS-PREFIXE(x.droit)
+  fin si
+FIN
+		</code></pre>
+		<p>
+			Vérifiez qu'en applicant l'algorithme ci-dessus, l'arbre ci-dessous est bien parcouru dans l'ordre suivant : A, B, C, E, D, F, G, I, H, J
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_arbre_1.png" alt=""/>
+		</div>
+		<hr />
+		<h4>Parcourir un arbre dans l'ordre suffixe</h4>
+		<h4>À faire vous-même 5</h4>
+		<p>
+			Étudiez cet algorithme :
+		</p>
+		<pre class="algo"><code >
+VARIABLE
+T : arbre
+x : noeud
+
+DEBUT
+PARCOURS-SUFFIXE(T) :
+  si T ≠ NIL :
+    x ← T.racine
+    PARCOURS-SUFFIXE(x.gauche)
+    PARCOURS-SUFFIXE(x.droit)
+    affiche x.clé
+  fin si
+FIN
+		</code></pre>
+		<p>
+			Vérifiez qu'en applicant l'algorithme ci-dessus, l'arbre ci-dessous est bien parcouru dans l'ordre suivant : E, C, D, B, I, G, J, H, F, A
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_arbre_1.png" alt=""/>
+		</div>
+		<hr />
+		<p>
+			Le choix du parcours infixe, préfixe ou suffixe dépend du problème à traiter, on pourra retenir pour les parcours préfixe et suffixe (le cas du parcours infixe sera traité un peu plus loin) que :
+		</p>
+		<ul>
+			<li>
+				dans le cas du parcours préfixe, un noeud est affiché avant d'aller visiter ces enfants
+			</li>
+			<li>
+				dans le cas du parcours suffixe, on affiche chaque nœud après avoir affiché chacun de ses fils
+			</li>
+		</ul>
+		<h4>Parcourir un arbre en largeur d'abord</h4>
+		<h4>À faire vous-même 6</h4>
+		<p>
+			Étudiez cet algorithme :
+		</p>
+		<pre class="algo"><code >
+VARIABLE
+T : arbre
+Tg : arbre
+Td : arbre
+x : noeud
+f : file (initialement vide)
+
+DEBUT
+PARCOURS-LARGEUR(T) :
+  enfiler(T.racine, f) //on place la racine dans la file
+  tant que file non vide :
+    x = defiler(f)
+    affiche x.clé
+    si x.gauche ≠ NIL :
+      Tg←x.gauche
+      enfiler(Tg.racine, f)
+    fin si
+    si x.droit ≠ NIL :
+      Td←x.droite
+      enfiler(Td.racine, f)
+    fin si
+  fin tant que
+FIN
+		</code></pre>
+		<p>
+			Vérifiez qu'en applicant l'algorithme ci-dessus, l'arbre ci-dessous est bien parcouru dans l'ordre suivant : A, B, F, C, D, G, H, E, I
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_arbre_1.png" alt=""/>
+		</div>
+		<p>
+			Selon vous, pourquoi parle-t-on de parcours en largeur ?
+		</p>
+		<hr />
+		<p>
+			Il est important de bien noter l'utilisation d'une file (FIFO) pour cet algorithme de parcours en largeur. Vous noterez aussi que cet algorithme n'utilise pas de fonction récursive.
+		</p>
+		<h4>Arbre binaire de recherche</h4>
+		<p>
+			Un arbre binaire de recherche est un cas particulier d'arbre binaire. Pour avoir un arbre binaire de recherche :
+		</p>
+		<ul>
+			<li>
+				il faut avoir un arbre binaire !
+			</li>
+			<li>
+				il faut que les clés de noeuds composant l'arbre soient ordonnables (on doit pouvoir classer les noeuds, par exemple, de la plus petite clé à la plus grande)
+			</li>
+			<li>
+				soit x un noeud d'un arbre binaire de recherche. Si y est un noeud du sous-arbre gauche de x, alors il faut que y.clé ⩽ x.clé. Si y est un noeud du sous-arbre droit de x, il faut alors que x.clé ⩽ y.clé
+			</li>
+		</ul>
+		<h4>À faire vous-même 7</h4>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_arbre_4.png" alt=""/>
+		</div>
+		<p>
+			Vérifiez que l'arbre ci-dessus est bien un arbre binaire de recherche.
+		</p>
+
+		<h4>À faire vous-même 8</h4>
+		<p>
+			Appliquez l'algorithme de parcours infixe sur l'arbre ci-dessous :
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_arbre_4.png" alt=""/>
+		</div>
+		<p>
+			Que remarquez-vous ?
+		</p>
+		<hr />
+		<h4>Recherche d'une clé dans un arbre binaire de recherche</h4>
+		<p>
+			Nous allons maintenant étudier un algorithme permettant de rechercher une clé de valeur k dans un arbre binaire de recherche. Si k est bien présent dans l'arbre binaire de recherche, l'algorithme renvoie vrai, dans le cas contraire, il renvoie faux.
+		</p>
+		<h4>À faire vous-même 9</h4>
+		<p>
+			Étudiez l'algorithme suivant:
+		</p>
+		<pre class="algo"><code >
+VARIABLE
+T : arbre
+x : noeud
+k : entier
+DEBUT
+ARBRE-RECHERCHE(T,k) :
+  si T == NIL :
+    renvoyer faux
+  fin si
+  x ← T.racine
+  si k == x.clé :
+    renvoyer vrai
+  fin si
+  si k < x.clé :
+    ARBRE-RECHERCHE(x.gauche,k)
+  sinon :
+    ARBRE-RECHERCHE(x.droit,k)
+  fin si
+FIN
+		</code></pre>
+		<hr />
+		<h4>À faire vous-même 10</h4>
+		<p>
+			Appliquez l'algorithme de recherche d'une clé dans un arbre binaire de recherche sur l'arbre ci-dessous. On prendra k = 13.
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_arbre_4.png" alt=""/>
+		</div>
+		<hr />
+		<h4>À faire vous-même 11</h4>
+		<p>
+			Appliquez l'algorithme de recherche d'une clé dans un arbre binaire de recherche sur l'arbre ci-dessous. On prendra k = 16.
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_arbre_4.png" alt=""/>
+		</div>
+		<hr />
+		<p>
+			Cet algorithme de recherche d'une clé dans un arbre binaire de recherche ressemble beaucoup à la recherche dichotomique vue en première.
+			C'est principalement pour cette raison qu'en général, la complexité en temps dans le pire des cas de l'algorithme de recherche d'une clé dans un arbre binaire de recherche est $O(log_2(n))$
+		</p>
+		<p>
+			À noter qu'il existe une version dite "itérative" (qui n'est pas récursive) de cet algorithme de recherche :
+		</p>
+		<h4>À faire vous-même 12</h4>
+		<p>
+			Étudiez l'algorithme suivant:
+		</p>
+		<pre class="algo"><code >
+VARIABLE
+T : arbre
+x : noeud
+k : entier
+DEBUT
+ARBRE-RECHERCHE_ITE(T,k) :
+  x ← T.racine
+  tant que T ≠ NIL et k ≠ x.clé :
+    x ← T.racine
+    si k < x.clé :
+      T ← x.gauche
+    sinon :
+      T ← x.droit
+    fin si
+  fin tant que
+  si k == x.clé :
+    renvoyer vrai
+  sinon :
+    renvoyer faux
+  fin si
+FIN
+		</code></pre>
+		<hr />
+		<h4>Insertion d'une clé dans un arbre binaire de recherche</h4>
+		<p>
+			Il est tout à fait possible d'insérer un noeud y dans un arbre binaire de recherche (non vide) :
+		</p>
+		<h4>À faire vous-même 13</h4>
+		<p>
+			Étudiez l'algorithme suivant:
+		</p>
+		<pre class="algo"><code >
+VARIABLE
+T : arbre
+x : noeud
+y : noeud
+DEBUT
+ARBRE-INSERTION(T,y) :
+  x ← T.racine
+  tant que T ≠ NIL :
+    x ← T.racine
+    si y.clé < x.clé :
+      T ← x.gauche
+    sinon :
+      T ← x.droit
+    fin si
+  fin tant que
+  si y.clé < x.clé :
+    insérer y à gauche de x
+  sinon :
+    insérer y à droite de x
+  fin si
+FIN
+		</code></pre>
+		<hr />
+		<h4>À faire vous-même 14</h4>
+		<p>
+			Appliquez l'algorithme d'insertion d'un noeud y dans un arbre binaire de recherche sur l'arbre ci-dessous. On prendra y.clé = 16.
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_arbre_4.png" alt=""/>
+		</div>
+		<hr />
+		</div>
+	</body>
+
+</html>
