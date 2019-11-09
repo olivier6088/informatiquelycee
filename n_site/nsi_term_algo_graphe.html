@@ -1,0 +1,340 @@
+<!doctype html>
+<!-- Auteur : David Roche @davR74130 -->
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Algorithmes sur les graphes</title>
+		<link rel="stylesheet" href="css/css/vendor/bootstrap.min.css">
+		<link rel="stylesheet" href="css/css/flat-ui.min.css">
+		<link rel="stylesheet" href="highlight/styles/tomorrow-night.css">
+		<link rel="stylesheet" href="css/style.css">
+    <script src="./css/js/vendor/jquery.min.js"></script>
+    <script src="./css/js/flat-ui.min.js"></script>
+		<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		extensions: ["tex2jax.js"],
+		jax: ["input/TeX","output/HTML-CSS"],
+		tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+	});
+</script>
+		<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53303169-1"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+
+  		gtag('config', 'UA-53303169-1');
+	</script>
+	</head>
+	<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="navbar-brand">NSI terminale</span>
+					<span class="navbar-brand">Algorithmes sur les graphes</span>
+        </div>
+      </div>
+    </nav>
+    <div class="container act">
+		<p>
+			Il est conseillé de relire au moins une fois le cours consacré aux <a href="nsi_term_structDo_graphe.html" target="_blank">graphes</a>.
+		</p>
+		<p>
+			Nous allons commencer par nous intéresser aux algorithmes de parcours d'un graphe. L'idée du "parcours" est de "visiter" tous les sommets d'un graphe en partant d'un sommet quelconque.
+			Ces algorithmes de parcours d'un graphe sont à la base de nombreux algorithmes très utilisés : routage des paquets de données dans un réseau, découverte du chemin le plus court pour aller d'une ville à une autre...
+		</p>
+		<p>
+			Il existe 2 méthodes pour parcourir un graphe :
+		</p>
+		<ul>
+			<li>
+				Le parcours en largeur d'abord
+			</li>
+			<li>
+				le parcours en profondeur d'abord
+			</li>
+		</ul>
+		<h4>le parcours en largeur d'abord</h4>
+		<p>
+			Nous allons travailler sur un graphe G(V,E) avec V l'ensemble des sommets de ce graphe et E l'ensemble des arêtes de ce graphe.
+			Un sommet u sera adjacent avec un sommet v si u et v sont reliés par une arête (on pourra aussi dire que u et v sont voisins)
+			À chaque sommet u de ce graphe nous allons associer une couleur : blanc ou noir. Autrement dit, chaque sommet u possède un attribut couleur que l'on notera u.couleur, nous aurons u.couleur = blanc, u.couleur = gris ou u.couleur = noir.
+			Quelle est la signification de ces couleurs ?
+		</p>
+		<ul>
+			<li>
+				si u.couleur = blanc => u n'a pas encore été "découvert"
+			</li>
+			<li>
+				si u.couleur = noir => u a été "découvert"
+			</li>
+		</ul>
+		<h4>À faire vous-même 1</h4>
+		<p>
+			Étudiez cet algorithme :
+		</p>
+		<pre class="algo"><code >
+VARIABLE
+G : un graphe
+s : noeud (origine)
+u : noeud
+v : noeud
+f : file (initialement vide)
+
+//On part du principe que pour tout sommet u du graphe G, u.couleur = blanc à l'origine
+DEBUT
+s.couleur ← noir
+enfiler (s,f)
+tant que f non vide :
+  u ← defiler(f)
+  pour chaque sommet v adjacent au sommet u :
+    si v.couleur n'est pas noir :
+      v.couleur ← noir
+      enfiler(v,f)
+    fin si
+  fin pour
+fin tant que
+FIN
+		</code></pre>
+		<hr />
+		<h4>À faire vous-même 2</h4>
+		<p>
+			Appliquez l'algorithme du parcours en largeur d'abord au graphe ci-dessous. Le 'point de départ' de notre parcours (le sommet s dans l'algorithme), sera le sommet A.
+			Vous noterez les sommets atteint à chaque étape ainsi que les sommets présents dans la file f. Vous pourrez aussi, à chaque étape, donner les changements de couleur des sommets.
+		</p>
+		<p>
+			Si vous trouvez l'exercice ci-dessus trop difficile, vous pouvez aussi vérifier que la "découverte" des sommets peut se faire dans l'ordre suivant : A, B, F, C, D, G, H, E et I (ce n'est pas la seule solution possible)
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_graph_1.png" alt=""/>
+		</div>
+		<hr />
+		<p>
+			Vous avez sans doute remarqué que dans le cas d'un parcours en largeur d'abord, on "découvre" d'abord tous les sommets situés à une distance k du sommet "origine" (sommet s) avant
+			de commencer la découverte des sommets situés à une distance k+1 (on définit la distance comme étant le nombre d'arêtes à parcourir depuis A pour arriver à distination):
+		</p>
+		<p>
+			En effet, pour l'exemple du "À faire vous-même 2", nous avons bien :
+		</p>
+		<table>
+			<tr>
+				<td style="width: 200px">sommets</td>
+				<td style="width: 50px">A</td>
+				<td style="width: 50px">B</td>
+				<td style="width: 50px">F</td>
+				<td style="width: 50px">C</td>
+				<td style="width: 50px">D</td>
+				<td style="width: 50px">G</td>
+				<td style="width: 50px">H</td>
+				<td style="width: 50px">E</td>
+				<td style="width: 50px">I</td>
+			</tr>
+			<tr>
+				<td>distances depuis A</td>
+				<td>0</td>
+				<td>1</td>
+				<td>1</td>
+				<td>2</td>
+				<td>2</td>
+				<td>2</td>
+				<td>2</td>
+				<td>3</td>
+				<td>3</td>
+			</tr>
+		</table>
+		<h4>Le parcours en profondeur d'abord</h4>
+		<p>
+			On va ici retrouver le même système de couleur (blanc : sommet non visité, noir : sommet déjà visité)
+		</p>
+		<h4>À faire vous-même 3</h4>
+		<p>
+			Étudiez cet algorithme :
+		</p>
+		<pre class="algo"><code >
+VARIABLE
+G : un graphe
+u : noeud
+v : noeud
+//On part du principe que pour tout sommet u du graphe G, u.couleur = blanc à l'origine
+DEBUT
+PARCOURS-PROFONDEUR(G,u) :
+  u.couleur ← noir
+  pour chaque sommet v adjacent au sommet u :
+    si v.couleur n'est pas noir :
+      PARCOURS-PROFONDEUR(G,v)
+    fin si
+  fin pour
+FIN
+		</code></pre>
+		<hr />
+		<p>
+			Vous avez dû remarquer que le parcours en profondeur utilise une fonction récursive. J'attire votre attention sur l'extrème simplicité de cet algorithme (au niveau de sa conception), c'est souvent le cas avec les algorithmes récursifs.
+		</p>
+		<h4>À faire vous-même 4</h4>
+		<p>
+			Appliquez l'algorithme du parcours en profondeur d'abord au graphe ci-dessous. Vous pourrez  vérifier que la "découverte" des sommets peut se faire dans l'ordre suivant : A, B, C, E, I, D, G, F et H (ce n'est pas la seule solution possible)
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_graph_1.png" alt=""/>
+		</div>
+		<hr />
+		<h4>À faire vous-même 5</h4>
+		<p>
+			Comparez le résultat obtenu avec le parcours en largeur (A, B, F, C, D, G, H, E et I) et le résultat obtenu avec le parcours en profondeur (A, B, C, E, I, D, G, F et H)
+		</p>
+		<hr />
+		<p>
+			Dans le cas du parcours en largeur on "découvrait" tous les sommets situé à une distance k de l'origine avant de s'intéresser aux sommets situés à une distance k+1 de l'origine.
+			Dans le cas du parcours en profondeur, on va chercher à aller "le plus loin possible" dans le graphe : A -> B -> C -> E -> I -> D, quand on tombe sur "un cul-de-sac" (dans notre exemple, D est un "cul-de-sac" car une fois en D, on peut uniquement aller en B, or, B a déjà été découvert...), on revient "en arrière" (dans notre exemple, on repart de B pour aller explorer une autre branche : G -> F -> H)
+		</p>
+		<p>
+			À noter que l'utilisation d'un algorithme récursif n'est pas une obligation pour le parcours en profondeur :
+		</p>
+		<h4>À faire vous-même 6</h4>
+		<p>
+			Étudiez cet algorithme :
+		</p>
+		<pre class="algo"><code >
+VARIABLE
+s : noeud (origine)
+G : un graphe
+u : noeud
+v : noeud
+p : pile (pile vide au départ)
+//On part du principe que pour tout sommet u du graphe G, u.couleur = blanc à l'origine
+DEBUT
+s.couleur ← noir
+piler(s,p)
+tant que p n'est pas vide :
+  u ← depiler(p)
+  pour chaque sommet v adjacent au sommet u :
+    si v.couleur n'est pas noir :
+      v.couleur ← noir
+      piler(v,p)
+    fin si
+  fin pour
+fin tant que
+FIN
+		</code></pre>
+		<hr />
+		<p>
+			Vous avez sans doute remarqué que la version "non récursive" (on dit "itérative") de l'algorithme du parcours en profondeur ressemble beaucoup à l'algorithme du parcours en largeur, on a juste remplacé la file par une pile.
+		</p>
+		<h4>À faire vous-même 7</h4>
+		<p>
+			Appliquez l'algorithme du parcours en profondeur d'abord au graphe ci-dessous. Vérifiez que l'on obtient bien un parcours en profondeur.
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_graph_1.png" alt=""/>
+		</div>
+		<h4>Cycle dans les graphes</h4>
+		<p>
+			Voici un rappel de 2 définitions vues précédemment :
+		</p>
+		<ul>
+			<li>
+				Une chaine est une suite d'arêtes consécutives dans un graphe, un peu comme si on se promenait sur le graphe. On la désigne par les lettres des sommets qu'elle comporte.
+			</li>
+			<li>
+				Un cycle est une chaine qui commence et se termine au même sommet.
+			</li>
+		</ul>
+		<p>
+			Pour différente raisons, il peut être intéressant de détecter la présence d'un ou plusieurs cycles dans un graphe (par exemple pour savoir s'il est possible d'effectuer un parcours qui revient à son point de départ sans être obligé de faire demi-tour).
+		</p>
+		<p>
+			Nous allons étudier un algorithme qui permet de "détecter" la présence d'au moins un cycle dans un graphe :
+		</p>
+		<h4>À faire vous-même 8</h4>
+		<p>
+			Étudiez cet algorithme. Que se passe-t-il quand le graphe G contient au moins un cycle ? Que se passe-t-il quand le graphe G ne contient aucun cycle  :
+		</p>
+		<pre class="algo"><code >
+VARIABLE
+s : noeud (noeud quelconque)
+G : un graphe
+u : noeud
+v : noeud
+p : pile (vide au départ)
+//On part du principe que pour tout sommet u du graphe G, u.couleur = blanc à l'origine
+DEBUT
+CYCLE():
+  piler(s,p)
+  tant que p n'est pas vide :
+    u ← depiler(p)
+    pour chaque sommet v adjacent au sommet u :
+      si v.couleur n'est pas noir :
+        piler(v,p)
+      fin si
+    fin pour
+    si u est noir :
+      renvoie Vrai
+    sinon :
+      u.couleur ← noir
+    fin si
+  fin tant que
+  renvoie Faux
+FIN
+		</code></pre>
+		<h4>À faire vous-même 9</h4>
+		<p>
+			Appliquez l'algorithme de détection d'un cycle au graphe ci-dessous (vous partirez du sommet de votre choix).
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_graph_2.png" alt=""/>
+		</div>
+		<hr />
+		<h4>À faire vous-même 10</h4>
+		<p>
+			Appliquez l'algorithme de détection d'un cycle au graphe ci-dessous (vous partirez du sommet de votre choix).
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_graph_3.png" alt=""/>
+		</div>
+		<hr />
+		<h4>Chercher un chemin dans un graphe</h4>
+		<h4>À faire vous-même 8</h4>
+		<p>
+			Étudiez cet algorithme. Que se passe-t-il quand le graphe G contient au moins un cycle ? Que se passe-t-il quand le graphe G ne contient aucun cycle  :
+		</p>
+		<pre class="algo"><code >
+VARIABLE
+s : noeud (noeud quelconque)
+G : un graphe
+u : noeud
+v : noeud
+p : pile (vide au départ)
+//On part du principe que pour tout sommet u du graphe G, u.couleur = blanc à l'origine
+DEBUT
+CYCLE():
+  piler(s,p)
+  tant que p n'est pas vide :
+    u ← depiler(p)
+    pour chaque sommet v adjacent au sommet u :
+      si v.couleur n'est pas noir :
+        piler(v,p)
+      fin si
+    fin pour
+    si u est noir :
+      renvoie Vrai
+    sinon :
+      u.couleur ← noir
+    fin si
+  fin tant que
+  renvoie Faux
+FIN
+		</code></pre>
+		</div>
+	</body>
+
+</html>

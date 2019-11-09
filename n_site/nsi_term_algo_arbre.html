@@ -307,15 +307,15 @@ f : file (initialement vide)
 DEBUT
 PARCOURS-LARGEUR(T) :
   enfiler(T.racine, f) //on place la racine dans la file
-  tant que file non vide :
-    x = defiler(f)
+  tant que f non vide :
+    x ← defiler(f)
     affiche x.clé
     si x.gauche ≠ NIL :
-      Tg←x.gauche
+      Tg ← x.gauche
       enfiler(Tg.racine, f)
     fin si
     si x.droit ≠ NIL :
-      Td←x.droite
+      Td ← x.droite
       enfiler(Td.racine, f)
     fin si
   fin tant que
