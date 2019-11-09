@@ -68,7 +68,7 @@
 		<p>
 			Nous allons travailler sur un graphe G(V,E) avec V l'ensemble des sommets de ce graphe et E l'ensemble des arêtes de ce graphe.
 			Un sommet u sera adjacent avec un sommet v si u et v sont reliés par une arête (on pourra aussi dire que u et v sont voisins)
-			À chaque sommet u de ce graphe nous allons associer une couleur : blanc ou noir. Autrement dit, chaque sommet u possède un attribut couleur que l'on notera u.couleur, nous aurons u.couleur = blanc, u.couleur = gris ou u.couleur = noir.
+			À chaque sommet u de ce graphe nous allons associer une couleur : blanc ou noir. Autrement dit, chaque sommet u possède un attribut couleur que l'on notera u.couleur, nous aurons u.couleur = blanc ou u.couleur = noir.
 			Quelle est la signification de ces couleurs ?
 		</p>
 		<ul>
@@ -110,7 +110,7 @@ FIN
 		<h4>À faire vous-même 2</h4>
 		<p>
 			Appliquez l'algorithme du parcours en largeur d'abord au graphe ci-dessous. Le 'point de départ' de notre parcours (le sommet s dans l'algorithme), sera le sommet A.
-			Vous noterez les sommets atteint à chaque étape ainsi que les sommets présents dans la file f. Vous pourrez aussi, à chaque étape, donner les changements de couleur des sommets.
+			Vous noterez les sommets atteints à chaque étape ainsi que les sommets présents dans la file f. Vous pourrez aussi, à chaque étape, donner les changements de couleur des sommets.
 		</p>
 		<p>
 			Si vous trouvez l'exercice ci-dessus trop difficile, vous pouvez aussi vérifier que la "découverte" des sommets peut se faire dans l'ordre suivant : A, B, F, C, D, G, H, E et I (ce n'est pas la seule solution possible)
@@ -121,7 +121,7 @@ FIN
 		<hr />
 		<p>
 			Vous avez sans doute remarqué que dans le cas d'un parcours en largeur d'abord, on "découvre" d'abord tous les sommets situés à une distance k du sommet "origine" (sommet s) avant
-			de commencer la découverte des sommets situés à une distance k+1 (on définit la distance comme étant le nombre d'arêtes à parcourir depuis A pour arriver à distination):
+			de commencer la découverte des sommets situés à une distance k+1 (on définit la distance comme étant le nombre d'arêtes à parcourir depuis A pour arriver à destination):
 		</p>
 		<p>
 			En effet, pour l'exemple du "À faire vous-même 2", nous avons bien :
@@ -178,7 +178,7 @@ FIN
 		</code></pre>
 		<hr />
 		<p>
-			Vous avez dû remarquer que le parcours en profondeur utilise une fonction récursive. J'attire votre attention sur l'extrème simplicité de cet algorithme (au niveau de sa conception), c'est souvent le cas avec les algorithmes récursifs.
+			Vous avez dû remarquer que le parcours en profondeur utilise une fonction récursive. J'attire votre attention sur l'extrême simplicité de cet algorithme (au niveau de sa conception), c'est souvent le cas avec les algorithmes récursifs.
 		</p>
 		<h4>À faire vous-même 4</h4>
 		<p>
@@ -194,8 +194,8 @@ FIN
 		</p>
 		<hr />
 		<p>
-			Dans le cas du parcours en largeur on "découvrait" tous les sommets situé à une distance k de l'origine avant de s'intéresser aux sommets situés à une distance k+1 de l'origine.
-			Dans le cas du parcours en profondeur, on va chercher à aller "le plus loin possible" dans le graphe : A -> B -> C -> E -> I -> D, quand on tombe sur "un cul-de-sac" (dans notre exemple, D est un "cul-de-sac" car une fois en D, on peut uniquement aller en B, or, B a déjà été découvert...), on revient "en arrière" (dans notre exemple, on repart de B pour aller explorer une autre branche : G -> F -> H)
+			Dans le cas du parcours en largeur on "découvrait" tous les sommets situés à une distance k de l'origine avant de s'intéresser aux sommets situés à une distance k+1 de l'origine.
+			Dans le cas du parcours en profondeur, on va chercher à aller "le plus loin possible" dans le graphe : A -> B -> C -> E -> I -> D, quand on tombe sur "un cul-de-sac" (dans notre exemple, D est un "cul-de-sac", car une fois en D, on peut uniquement aller en B, or, B a déjà été découvert...), on revient "en arrière" (dans notre exemple, on repart de B pour aller explorer une autre branche : G -> F -> H)
 		</p>
 		<p>
 			À noter que l'utilisation d'un algorithme récursif n'est pas une obligation pour le parcours en profondeur :
@@ -244,13 +244,14 @@ FIN
 		<ul>
 			<li>
 				Une chaine est une suite d'arêtes consécutives dans un graphe, un peu comme si on se promenait sur le graphe. On la désigne par les lettres des sommets qu'elle comporte.
+				On utilise le terme de chaine pour les graphes non orientés et le terme de chemin pour les graphes orientés.
 			</li>
 			<li>
 				Un cycle est une chaine qui commence et se termine au même sommet.
 			</li>
 		</ul>
 		<p>
-			Pour différente raisons, il peut être intéressant de détecter la présence d'un ou plusieurs cycles dans un graphe (par exemple pour savoir s'il est possible d'effectuer un parcours qui revient à son point de départ sans être obligé de faire demi-tour).
+			Pour différentes raisons, il peut être intéressant de détecter la présence d'un ou plusieurs cycles dans un graphe (par exemple pour savoir s'il est possible d'effectuer un parcours qui revient à son point de départ sans être obligé de faire demi-tour).
 		</p>
 		<p>
 			Nous allons étudier un algorithme qui permet de "détecter" la présence d'au moins un cycle dans un graphe :
@@ -302,38 +303,60 @@ FIN
 			<img src="img/nsi_term_algo_graph_3.png" alt=""/>
 		</div>
 		<hr />
-		<h4>Chercher un chemin dans un graphe</h4>
-		<h4>À faire vous-même 8</h4>
+		<h4>Chercher une chaine dans un graphe</h4>
 		<p>
-			Étudiez cet algorithme. Que se passe-t-il quand le graphe G contient au moins un cycle ? Que se passe-t-il quand le graphe G ne contient aucun cycle  :
+			Nous allons maintenant nous intéresser à un algorithme qui permet de trouver une chaine entre 2 sommets (sommet de départ et sommet d'arrivée). Les algorithmes de ce type ont une grande importance et sont très souvent utilisés (voir plus bas (après le "À faire vous-même 12") pour plus d'explications).
+		</p>
+		<h4>À faire vous-même 11</h4>
+		<p>
+			Étudiez cet algorithme
 		</p>
 		<pre class="algo"><code >
 VARIABLE
-s : noeud (noeud quelconque)
 G : un graphe
+start : noeud (noeud de départ)
+end : noeud (noeud d'arrivé)
 u : noeud
-v : noeud
-p : pile (vide au départ)
-//On part du principe que pour tout sommet u du graphe G, u.couleur = blanc à l'origine
+chaine : ensemble de noeuds (initialement vide)
+
 DEBUT
-CYCLE():
-  piler(s,p)
-  tant que p n'est pas vide :
-    u ← depiler(p)
-    pour chaque sommet v adjacent au sommet u :
-      si v.couleur n'est pas noir :
-        piler(v,p)
+TROUVE-CHAINE(G, start, end, chaine):
+  chaine = chaine ⋃ start //le symbol ⋃ signifie union, il permet d'ajouter le noeud start à l'ensemble chaine
+  si start est identique à end :
+    renvoie chaine
+  fin si
+  pour chaque sommet u adjacent au sommet start :
+    si u n'appartient pas à chaine :
+      nchemin = TROUVE-CHAINE(G, u, end, chaine)
+      si nchemin non vide :
+        renvoie nchemin
       fin si
-    fin pour
-    si u est noir :
-      renvoie Vrai
-    sinon :
-      u.couleur ← noir
     fin si
-  fin tant que
-  renvoie Faux
+	fin pour
+	renvoie NIL
 FIN
 		</code></pre>
+		<hr />
+		<p>
+			Vous noterez que l'algorithme ci-dessus est basé sur un parcours en profondeur d'abord.
+		</p>
+		<h4>À faire vous-même 12</h4>
+		<p>
+			Appliquez l'algorithme permettant de trouver une chaine entre un noeud de départ (start) et un noeud d'arrivée (end) au graphe ci-dessous (vous choisirez les noeuds de départ et d'arrivée de votre choix).
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_graph_1.png" alt=""/>
+		</div>
+		<hr />
+		<p>
+			Il est important de noter que dans la plupart des cas, les algorithmes de recherche de chaine (ou de chemin), travaillent sur des graphes pondérés (par exemple pour rechercher la route entre un point de départ et un point d'arrivée dans un logiciel de cartographie). Ces algorithmes recherchent aussi souvent les chemins les plus courts (logiciels de cartographie).
+			On peut citer l'algorithme de Dijkstra ou encore l'algorithme de Bellman-Ford qui recherchent le chemin le plus court entre un noeud de départ et un noeud d'arrivée dans un graphe pondéré.
+			Si ce sujet vous intéresse, vous pouvez visionner la vidéo ci-dessous qui explique le principe de fonctionnement de l'algorithme de Dijkstra.
+		</p>
+		<div class="centrer">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/JPeCmKFrKio" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
+
 		</div>
 	</body>
 
