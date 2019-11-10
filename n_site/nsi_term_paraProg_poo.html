@@ -62,9 +62,9 @@
 					La création d'une classe en python commence toujours par le mot class. Ensuite toutes les instructions de la classe seront indentées :
 				</p>
 				<pre><code class='python'>
-	class LeNomDeMaClasse:
-	    #instructions de la classe
-	#La définition de la classe est terminée.
+class LeNomDeMaClasse:
+  #instructions de la classe
+#La définition de la classe est terminée.
 				</code></pre>
 				<p>
 					La classe est une espèce de moule (nous reviendrons plus tard sur cette analogie qui a ses limites), à partir de ce moule nous allons créer des objets (plus exactement nous parlerons d'instances). Par exemple, nous pouvons créer une classe voiture, puis créer différentes instances de cette classe (Peugeot407, Renault Espace,...). Pour créer une de ces instances, la procédure est relativement simple :
@@ -148,12 +148,12 @@ bilbo.vie=20
 				<p>Pour résoudre ce problème, nous allons définir les attributs, dans la classe, à l'aide d'une méthode (une méthode est une fonction définie dans une classe) d'initialisation des attributs.</p>
 				<p>Cette méthode est définie dans le code source par la ligne :
 				<pre><code class='python'>
-	def __init__ (self)
+def __init__ (self)
 				</code></pre>
 				<p>La méthode __init__ est automatiquement exécutée au moment de la création d'une instance. Le mot self est obligatoirement le premier argument d'une méthode (nous reviendrons ci-dessous sur ce mot self)</p>
 				<p>Nous retrouvons ce mot self lors de la définition des attributs. La définition des attributs sera de la forme :</p>
 				<pre><code class='python'>
-	self.vie=20
+self.vie=20
 				</code></pre>
 				<p>Le mot self représente l'instance. Quand vous définissez une instance de classe (bilbo ou gollum) le nom de votre instance va remplacer le mot self.</p>
 				<p>Dans le code source, nous allons avoir :</p>
@@ -196,7 +196,7 @@ bilbo=Personnage()
 			</p>
 			<pre><code class='python'>
 class Personnage:
-  def __init__(self,nbreDeVie)
+  def __init__(self,nbreDeVie):
     self.vie=nbreDeVie
 gollum=Personnage(20)
 bilbo=Personnage(15)
@@ -321,15 +321,15 @@ point=bilbo.donneEtat()
 import random
 class Personnage:
   def __init__(self, nbreDeVie):
-	  self.vie=nbreDeVie
+    self.vie=nbreDeVie
   def donneEtat (self):
-	  return self.vie
+    return self.vie
   def perdVie (self):
-	  if random.random()>0.5:
-	    nbPoint = 1
-	  else :
-	    nbPoint = 2
-	  self.vie=self.vie-nbPoint
+    if random.random()>0.5:
+      nbPoint = 1
+    else :
+      nbPoint = 2
+    self.vie=self.vie-nbPoint
 bilbo = Personnage(15)
 bilbo.perdVie()
 bilbo.perdVie()
@@ -361,15 +361,15 @@ point=bilbo.donneEtat()
 import random
 class Personnage:
   def __init__(self, nbreDeVie):
-	  self.vie=nbreDeVie
+    self.vie=nbreDeVie
   def donneEtat (self):
-	  return self.vie
+    return self.vie
   def perdVie (self):
-	  if random.random()>0.5:
-	    nbPoint = 1
-	  else :
-	    nbPoint = 2
-	  self.vie=self.vie-nbPoint
+    if random.random()>0.5:
+      nbPoint = 1
+    else :
+      nbPoint = 2
+    self.vie=self.vie-nbPoint
 def game():
   bilbo = Personnage(20)
   gollum = Personnage(20)
@@ -379,7 +379,7 @@ def game():
   if bilbo.donneEtat()<=0 and gollum.donneEtat()>0:
     msg = f"Gollum est vainqueur, il lui reste encore {gollum.donneEtat()} points alors que Bilbo est mort"
   elif gollum.donneEtat()<=0 and bilbo.donneEtat()>0:
-	  msg = f"Bilbo est vainqueur, il lui reste encore {bilbo.donneEtat()} points alors que Gollum est mort"
+    msg = f"Bilbo est vainqueur, il lui reste encore {bilbo.donneEtat()} points alors que Gollum est mort"
   else :
     msg = "Les deux combattants sont morts en même temps"
   return msg
