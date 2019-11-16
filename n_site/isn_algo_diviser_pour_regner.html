@@ -1,0 +1,222 @@
+<!doctype html>
+<!-- Auteur : David Roche @davR74130 -->
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Tri-fusion</title>
+		<link rel="stylesheet" href="css/css/vendor/bootstrap.min.css">
+		<link rel="stylesheet" href="css/css/flat-ui.min.css">
+		<link rel="stylesheet" href="highlight/styles/tomorrow-night.css">
+		<link rel="stylesheet" href="css/style.css">
+    <script src="./css/js/vendor/jquery.min.js"></script>
+    <script src="./css/js/flat-ui.min.js"></script>
+		<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		extensions: ["tex2jax.js"],
+		jax: ["input/TeX","output/HTML-CSS"],
+		tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+	});
+</script>
+		<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53303169-1"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+
+  		gtag('config', 'UA-53303169-1');
+	</script>
+	</head>
+	<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="navbar-brand">ISN</span>
+					<span class="navbar-brand">Tri-fusion</span>
+        </div>
+      </div>
+    </nav>
+    <div class="container act">
+		<h4>Diviser pour régner</h4>
+		<p>
+			Le diviser pour régner est une méthode algorithmique basée sur le principe suivant :
+		</p>
+		<p>
+			On prend un problème (généralement complexe à résoudre), on divise ce problème en une multitude de petits problèmes, l'idée étant que les "petits problèmes" seront plus simples à résoudre que le problème original.
+			Une fois les petits problèmes résolus, on recombine les "petits problèmes résolus" afin d'obtenir la solution du problème de départ.
+		</p>
+		<p>
+			Le paradigme "diviser pour régner" repose donc sur 3 étapes :
+		</p>
+		<ul>
+			<li>
+				<strong>DIVISER</strong> : le problème d'origine est divisé en un certain nombre de sous-problèmes
+			</li>
+			<li>
+				<strong>RÉGNER</strong> : on résout les sous-problèmes (les sous-problèmes sont plus faciles à résoudre que le problème d'origine)
+			</li>
+			<li>
+				<strong>COMBINER</strong> : les solutions des sous-problèmes sont combinées afin d'obtenir la solution du problème d'origine.
+			</li>
+		</ul>
+		<p>
+			Les algorithmes basés sur le paradigme "diviser pour régner" sont très souvent des algorithmes récursifs.
+		</p>
+		<p>
+			Nous allons maintenant étudier un de ces algorithmes basés sur le principe diviser pour régner : le tri-fusion
+		</p>
+		<h4>Tri-fusion</h4>
+		<p>
+			Nous avons déjà étudié des algorithmes de tri : le tri par insertion et le tri par sélection. Nous allons maintenant étudier une nouvelle méthode de tri, le tri-fusion.
+			Comme pour les algorithmes déjà étudiés, cet algorithme de tri fusion prend en entrée un tableau non trié et donne en sortie, le même tableau, mais trié.
+		</p>
+		<h4>À faire vous-même 1</h4>
+		<p>
+			Étudiez cet algorithme :
+		</p>
+		<pre class="algo"><code >
+VARIABLE
+A : tableau d'entiers
+L : tableau d'entiers
+R : tableau d'entiers
+p : entier
+q : entier
+r : entier
+n1 : entier
+n2 : entier
+
+
+//On part du principe que pour tout sommet u du graphe G, u.couleur = blanc à l'origine
+DEBUT
+
+FUSION (A, p, q, r):
+  n1 ← q - p + 1
+	n2 ← r - q
+  créer tableau L[1..n1+1] et R[1..n2+1]
+  pour i ← 1 à n1:
+    L[i] ← A[p+i-1]
+  fin pour
+  pour j ← 1 à n2:
+    R[j] ← A[q+j]
+  fin pour
+  L[n1+1] ← ∞
+  R[n2+1] ← ∞
+  i ← 1
+  j ← 1
+  pour k ← p à r:
+    si L[i] ⩽ R[j]:
+      A[k] ← L[i]
+      i ← i + 1
+    sinon:
+      si A[k] == R[j]:
+        j ← j + 1
+      fin si
+    fin si
+  fin pour
+fin FUSION
+
+TRI-FUSION(A, p, r):
+  si p < r:
+    q = (p + r) / 2
+    TRI-FUSION(A, p, q)
+    TRI-FUSION(A, q+1, r)
+    FUSION(A, p, q r)
+  fin si
+fin TRI-FUSION
+FIN
+		</code></pre>
+		<p>
+			Pour trier un tableau A, on fait l'appel initial TRI-FUSION(A, 1, A.longueur)
+		</p>
+		<p>
+			Rappel : Attention, en algorithmique, les indices des tableaux commencent à 1
+		</p>
+		<hr />
+		<p>
+			Cet algorithme est un peu difficile à appréhender, on notera qu'il est composé de deux fonctions FUSION et TRI-FUSION (fonction récursive).
+			La fonction TRI-FUSION assure la phase "DIVISER" et la fonction FUSION assure les phases "RÉGNER" et "COMBINER".
+		</p>
+		<p>
+			 Voici un exemple d'application de cet algorithme sur le tableau A = [23, 12, 4, 56, 35, 32, 42, 57, 3] :
+		</p>
+		<h4>À faire vous-même 2</h4>
+		<p>
+			Étudiez attentivement le schéma ci-dessous afin de mieux comprendre le principe du tri-fusion (identifiez bien les phases "DIVISER" et "COMBINER").
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_div_1.png" alt=""/>
+		</div>
+		<hr />
+		<p>
+			On remarque que dans le cas du tri-fusion, la phase "RÉGNER" se réduit à sa plus simple expression, en effet, à la fin de la phase "DIVISER", nous avons à trier des tableaux qui comportent un seul élément, ce qui est évidemment trivial.
+		</p>
+		<p>
+			La fusion des 2 tableaux déjà triés est simple, prenons comme exemple la dernière fusion entre le tableau [4, 12, 23, 56] et le tableau [3, 32, 35, 42, 57] (le principe est identique pour toutes les fusions) :
+		</p>
+		<p>
+			Soit T le tableau issu de la fusion du tableau B = [4, 12, 23, 56] et du tableau C = [3, 32, 35, 42, 57] (on donne des noms aux tableaux uniquement pour essayer de rendre l'explication la plus claire possible).
+		</p>
+		<ul>
+			<li>
+				On considère le premier élément du tableau B (4) et le premier élément du tableau C (3) : 3 est inférieur à 4, on place 3 dans le tableau T et on le supprime du tableau C. Nous avons donc alors T = [3], B = [4, 12, 23, 56] et C = [32, 35, 42, 57].
+			</li>
+			<li>
+				On recommence ensuite à comparer le premier élément du tableau B (4) et le premier élément du tableau C (32) : 4 est inférieur à 32, on place 4 dans le tableau T et on le supprime du tableau B. Nous avons donc alors T = [3, 4], B = [12, 23, 56] et C = [32, 35, 42, 57].
+			</li>
+			<li>
+				On compare le premier élément du tableau B (12) et le premier élément du tableau C (32) : 12 est inférieur à 32, on place 12 dans le tableau T et on le supprime du tableau B. Nous avons donc alors T = [3, 4, 12], B = [23, 56] et C = [32, 35, 42, 57].
+			</li>
+			<li>
+				On compare le premier élément du tableau B (23) et le premier élément du tableau C (32) : 23 est inférieur à 32, on place 23 dans le tableau T et on le supprime du tableau B. Nous avons donc alors T = [3, 4, 12, 23], B = [56] et C = [32, 35, 42, 57].
+			</li>
+			<li>
+				On compare le premier élément du tableau B (56) et le premier élément du tableau C (32) : 32 est inférieur à 56, on place 32 dans le tableau T et on le supprime du tableau A. Nous avons donc alors T = [3, 4, 12, 23, 32], B = [56] et C = [35, 42, 57].
+			</li>
+			<li>
+				On compare le premier élément du tableau B (56) et le premier élément du tableau C (35) : 35 est inférieur à 56, on place 35 dans le tableau T et on le supprime du tableau A. Nous avons donc alors T = [3, 4, 12, 23, 32, 35], B = [56] et C = [42, 57].
+			</li>
+			<li>
+				On compare le premier élément du tableau B (56) et le premier élément du tableau C (42) : 42 est inférieur à 56, on place 42 dans le tableau T et on le supprime du tableau A. Nous avons donc alors T = [3, 4, 12, 23, 32, 35, 42], B = [56] et C = [57].
+			</li>
+			<li>
+				On compare le premier élément du tableau B (56) et le premier élément du tableau C (57) : 56 est inférieur à 57, on place 56 dans le tableau T et on le supprime du tableau B. Nous avons donc alors T = [3, 4, 12, 23, 32, 35, 42, 56], B = [] et C = [57].
+			</li>
+			<li>
+				Le tableau B est vide, il nous reste juste à placer le seul élément qui reste dans C (57) dans T : T = [3, 4, 12, 23, 32, 35, 42, 56, 57], B = [] et C = []. La fusion est terminée.
+			</li>
+		</ul>
+		<h4>À faire vous-même 3</h4>
+		<p>
+			Reprenez tout le raisonnement qui vient d'être fait sur le tableau T = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]. Vous n'hésiterez pas à faire un schéma et à expliquer la fusion de 2 tableaux triés.
+		</p>
+		<hr />
+		<p>
+			Nous avons vu que le tri par insertion et tri par sélection ont tous les deux une complexité $O(n^2)$. Qu'en est-il pour le tri-fusion ?
+		</p>
+		<p>
+			Le calcul rigoureux de la complexité de cet algorithme sort du cadre de ce cours. Mais, en remarquant que la première phase (DIVISER) consiste à "couper" les tableaux en deux plusieurs fois de suite, intuitivement, on peut dire qu'un logarithme base 2 doit intervenir.
+			La deuxième phase consiste à faire des comparaisons entre les premiers éléments de chaque tableau à fusionner, on peut donc supposer que pour un tableau de n éléments, on aura n comparaisons. En combinant ces 2 constations on peut donc dire que la complexité du tri-fusion est en $O(n.log(n))$ (encore une fois la "démonstration" proposée ici n'a
+			rien de rigoureux).
+		</p>
+		<p>
+			La comparaison des courbes de la fonction $n^2$ (en rouge) et $n.log(n)$ (en bleu) :
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_div_2.png" alt=""/>
+		</div>
+		<p>
+			nous montre que l'algorithme de tri-fusion est plus "efficace" que l'algorithme de tri par insertion ou que l'algorithme de tri par sélection.
+		</p>
+		</div>
+	</body>
+
+</html>
