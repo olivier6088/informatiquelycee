@@ -225,7 +225,7 @@ def fib_mem_c(n,m):
 				</li>
 			</ul>
 			<p>
-				(à condition que $p_i$ soit inférieure ou égale à la somme restant à rendre)
+				(à condition que $p_i$ (avec $i$ compris entre 1 et $n$) soit inférieure ou égale à la somme restant à rendre)
 			</p>
 			<p>
 				Exemple : si je suis capable de rendre 72 cts et que j'ai à ma disposition des pièces de 2 cts, 5 cts, 10 cts, 50 cts et 1 euro, je peux aussi rendre :
@@ -248,7 +248,7 @@ def fib_mem_c(n,m):
 				Je ne peux pas utiliser de pièce de 1 euro.
 			</p>
 			<p>
-				Autrement dit, si $Nb(X - p_i)$ est le nombre minimal de pièces à rendre pour le montant $X - p_i$, alors $Nb(X) = 1 + Nb(X - p_i)$ est le nombre minimal de pièces à rendre pour un montant $X$.
+				Autrement dit, si $Nb(X - p_i)$ (avec $i$ compris entre 1 et $n$) est le nombre minimal de pièces à rendre pour le montant $X - p_i$, alors $Nb(X) = 1 + Nb(X - p_i)$ est le nombre minimal de pièces à rendre pour un montant $X$.
 				Nous avons donc la formule de récurrence suivante :
 			</p>
 			<p>
