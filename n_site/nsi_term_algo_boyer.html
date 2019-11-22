@@ -48,7 +48,97 @@
       </div>
     </nav>
     <div class="container act">
-			
+		<p>
+			Les algorithmes qui permettent de trouver une sous-chaine de caractères dans une chaine de caractères plus grande sont des "grands classiques" de l'algorithmique. On parle aussi de recherche d'un motif (sous-chaine) dans un texte. Voici un exemple :
+		</p>
+		<p>
+			Soit le texte suivant :
+		</p>
+		<p>
+			"Les sanglots longs des violons de l'automne blessent mon coeur d'une langueur monotone. Tout suffocant et blême, quand sonne l'heure, je me souviens des jours anciens et je pleure."
+		</p>
+		<p>
+			Question : le motif "vio" est-il présent dans le texte ci-dessus, si oui, en quelle(s) position(s) ? (la numérotation d'une chaine de caractères commence à zéro et les espaces sont considérés comme des caractères)
+		</p>
+		<p>
+			Réponse : on trouve le motif "vio" en position 23
+		</p>
+		<p>
+			Les algorithmes de recherche textuelle sont notamment utilisés en bioinformatique.
+		</p>
+		<H4>Bioinformatique</H4>
+		<p>
+			Comme son nom l'indique, la bioinformatique est issue de la rencontre de l'informatique et de la biologie : la récolte des données en biologie a connu une très forte augmentation ces 30 dernières années.
+			Pour analyser cette grande quantité de données de manière efficace, les scientifiques ont de plus en plus recourt au traitement automatique de l'information, c'est à dire à l'informatique.
+		</p>
+		<h4>Analyse de l'ADN</h4>
+		<p>
+			Comme vous le savez déjà, l'information génétique présente dans nos cellules, est porté par les molécules d'ADN. Les molécules d'ADN sont, entre autre, composées de bases azotés ayant pour noms : Adénine (représenté par un A), Thymine (représenté par un T), Guanine (représenté par un G) et Cytosine (représenté par un C).
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_boyer_adn.gif" alt="adn"/>
+			<figcaption>molécule d'ADN</figcaption>
+		</div>
+		<p>
+			L'information génétique est donc très souvent représentée par de très longues chaines de caractères, composées des caractères A, T, G et C. Exemple : CTATTCAGCAGTC...
+		</p>
+		<p>
+			Il est souvent nécessaire de détecter la présence de certains enchainement de bases azoté (souvent, un triplet de bases azotés code pour 1 acide aminé et la combinaison d'acides aminés forme une protéine).
+			Par exemple, on peut se poser la question suivante : trouve-t-on le triplet ACG dans le brin d'ADN suivant (et si oui, en quelle position ?):
+		</p>
+		<pre>
+CAAGCGCACAAGACGCGGCAGACCTTCGTTATAGGCGATGATTTCGAACCTACTAGTGGGTCTCTTAGGCCGAGCGGTTCCGAGAGATAGTGAAAGATGGCTGGGCTGTGAAGGGAAGGAGTCGTGAAAGCGCGAACACGAGTGTGCGCAAGCGCAGCGCCTTAGTATGCTCCAGTGTAGAAGCTCCGGCGTCCCGTCTAACCGTACGCTGTCCCCGGTACATGGAGCTAATAGGCTTTACTGCCCAATATGACCCCGCGCCGCGACAAAACAATAACAGTTTGCTGTATGTTCCATGGTGGCCAATCCGTCTCTTTTCGACAGCACGGCCAATTCTCCTAGGAAGCCAGCTCAATTTCAACGAAGTCGGCTGTTGAACAGCGAGGTATGGCGTCGGTGGCTCTATTAGTGGTGAGCGAATTGAAATTCGGTGGCCTTACTTGTACCACAGCGATCCCTTCCCACCATTCTTATGCGTCGTCTGTTACCTGGCTTGGCAT
+		</pre>
+		<p>
+			Nous allons commencé par le premier algorithme qui nous vient à l'esprit (on parle souvent d'algorithme "naïf") :
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_boyer_2.png" alt="algorithme naïf"/>
+			<figcaption>algorithme naïf</figcaption>
+		</div>
+		<ol>
+			<li>
+				on place le motif recherché au même niveau que les 3 premiers caractères de notre chaine, les 2 premières éléments ne correpondent pas (A et C),
+				on décale le motif d'un cran vers la droite.
+			</li>
+			<li>
+				les premiers éléments correspondent (A et A) mais pas les deuxièmes (C et A), on décale d'un cran vers la droite
+			</li>
+			<li>
+				les premiers éléments correspondent (A et A) mais pas les deuxièmes (C et G), on décale d'un cran vers la droite
+			</li>
+			<li>
+				les premiers éléments ne correpondent pas (A et G), on décale d'un cran vers la droite.
+			</li>
+			<li>
+				les premiers éléments ne correpondent pas (A et C), on décale d'un cran vers la droite.
+			</li>
+			<li>
+				...... on continue le processus jusqu'au moment où les 3 éléments du motifs correpondent avec les 3 éléments de la chaine situés au même niveau.
+			</li>
+		</ol>
+		<p>
+			Cet algorithme naïf peut, selon les situations demander un très grande nombre de comparaison, ce qui peut entraîner un très long temps de "calcul" avec des chaine très très longue. L'algoritme de Boyer-Moore permet de faire mieux en termes de comparaisons à effectuer
+		</p>
+		<h4>Algoritme de Boyer-Moore</h4>
+		<p>
+
+		</p>
+		<p>
+			Soit la chaine suivante :
+		</p>
+		<pre>
+			<pre>
+CAATGTCTGCACCAAGACGCCGGCAGGTGCAGACCTTCGTTATAGGCGATGATTTCGAACCTACTAGTGGGTCTCTTAGGCCGAGCGGTTCCGAGAGATAGTGAAAGATGGCTGGGCTGTGAAGGGAAGGAGTCGTGAAAGCGCGAACACGAGTGTGCGCAAGCGCAGCGCCTTAGTATGCTCCAGTGTAGAAGCTCCGGCGTCCCGTCTAACCGTACGCTGTCCCCGGTACATGGAGCTAATAGGCTTTACTGCCCAATATGACCCCGCGCCGCGACAAAACAATAACAGTTT
+			</pre>
+		</pre>
+		<p>
+			et le motif : CGGCAG
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_algo_boyer_3.png" alt="Boyer-Moore"/>
+			<figcaption>algorithme de Boyer-Moore</figcaption>
+		</div>
 		</div>
 	</body>
 
