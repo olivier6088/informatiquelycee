@@ -122,30 +122,35 @@
 					la machine A a pour adresse IP 192.168.2.5 et la machine B a pour adresse IP 192.168.3.8. Les 3 premiers octets ne sont pas identiques ("192.168.2" pour A et "192.168.3" pour B), A et B n'ont pas la même adresse réseau ("192.168.2.0" pour A et "192.168.3.0" pour B). Ces 2 machines ne pourront donc pas communiquer ensemble
 				</li>
 			</ul>
-			<p><strong>Attention</strong>, les adresses IP (a.b.c.d) n’ont forcément pas les parties a, b et c consacrées à l’identification du réseau et la partie d consacrées à l’identification des machines sur le réseau : on rajoute souvent à l'adresse IP un "/" suivit du nombre 8, 16 ou 24</p>
+			<p>Attention, les adresses IP (a.b.c.d) n’ont forcément pas les parties a, b et c consacrées à l’identification du réseau et la partie d consacrées à l’identification des machines sur le réseau. Il y a de nombreuses années, les adresses ont été découpées en trois classes :</p>
 			<ul>
-					<li>si ce nombre est 8 (exemple : 192.168.2.1/8), cela signifie que pour une adresse a.b.c.d/8, la partie a est consacrée à l'adresse réseau, le reste (b, c, d) est consacré à la partie machine de l'adresse IP. On aura donc une adresse réseau de la forme a.0.0.0</li>
-					<li>si ce nombre est 16 (exemple : 192.168.2.1/16), cela signifie que pour une adresse a.b.c.d/16, les parties a et b sont consacrées à l'adresse réseau, le reste (c, d) est consacré à la partie machine de l'adresse IP. On aura donc une adresse réseau de la forme a.b.0.0</li>
-					<li>si ce nombre est 24 (exemple : 192.168.2.1/24), cela signifie que pour une adresse a.b.c.d/24, les parties a, b et c sont consacrées à l'adresse réseau, le reste (d) est consacré à la partie machine de l'adresse IP. On aura donc une adresse réseau de la forme a.b.c.0</li>
+					<li>Certaines adresses ont les parties a, b et c consacrées à l’identification du réseau et la partie d consacrée à l’identification des machines sur le réseau (on parle d'adresse IP de classe C)</li>
+					<li>Certaines adresses ont la partie a et b consacrées à l’identification du réseau et les parties c et d consacrées à l’identification des machines sur le réseau (on parle d'adresse IP de classe B)</li>
+					<li>Certaines adresses ont la partie a consacrée à l’identification du réseau et les parties b, c et d consacrées à l’identification des machines sur le réseau (on parle d'adresse IP de classe A)</li>
 			</ul>
-			<p>Vous avez sans doute déjà compris que le 8 signifie que les 8 premiers bits (le premier octet) sont consacrés à la partie réseau => a, que le 16 signifie que les 16 premiers bits (les deux premiers octets) sont consacrés à la partie réseau => a.b et
-			que le 24 signifie que les 24 premiers bits (les 3 premiers octets) sont consacrés à la partie réseau => a.b.c </p>
+			<p>Nous avons donc :</p>
+			<ul>
+					<li>Réseau de classe A : adresse réseau : a.0.0.0 (avec a qui doit être compris entre 1 et 126)</li>
+					<li>Réseau de classe B : adresse réseau : a.b.0.0 (avec a qui doit être compris entre 128 et 191)</li>
+					<li>Réseau de classe C : adresse réseau : a.b.c.0 (avec a qui doit être compris entre 192 et 223)</li>
+			</ul>
+			<p>Cette partition étant peu flexible, elle a progressivement été remplacée par un découpage plus fin où la séparation réseaux/machine peut se trouver à l'intérieur d'une partie, dépendant de ce que l’on appelle le « masque de sous-réseau », mais cette notion ne sera pas abordée ici.</p>
 			<p>
-				En faites, il est possible d'avoir autre chose que /8, /16 ou /24 (on peut par exemple trouver /10 ou /17...), mais ces cas font intervenir la notion de masque de sous-réseau qui n'est pas au programme de NSI.
+				Remarque : vous avez sans doute remarqué que l'on passe de "126" pour la "fin" des réseaux de classe A à "128" pour le "début" des réseaux de classe B, le "127" est réservé et ne peut être utilisé (nous aurons l'occasion de revenir là-dessus plus tard).
 			</p>
 			<h4>À faire vous-même 1</h4>
 			<p>
-				Déterminez les adresses réseaux à partir des adresses IP suivantes :
+				Déterminer les adresses réseaux à partir des adresses IP suivantes :
 			</p>
 			<ul>
 				<li>
-					147.12.1.24/16
+					147.12.1.24
 				</li>
 				<li>
-					192.168.2.45/24
+					192.168.2.45
 				</li>
 				<li>
-					5.23.65.87/8
+					5.23.65.87
 				</li>
 			</ul>
 			<h4>À faire vous-même 2</h4>
@@ -154,13 +159,13 @@
 			</p>
 			<ul>
 				<li>
-					adresse IP de A : 172.23.4.7/16 ; adresse IP de B : 172.23.5.8/16
+					adresse IP de A : 172.23.4.7 ; adresse IP de B : 172.23.5.8
 				</li>
 				<li>
-					adresse IP de A : 24.2.8.127/8 ; adresse IP de B : 24.23.5.52/8
+					adresse IP de A : 24.2.8.127 ; adresse IP de B : 24.23.5.52
 				</li>
 				<li>
-					adresse IP de A : 193.28.7.2/24 ; adresse IP de B : 193.28.8.3/24
+					adresse IP de A : 193.28.7.2 ; adresse IP de B : 193.28.8.3
 				</li>
 			</ul>
 			<p>
@@ -168,10 +173,10 @@
 			</p>
 			<ul>
 				<li>
-					une adresse réseau ne peut pas être attribuée à une machine, par exemple aucune machine ne pourra avoir l'adresse IP 192.168.1.0/24 ou encore l'adresse IP 25.0.0.0/8
+					une adresse réseau ne peut pas être attribuée à une machine, par exemple aucune machine ne pourra avoir l'adresse IP 192.168.1.0 ou encore l'adresse IP 25.0.0.0
 				</li>
 				<li>
-					les adresses IP qui ont tous les octets de la partie "machines" de l'adresse IP à 255 ne sont pas utilisables (ce sont des adresses de broadcast qui permettent d'envoyer des données vers toutes les machines d'un réseau), exemples : 192.167.24.255/24, 172.28.255.255/16 ou encore 4.255.255.255/8 sont des adresses de broadcast
+					les adresses IP qui ont tous les octets de la partie "machines" de l'adresse IP à 255 ne sont pas utilisables (ce sont des adresses de broadcast qui permettent d'envoyer des données vers toutes les machines d'un réseau), exemples : 192.167.24.255, 172.28.255.255 ou encore 4.255.255.255 sont des adresses de broadcast
 				</li>
 			</ul>
 			<h4>À faire vous-même 3</h4>
@@ -180,13 +185,13 @@
 			</p>
 			<ul>
 				<li>
-					dans un réseau d'adresse réseau 192.168.2.0/24 ?
+					dans un réseau de classe A ?
 				</li>
 				<li>
-					dans un réseau d'adresse réseau 176.24.0.0/16 ?
+					dans un réseau de classe B ?
 				</li>
 				<li>
-					dans un d'adresse réseau 10.0.0.0/8 ?
+					dans un réseau de classe C ?
 				</li>
 			</ul>
 
