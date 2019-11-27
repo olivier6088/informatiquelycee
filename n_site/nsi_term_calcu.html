@@ -3,7 +3,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Calculabilité</title>
+		<title>Calculabilité et décidabilité</title>
 		<link rel="stylesheet" href="css/css/vendor/bootstrap.min.css">
 		<link rel="stylesheet" href="css/css/flat-ui.min.css">
 		<link rel="stylesheet" href="highlight/styles/tomorrow-night.css">
@@ -33,11 +33,46 @@
             <span class="icon-bar"></span>
           </button>
           <span class="navbar-brand">NSI terminale</span>
-					<span class="navbar-brand">Calculabilité</span>
+					<span class="navbar-brand">Calculabilité et décidabilité</span>
         </div>
       </div>
     </nav>
     <div class="container act">
-		
+		<p>
+			Certains programmes utilisent comme données le code source d'autres programmes. Les compilateurs sont des bons exemples. Nous avons eu l'année dernière l'occasion de travailler
+			sur le <a href="nsi_prem_langageC.html">langage C</a>, et nous avons vu que ce langage est un langage compilé : une fois le code source terminée, le compilateur (qui est un logiciel comme un autre)
+			"transforme" ce code source en langage machine.
+		</p>
+		<p>
+			Il existe d'autres exemples de programmes qui utilisent comme données d'autres programmes :
+		</p>
+		<ul>
+			<li>
+				<a href="nsi_prem_os_intro.html">un système d'exploitation</a> peut être vu comme un programme qui fait "tourner" d'autres programmes
+			</li>
+			<li>
+				pour télécharger un logiciel on utilise un gestionnaire de téléchargement qui est lui même un logiciel.
+			</li>
+		</ul>
+		<p>
+			On trouve même des programmes capablent de détecter certaines erreurs dans le code source d'autres programmes ou même encore des programmes capablent de prouver (mathématiquement parlant) qu'un autre programme est correct (qu'il fait bien ce pour quoi il a été conçu).
+			Le développement de programmes de "détection d'erreurs" ou encore de "preuve de correction" a connu une forte croissance en France, notamment depuis <a href="https://fr.wikipedia.org/wiki/Vol_501_d%27Ariane_5">l'accident du vol 501 d'Ariane 5</a> du 4 juin 1996 ou encore de la mise au point du métro automatique Meteor (ligne 14 à Paris).
+		</p>
+		<p>
+			Le "cauchemars" d'un programmeur est que son programme, dans certains cas, "tombe" dans une boucle infinie et ne s'arrête jamais. Dans ce cas, le logiciel est incapable de fournir la réponse attendu par l'utilisateur.
+		 Un programme qui permettrait de tester si un autre programme va finir par s'arrêter quelque soit le cas traité, serait d'une grande aide pour tous les développeurs du monde ! Pourtant, depuis 1937 et les travaux d'Alonso Church et d'Alan Turing, on sait qu'un tel programme ne peut pas exister.
+		</p>
+		<div class="centrer">
+			<img src="img/nsi_term_ calcu_church.jpg" alt="Alonso Church"/>
+			<figcaption>Alonso Church (1903-1995)</figcaption>
+			<img src="img/nsi_term_calcu_turing.gif" alt="Alan Turing"/>
+			<figcaption>Alan Turing (1912-1954)</figcaption>
+		</div>
+		<p>
+			Nous allons essayer de démontrer qu'un programme capable de répondre à la question "ce programme va-t-il s'arrêter" (réponse oui/non) ne peut pas exister :
+		</p>
+		<p>
+			Soit un programme (ou un algorithme, cela revient au même) que l'on va nommer "Arrêt?", ce programme prend en entrée un programme P et des données x (données qui vont être utilisées par le programme P) :
+		</p>
 		</div>
 </html>
