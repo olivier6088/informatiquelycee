@@ -178,7 +178,7 @@
 				Autrement dit, si un attribut est considéré comme clef primaire, on ne doit pas trouver dans toute la relation 2 fois la même valeur pour cet attribut.
 			</p>
 			<p>
-				Si on se refaire à l'exemple de la relation ci-dessous :
+				Si on se réfère à l'exemple de la relation ci-dessous :
 			</p>
 			<table>
 				<caption>Relation LIVRES</caption>
@@ -1547,10 +1547,14 @@
 			L'introduction d'une relation AUTEURS et la mise en place de liens entre cette relation et la relation LIVRES permettent d'éviter la redondance d'informations.
 		</p>
 		<p>
-			Quand un attribut x d'une relation A permet d'établir un lien entre la relation A et une relation B, on dit que x est une clef étrangère. Dans la pratique l'attribut x de la relation A correspond à la clef primaire  de la relation B.
+			Pour établir un lien entre 2 relations R<sub>A</sub> et R<sub>B</sub>, on ajoute à R<sub>A</sub> un attribut x qui prendra les valeurs de la clé primaire de R<sub>B</sub>. Cet attribut x est appelé clef étrangère (l'attribut correspond à la clé primaire d'une autre table, d'où le nom).
 		</p>
 		<p>
 			Dans l'exemple ci-dessus, l'attribut "id_auteur" de la relation LIVRES permet bien d'établir un lien entre la relation LIVRES et la relation AUTEURS, "id_auteur" correspond bien à la clef primaire de la relation AUTEURS, conclusion : "id_auteur" est une clef étrangère.
+		</p>
+		<p>
+			Pour préserver l'intégrité d'une base de données, il est important de bien vérifier que toutes les valeurs de la clef étrangère correspondent bien à des valeurs présentes dans la clef primaire (nous aurions un problème d'intégrité de la base de données si une valeur de l'attribut "id_auteur" de la relation LIVRES ne correspondait à aucune valeur de la clef primaire de la relation AUTEURS).
+			Certains SGBD ne vérifient pas cette contrainte (ne renvoie aucune erreur en cas de problème), ce qui peut provoquer des comportements erratiques.
 		</p>
 		<h4>À faire vous-même 4</h4>
 		<p>
@@ -1660,6 +1664,18 @@
 			pour chaque relation, la clef primaire et éventuellement la clef étrangère
 		</li>
 	</ul>
+	<p>
+		Voici un exemple pour les relations LIVRES et AUTEURS :
+	</p>
+	<p>
+		AUTEURS(<u>id</u>, nom, prenom, ann_naissance, langue_ecriture)
+	</p>
+	<p>
+		LIVRES(<u>id</u>, titre, #id_auteur, ann_publi, note)
+	</p>
+	<p>
+		Les attributs soulignés sont des clefs primaires, le # signifie que l'on a une clef étrangère.
+	</p>
 		<h4>À faire vous-même 5</h4>
 		<p>
 			Donnez le schéma relationnel de la base de données que vous avez défini dans le "À faire vous-même 4"
