@@ -83,7 +83,7 @@
 			L'information génétique est donc très souvent représentée par de très longues chaines de caractères, composées des caractères A, T, G et C. Exemple : CTATTCAGCAGTC...
 		</p>
 		<p>
-			Il est souvent nécessaire de détecter la présence de certains enchainements de bases azotées (souvent, un triplet de bases azotées code pour 1 acide aminé et la combinaison d'acides aminés forme une protéine).
+			Il est souvent nécessaire de détecter la présence de certains enchainements de bases azotées (dans la plupart des cas un triplet de bases azotées code pour 1 acide aminé et la combinaison d'acides aminés forme une protéine).
 			Par exemple, on peut se poser la question suivante : trouve-t-on le triplet ACG dans le brin d'ADN suivant (et si oui, en quelle position ?):
 		</p>
 		<pre>
@@ -98,20 +98,20 @@ CAAGCGCACAAGACGCGGCAGACCTTCGTTATAGGCGATGATTTCGAACCTACTAGTGGGTCTCTTAGGCCGAGCGGTTC
 		</div>
 		<ol>
 			<li>
-				on place le motif recherché au même niveau que les 3 premiers caractères de notre chaine, les 2 premiers éléments ne correspondent pas (A et C),
+				on place le motif recherché au même niveau que les 3 premiers caractères de notre chaine, le premier élément du motif ne correspond pas au premier élément de la chaine (A et C),
 				on décale le motif d'un cran vers la droite.
 			</li>
 			<li>
-				les premiers éléments correspondent (A et A) mais pas les deuxièmes (C et A), on décale d'un cran vers la droite
+				le premier élément du motif correspond au premier élément de la chaine (A et A) mais pas le second (C et A), on décale d'un cran vers la droite
 			</li>
 			<li>
-				les premiers éléments correspondent (A et A) mais pas les deuxièmes (C et G), on décale d'un cran vers la droite
+				le premier élément du motif correspond au premier élément de la chaine (A et A) mais pas le second (C et G), on décale d'un cran vers la droite
 			</li>
 			<li>
-				les premiers éléments ne correspondent pas (A et G), on décale d'un cran vers la droite.
+				 le premier élément du motif ne correspond pas au premier élément de la chaine (A et G), on décale d'un cran vers la droite.
 			</li>
 			<li>
-				les premiers éléments ne correspondent pas (A et C), on décale d'un cran vers la droite.
+				 le premier élément du motif ne correspond pas au premier élément de la chaine (A et C), on décale d'un cran vers la droite.
 			</li>
 			<li>
 				...... on continue le processus jusqu'au moment où les 3 éléments du motif correspondent avec les 3 éléments de la chaine situés au même niveau.
