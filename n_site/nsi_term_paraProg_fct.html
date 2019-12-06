@@ -1,0 +1,129 @@
+<!doctype html>
+<!-- Auteur : David Roche @davR74130 -->
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Programmation fonctionelle</title>
+		<link rel="stylesheet" href="css/css/vendor/bootstrap.min.css">
+		<link rel="stylesheet" href="css/css/flat-ui.min.css">
+		<link rel="stylesheet" href="highlight/styles/tomorrow-night.css">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="highlight/highlight.pack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+    <script src="./css/js/vendor/jquery.min.js"></script>
+    <script src="./css/js/flat-ui.min.js"></script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53303169-1"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+
+  		gtag('config', 'UA-53303169-1');
+	</script>
+	</head>
+	<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="navbar-brand">NSI terminale</span>
+					<span class="navbar-brand">Programmation fonctionelle</span>
+        </div>
+      </div>
+    </nav>
+    <div class="container act">
+			<p>
+				La programmation fonctionnelle est un paradigme de programmation comme la programmation impérative ou la programmation orientée objet.
+			</p>
+			<p>
+				Comme dit dans le cours consacré aux <a href="nsi_term_global.html" target="_blank">variables locales et aux variables globales</a>, le paradigme fonctionnel cherche à éviter au maximum les effets de bord, dit autrement,
+				en programmation fonctionnelle on va éviter de modifier les valeurs référencées par des variables. Pour se faire,
+				on va chercher au maximum à utiliser les fonctions (d'où le nom de programmation fonctionnelle), mais
+				ces fonctions ne devront pas modifier les variables : en programmation fonctionnelle, on s’efforce de coder des fonctions qui ne modifient pas l’état courant des variables.
+				Les fonctions utilisées en programmation fonctionnelle sont parfois appelées "fonction pure" : le résultat retourné par une fonction pure doit uniquement dépendre des paramètres passés à la fonction et pas des valeurs externes à la fonction (elle ne doit pas non plus engendrer d'effet de bord):
+			</p>
+			<h4>À faire vous-même 1</h4>
+			<p>Analysez le programme suivant :</p>
+			<pre><code class='python'>
+i = 5
+def fct():
+  if i &gt 5:
+    return True
+  else :
+    return False
+fct()
+			</code></pre>
+			<hr />
+			<p>
+				La fonction ci-dessus n'est pas une fonction pure, car la valeur renvoyée par la fonction fct (True ou False) dépend d'une valeur extérieure à la fonction.
+			</p>
+			<h4>À faire vous-même 2</h4>
+			<p>Analysez le programme suivant :</p>
+			<pre><code class='python'>
+def fct(i):
+  if i &gt 5:
+    return True
+  else :
+    return False
+fct(5)
+			</code></pre>
+			<hr />
+			<p>
+				La fonction ci-dessus est une fonction pure, car la valeur renvoyée par la fonction fct (True ou False) dépend uniquement du paramètre passé à la fonction.
+			</p>
+			<p>
+				Même si certains langages de programmation ont été conçus pour "imposer" au programmeur le paradigme fonctionnel (Lisp, Scheme, Haskell...), il est tout à fait possible d'utiliser le paradigme fonctionnel avec des langages de programmation plus "généralistes" (Python par exemple).
+			</p>
+			<p>
+				Nous allons maintenant travailler sur un exemple de programme Python utilisant le paradigme fonctionnel :
+			</p>
+			<h4>À faire vous-même 3</h4>
+			<p>Analysez le programme suivant :</p>
+			<pre><code class='python'>
+l = [4,7,3]
+def ajout(i):
+  l.append(i)
+			</code></pre>
+			<p>
+				Selon vous, le programme ci-dessus respecte-t-il le paradigme fonctionnel ?
+			</p>
+			<hr />
+			<p>
+				La réponse à la question posée ci-dessus est non, car nous avons un effet de bord (la fonction ajout modifie le tableau l)
+			</p>
+			<h4>À faire vous-même 4</h4>
+			<p>Analysez le programme suivant :</p>
+			<pre><code class='python'>
+def ajout(i,l):
+	tab = l + [i]
+  return tab
+			</code></pre>
+			<p>
+				Selon vous, le programme ci-dessus respecte-t-il le paradigme fonctionnel ?
+			</p>
+			<hr />
+			<p>
+				La fonction ajout ne modifie aucune variable, elle crée un nouveau tableau (tab) à partir du tableau l et du paramètre i (le signe + permet de créer un nouveau tableau, ce nouveau tableau est constitué des éléments contenus dans le tableau l auxquels on ajoute la valeur i), la fonction renvoie le tableau ainsi créé.
+			</p>
+			<p>
+				D'une façon plus générale, la méthode append de Python ne respecte pas le paradigme fonctionnel puisque append modifie une donnée existante. Le paradigme fonctionnel va amener le programmeur non pas à modifier une valeur existante, mais plutôt à créer une nouvelle grandeur à partir de la grandeur existante : une grandeur existante n'est jamais modifiée, donc aucun risque d'effet de bord.
+			</p>
+			<h4>Utiliser le bon paradigme de programmation</h4>
+			<p>
+				Il est important de bien comprendre qu'un programmeur doit maitriser plusieurs paradigmes de programmation (impératif, objet ou encore fonctionnelle). En effet, il sera plus facile d'utiliser le paradigme objet dans certains cas alors que dans d'autres situations, l'utilisation du paradigme fonctionnelle sera préférable. Être capable de Choisir le "bon" paradigme en fonction des situations fait partie du bagage de tout bon programmeur.
+			</p>
+			<hr />
+			<img style="margin-bottom: 15px;" src="img/cc.png"/ />
+			<p>
+				Auteur : David Roche
+			</p>
+		</div>
+	</body>
+
+</html>

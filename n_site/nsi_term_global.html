@@ -1,0 +1,180 @@
+<!doctype html>
+<!-- Auteur : David Roche @davR74130 -->
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Variables locales et variables globales</title>
+		<link rel="stylesheet" href="css/css/vendor/bootstrap.min.css">
+		<link rel="stylesheet" href="css/css/flat-ui.min.css">
+		<link rel="stylesheet" href="highlight/styles/tomorrow-night.css">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="highlight/highlight.pack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+    <script src="./css/js/vendor/jquery.min.js"></script>
+    <script src="./css/js/flat-ui.min.js"></script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53303169-1"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+
+  		gtag('config', 'UA-53303169-1');
+	</script>
+	</head>
+	<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="navbar-brand">NSI terminale</span>
+					<span class="navbar-brand">Variables locales et variables globales</span>
+        </div>
+      </div>
+    </nav>
+    <div class="container act">
+		<h4>Variables locales et variables globales</h4>
+		<h4>À faire vous-même 1</h4>
+		<p>Analysez le programme suivant :</p>
+		<pre><code class='python'>
+def fct():
+  i=5
+fct()
+		</code></pre>
+		<p>
+			Après avoir exécuté le programme ci-dessus, déterminez la valeur référencée par la variable i en utilisant la console.
+		</p>
+		<hr />
+		<p>
+			Comme vous avez pu le constater, nous avons eu droit à une erreur : "NameError: name 'i' is not defined".
+			Pourquoi cette erreur, la variable i est bien définie dans la fonction fct() et la fonction fct() est bien exécutée, où est donc le problème ?
+		</p>
+		<p>
+			En faite, la variable i est une variable dite locale : elle a été définie dans une fonction et elle "restera" dans cette fonction. Une fois que l'exécution de la fonction sera terminée, la variable i sera "détruite" (supprimée de la mémoire). Elle n'est donc pas accessible depuis "l'extérieur"
+			de la fonction (ce qui explique le message d'erreur que nous obtenons).
+		</p>
+		<p>
+			Autre exemple de cette notion de variable locale :
+		</p>
+		<h4>À faire vous-même 2</h4>
+		<p>Analysez le programme suivant :</p>
+		<pre><code class='python'>
+i = 3
+def fct():
+  i=5
+fct()
+		</code></pre>
+		<p>
+			Après avoir exécuté le programme ci-dessus, déterminez la valeur référencée par la variable i en utilisant la console.
+		</p>
+		<hr />
+		<p>
+			Cette fois pas d'erreur, mais à la fin de l'exécution de ce programme, la variable i référence la valeur 3. En faite dans cet exemple nous avons 2 variables i différentes : la variable i "globale" (celle qui a été définie en dehors de toute fonction) et la variable i "locale" (celle qui a été définie dans la fonction).
+			Ces 2 variables portent le même nom, mais sont différentes.
+		</p>
+		<p>
+			Une variable globale peut être "utilisée" à l'intérieur d'une fonction :
+		</p>
+		<h4>À faire vous-même 3</h4>
+		<p>Analysez et testez le programme suivant :</p>
+		<pre><code class='python'>
+i = 3
+def fct():
+  print(i)
+fct()
+		</code></pre>
+		<hr />
+		<p>
+			Quand on cherche à utiliser une variable dans une fonction, le système va d'abord chercher si cette variable se "trouve" dans l'espace local de la fonction, puis, s'il ne la trouve pas dans cet espace local, le système va aller rechercher la variable dans l'espace global.
+			Pour le "print(i)" situé dans la fonction le système ne trouve pas de variable i dans l'espace local de la fonction "fct", il passe donc à l'espace global et trouve la variable i (nous avons donc 3 qui s'affiche).
+			Il est important de bien comprendre que si le système avait trouvé une variable i dans l'espace local de la fonction, la "recherche" de la variable i se serait arrêtée là :
+		</p>
+		<h4>À faire vous-même 4</h4>
+		<p>Analysez et testez le programme suivant :</p>
+		<pre><code class='python'>
+i = 3
+def fct():
+  i = 5
+  print(i)
+fct()
+		</code></pre>
+		<hr />
+			<h4>À faire vous-même 5</h4>
+			<p>Analysez et testez le programme suivant :</p>
+			<pre><code class='python'>
+i = 3
+def fct():
+  i = i + 1
+fct()
+			</code></pre>
+			<hr />
+			<p>
+				Nous avons une erreur "UnboundLocalError: local variable 'i' referenced before assignment"
+			</p>
+			<p>
+				Pour pouvoir modifier une variable globale dans une fonction, il faut utiliser l'instruction "global" :
+			</p>
+			<h4>À faire vous-même 6</h4>
+			<p>Analysez le programme suivant :</p>
+			<pre><code class='python'>
+i = 3
+def fct():
+  global i
+  i = i + 1
+fct()
+			</code></pre>
+			<p>
+				Après avoir exécuté le programme ci-dessus, déterminez la valeur référencée par la variable i en utilisant la console.
+			</p>
+			<hr />
+			<p>
+				<strong>En faite, l'utilisation de "global" est une (très) mauvaise pratique, car cette utilisation peut entrainer des "effets de bord".</strong>
+			</p>
+			<h4>Effet de bord</h4>
+			<p>
+				On parle d'effet de bord quand une fonction modifie l'état d'une variable globale. Dans notre exemple ci-dessus la fonction fct modifie bien la valeur référencée par la variable i : avant l'exécution de fct, la variable i référence la valeur 5, après l'exécution de la fonction fct la variable i référence la valeur 6.
+				Nous avons donc bien un effet de bord.
+			</p>
+			<p>
+				Autre exemple plus "classique" (sans avoir à utiliser le "global") d'un effet de bord en Python :
+			</p>
+			<h4>À faire vous-même 7</h4>
+			<p>Analysez le programme suivant :</p>
+			<pre><code class='python'>
+t = [1, 2, 3]
+def fct():
+  t.append(4)
+fct()
+			</code></pre>
+			<p>
+				Après avoir exécuté le programme ci-dessus, déterminez la valeur référencée par la variable t en utilisant la console.
+			</p>
+			<hr />
+			<p>
+				Nous avons bien ci-dessus un effet de bord puisque le tableau t est modifié par une fonction.
+			</p>
+			<p>
+			 Les effets de bord c'est "mal" ! Mais pourquoi est-ce "mal" ?
+			</p>
+			<p>
+				Les effets de bords provoquent parfois des comportements non désirés par le programmeur (évidemment dans des programmes très complexes, pas dans des cas simplistes comme celui que nous venons de voir dans le "À faire vous-même 6"). Ils rendent aussi parfois
+				les programmes difficilement lisibles (difficilement compréhensibles). À cause des effets de bord, on risque de se retrouver avec des variables qui référenceront des valeurs qui n'étaient pas prévues par le programmeur. On dit aussi qu'à un instant donné, l'état futur des variables est difficilement prévisible à cause des effets de bord.
+
+			</p>
+			<p>
+				Un paradigme de programmation se propose d'éviter au maximum les effets de bords : <a href="nsi_term_paraProg_fct.html" target="_blank">la programmation fonctionnelle</a>.
+			</p>
+			<hr />
+			<img style="margin-bottom: 15px;" src="img/cc.png"/ />
+			<p>
+				Auteur : David Roche
+			</p>
+		</div>
+	</body>
+
+</html>

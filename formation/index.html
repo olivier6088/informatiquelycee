@@ -694,7 +694,7 @@ print("C'est terminé.")
 				Comme déjà dit ci-dessus, un tuple est une séquence. Voici un exemple très simple :
 			</p>
 			<pre><code class='python'>
-	mon_tuple = (5, 8, 6, 9)
+mon_tuple = (5, 8, 6, 9)
 			</code></pre>
 			<p>
 				Dans le code ci-dessus, la variable "mon_tuple" référence un tuple, ce tuple est constitué des entiers 5, 8, 6 et 9. Comme indiqué dans la définition, chaque élément du tuple est indicé (il possède un indice):
@@ -722,8 +722,8 @@ print("C'est terminé.")
 			<h4>E34</h4>
 			<p>Testez le code suivant :</p>
 			<pre><code class='python'>
-	mon_tuple = (5, 8, 6, 9)
-	a = mon_tuple[2]
+mon_tuple = (5, 8, 6, 9)
+a = mon_tuple[2]
 			</code></pre>
 			<p>
 				Quelle est la valeur référencée par la variable a (utilisez la console pour répondre à cette question)?
@@ -738,8 +738,8 @@ print("C'est terminé.")
 			<h4>E35</h4>
 			<p>Complétez le code ci-dessous (en remplaçant les ..) afin qu'après l'exécution de ce programme la variable a référence l'entier 8.</p>
 			<pre><code class='python'>
-	mon_tuple = (5, 8, 6, 9)
-	a = mon_tuple[..]
+mon_tuple = (5, 8, 6, 9)
+a = mon_tuple[..]
 			</code></pre>
 			<hr />
 			<p>
@@ -749,8 +749,8 @@ print("C'est terminé.")
 			<p>Quel est le résultat attendu après l'exécution de ce programme ?</p>
 			<p>Vérifiez votre hypothèse en testant ce programme</p>
 			<pre><code class='python'>
-	mon_tuple = ("le", "monde", "bonjour")
-	print(mon_tuple[2] + " " + mon_tuple[0] + " " + mon_tuple[1] + "!")
+mon_tuple = ("le", "monde", "bonjour")
+print(mon_tuple[2] + " " + mon_tuple[0] + " " + mon_tuple[1] + "!")
 			</code></pre>
 			<hr/>
 			<p>
@@ -759,11 +759,11 @@ print("C'est terminé.")
 			<h4>E37</h4>
 			<p>Analysez puis testez le code suivant :</p>
 			<pre><code class='python'>
-	def add(a, b):
-		c = a + b
-		return (a, b, c)
-	mon_tuple = add(5, 8)
-	print(f"{mon_tuple[0]} + {mon_tuple[1]} = {mon_tuple[2]}")
+def add(a, b):
+  c = a + b
+  return (a, b, c)
+mon_tuple = add(5, 8)
+print(f"{mon_tuple[0]} + {mon_tuple[1]} = {mon_tuple[2]}")
 			</code></pre>
 			<p>
 				Il faut bien comprendre dans l'exemple ci-dessus que la variable mon_tuple référence un tuple (puisque la fonction "add" renvoie un tuple), d'où la "notation entre crochets" utilisée avec mon_tuple (mon_tuple[1]...)
@@ -775,7 +775,7 @@ print("C'est terminé.")
 			<h4>E38</h4>
 			<p>Après avoir exécuté le programme ci-dessous, saisissez mon_tuple dans la console.</p>
 			<pre><code class='python'>
-	mon_tuple = (5, 8, 6, 9)
+mon_tuple = (5, 8, 6, 9)
 			</code></pre>
 			<hr />
 			<p>
@@ -783,7 +783,7 @@ print("C'est terminé.")
 			</p>
 			<h4>E39</h4>
 			<pre><code class='python'>
-	a, b, c, d = (5, 8, 6, 9)
+a, b, c, d = (5, 8, 6, 9)
 			</code></pre>
 			<p>
 				Quelle est la valeur référencée par la variable a ? La variable b ? La variable c ? La variable d ? Vérifiez votre réponse à l'aide de la console Python.
@@ -801,7 +801,7 @@ print("C'est terminé.")
 				Pour créer un tableau, il existe différentes méthodes : une de ces méthodes ressemble beaucoup à la création d'un tuple :
 			</p>
 			<pre><code class='python'>
-	mon_tab = [5, 8, 6, 9]
+mon_tab = [5, 8, 6, 9]
 			</code></pre>
 			<p>
 				Notez la présence des crochets à la place des parenthèses.
@@ -812,8 +812,8 @@ print("C'est terminé.")
 			<h4>E40</h4>
 			<p>Quelle est la valeur référencée par la variable ma_variable après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
 			<pre><code class='python'>
-	mon_tab = [5, 8, 6, 9]
-	ma_variable = mon_tab[2]
+mon_tab = [5, 8, 6, 9]
+ma_variable = mon_tab[2]
 			</code></pre>
 			<p>
 				N.B. Il est possible de saisir directement mon_tab[2] dans la console sans passer par l'intermédiaire de la variable ma_variable
@@ -825,8 +825,8 @@ print("C'est terminé.")
 			<h4>E41</h4>
 			<p>Quel est le contenu du tableau référencé par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
 			<pre><code class='python'>
-	mon_tab = [5, 8, 6, 9]
-	mon_tab[2] = 15
+mon_tab = [5, 8, 6, 9]
+mon_tab[2] = 15
 			</code></pre>
 			<p>
 				Comme vous pouvez le constater avec l'exemple ci-dessus, l'élément d'indice 2 (le nombre entier 6) a bien été remplacé par le nombre entier 15
@@ -838,8 +838,8 @@ print("C'est terminé.")
 			<h4>E42</h4>
 			<p>Quel est le contenu du tableau référencé par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
 			<pre><code class='python'>
-	mon_tab = [5, 8, 6, 9]
-	mon_tab.append(15)
+mon_tab = [5, 8, 6, 9]
+mon_tab.append(15)
 			</code></pre>
 			<hr />
 			<p>
@@ -848,8 +848,8 @@ print("C'est terminé.")
 			<h4>E43</h4>
 			<p>Quel est le contenu du tableau référencé par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
 			<pre><code class='python'>
-	mon_tab = [5, 8, 6, 9]
-	del mon_tab[1]
+mon_tab = [5, 8, 6, 9]
+del mon_tab[1]
 			</code></pre>
 			<hr />
 			<p>
@@ -858,8 +858,8 @@ print("C'est terminé.")
 			<h4>E44</h4>
 			<p>Quelle est la valeur référencée par la variable nb_len après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
 			<pre><code class='python'>
-	mon_tab = [5, 8, 6, 9]
-	nb_ele = len(mon_tab)
+mon_tab = [5, 8, 6, 9]
+nb_ele = len(mon_tab)
 			</code></pre>
 			<hr />
 			<p>
@@ -873,9 +873,9 @@ print("C'est terminé.")
 			<h4>E45</h4>
 			<p>Analysez puis testez le code suivant :</p>
 			<pre><code class='python'>
-	mon_tab = [5, 8, 6, 9]
-	for element in mon_tab:
-		print(element)
+mon_tab = [5, 8, 6, 9]
+for element in mon_tab:
+  print(element)
 			</code></pre>
 			<p>
 				Quelques explications : comme son nom l'indique, la boucle "for" est une boucle ! Nous "sortirons" de la boucle une fois que tous les éléments du tableau mon_tab auront
@@ -900,9 +900,9 @@ print("C'est terminé.")
 				il est possible de choisir un autre nom sans aucun problème, le code suivant aurait donné exactement le même résultat :
 			</p>
 			<pre><code class='python'>
-	mon_tab = [5, 8, 6, 9]
-	for toto in mon_tab:
-		print (toto)
+mon_tab = [5, 8, 6, 9]
+for toto in mon_tab:
+  print (toto)
 			</code></pre>
 			<hr />
 			<p>
@@ -911,16 +911,16 @@ print("C'est terminé.")
 			<h4>E46</h4>
 			<p>Analysez puis testez le code suivant :</p>
 			<pre><code class='python'>
-	for element in range(0, 5):
-		print (element)
+for element in range(0, 5):
+  print (element)
 			</code></pre>
 			<p>
 				Comme vous pouvez le constater, "range(0,5)" est, au niveau de la boucle "for..in", équivalent au tableau [0,1,2,3,4], le code ci-dessous donnerait le même résultat que le programme vu dans le "E46" :
 			</p>
 			<pre><code class='python'>
-	mon_tab = [0, 1, 2, 3, 4]
-	for element in mon_tab:
-		print (element)
+mon_tab = [0, 1, 2, 3, 4]
+for element in mon_tab:
+  print (element)
 			</code></pre>
 			<p>
 				ATTENTION : si vous avez dans un programme "range(a,b)", a est la borne inférieure et b a borne supérieure. Vous ne devez surtout pas perdre de vu que la borne inférieure est incluse, mais
@@ -932,9 +932,9 @@ print("C'est terminé.")
 			<h4>E47</h4>
 			<p>Quel est le contenu du tableau référencé par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
 			<pre><code class='python'>
-	mon_tab = []
-	for element in range(0, 5):
-		mon_tab.append(element)
+mon_tab = []
+for element in range(0, 5):
+  mon_tab.append(element)
 			</code></pre>
 			<hr />
 			<h3>Créer un tableau par compréhension</h3>
@@ -942,7 +942,7 @@ print("C'est terminé.")
 				Nous avons vu qu'il était possible de "remplir" un tableau en renseignant les éléments du tableau les uns après les autres :
 			</p>
 			<pre><code class='python'>
-	mon_tab = [5, 8, 6, 9]
+mon_tab = [5, 8, 6, 9]
 			</code></pre>
 			<p>
 				ou encore à l'aide de la méthode "append" (voir "E47").
@@ -953,7 +953,7 @@ print("C'est terminé.")
 			<h4>E48</h4>
 			<p>Quel est le contenu du tableau référencé par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
 			<pre><code class='python'>
-	mon_tab = [p for p in range(0, 5)]
+mon_tab = [p for p in range(0, 5)]
 			</code></pre>
 			<hr />
 			<p>
@@ -962,8 +962,8 @@ print("C'est terminé.")
 			<h4>E49</h4>
 			<p>Quel est le contenu du tableau référencé par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
 			<pre><code class='python'>
-	l = [1, 7, 9, 15, 5, 20, 10, 8]
-	mon_tab = [p for p in l if p &gt 10]
+l = [1, 7, 9, 15, 5, 20, 10, 8]
+mon_tab = [p for p in l if p &gt 10]
 			</code></pre>
 			<hr />
 			<p>
@@ -972,8 +972,8 @@ print("C'est terminé.")
 			<h4>E50</h4>
 			<p>Quel est le contenu du tableau référencé par la variable mon_tab après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p>
 			<pre><code class='python'>
-	l = [1, 7, 9, 15, 5, 20, 10, 8]
-	mon_tab = [p**2 for p in l if p &lt 10]
+l = [1, 7, 9, 15, 5, 20, 10, 8]
+mon_tab = [p**2 for p in l if p &lt 10]
 			</code></pre>
 			<p>
 				Rappel : p**2 permet d’obtenir la valeur de p élevée au carrée
@@ -991,7 +991,7 @@ print("C'est terminé.")
 				Voici un exemple de tableau de tableau :
 			</p>
 			<pre><code class='python'>
-	m = [[1, 3, 4], [5 ,6 ,8], [2, 1, 3], [7, 8, 15]]
+m = [[1, 3, 4], [5 ,6 ,8], [2, 1, 3], [7, 8, 15]]
 			</code></pre>
 			<p>
 				Le premier élément du tableau ci-dessus est bien un tableau ([1, 3, 4]), le deuxième élément est aussi un tableau ([5, 6, 8])...
@@ -1000,10 +1000,10 @@ print("C'est terminé.")
 				Il est souvent plus pratique de présenter ces "tableaux de tableaux" comme suit :
 			</p>
 			<pre><code class='python'>
-	m = [[1, 3, 4],
-	     [5, 6, 8],
-	     [2, 1, 3],
-	     [7, 8, 15]]
+m = [[1, 3, 4],
+     [5, 6, 8],
+     [2, 1, 3],
+     [7, 8, 15]]
 			</code></pre>
 			<p>
 				Nous obtenons ainsi quelque chose qui ressemble beaucoup à un "objet mathématique" très utilisé : une matrice
@@ -1049,11 +1049,11 @@ print("C'est terminé.")
 			<h4>E51</h4>
 			<p><p>Quelle est la valeur référencée par la variable a après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p></p>
 			<pre><code class='python'>
-	m = [[1, 3, 4],
-	     [5, 6, 8],
-	     [2, 1, 3],
-	     [7, 8, 15]]
-	a = m[1][2]
+m = [[1, 3, 4],
+     [5, 6, 8],
+     [2, 1, 3],
+     [7, 8, 15]]
+a = m[1][2]
 			</code></pre>
 			<p>
 				Comme vous pouvez le constater, la variable a référence bien l'entier situé à la 2e ligne (indice 1) et à la 3e colonne (indice 2), c'est-à-dire 8.
@@ -1062,9 +1062,9 @@ print("C'est terminé.")
 			<h4>E52</h4>
 			<p><p>Quel est le contenu du tableau référencé par la variable mm après l'exécution du programme ci-dessous ? (utilisez la console pour vérifier votre réponse)</p></p>
 			<pre><code class='python'>
-	m = [1, 2, 3]
-	mm = [m, m, m]
-	m[0] = 100
+m = [1, 2, 3]
+mm = [m, m, m]
+m[0] = 100
 			</code></pre>
 			<p>
 				Comme vous pouvez le constater, la modification du tableau référencé par la variable m entraine la modification du tableau référencé par la variable mm (alors que
@@ -1078,16 +1078,16 @@ print("C'est terminé.")
 			<h4>E53</h4>
 			<p>Analysez puis testez le code suivant :</p>
 			<pre><code class='python'>
-	m = [[1, 3, 4],
-	     [5, 6, 8],
-	     [2, 1, 3],
-	     [7, 8, 15]]
-	nb_colonne = 3
-	nb_ligne = 4
-	for i in range(0, nb_ligne):
-		for j in range(0, nb_colonne):
-			a = m[i][j]
-			print(a)
+m = [[1, 3, 4],
+     [5, 6, 8],
+     [2, 1, 3],
+     [7, 8, 15]]
+nb_colonne = 3
+nb_ligne = 4
+for i in range(0, nb_ligne):
+  for j in range(0, nb_colonne):
+    a = m[i][j]
+    print(a)
 			</code></pre>
 			<hr />
 			<h1>Projet "Jeu du pendu"</h1>
@@ -1350,6 +1350,72 @@ def dessinPendu(nb):
 			<p>
 				S'il vous manque des éléments, n'hésitez pas à faire des recherches sur le web, notamment dans la <a href="https://docs.python.org/fr/3/" target="_blank">documentation Python</a>.
 			</p>
+			<h1>Projet "Générateur de QCM"</h1>
+			<p>
+				Le deuxième projet va vous permettre de mettre au point un générateur de questions à choix multiples.
+			</p>
+			<p>
+				Voici une vidéo qui va vous permettre de comprendre ce qui est attendu :
+			</p>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/_-2nQRZGa-c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<p>
+				Vous avez à votre disposition un fichier texte qcm.txt qu'il est possible de télécharger <a href="asset/qcm.txt" target="_blank">ici</a> (clic droit puis "Enregistrer le lien sous..."). Ce fichier contient 30 questions et réponses, voici un exemple de question (et de la réponse qui va avec) :
+			</p>
+			<pre><code>
+Un octet correspond à A-1bit B-4 bits C-8 bits D-32 bits;;C
+			</code></pre>
+			<p>
+				Comme vous pouvez le constater, la question et la réponse correcte sont séparées par 2 points-virgules.
+			</p>
+			<p>
+				N.B. : il est tout à fait possible de rédiger vos propres questions et de les placer dans un fichier au format texte.
+			</p>
+			<p>
+				Votre programme devra "piocher" au hasard 10 questions parmi les 30 questions présentes dans le fichier qcm.txt (à chaque exécution de votre programme, les 10 questions ne seront pas identiques)
+			</p>
+			<p>
+				On ne pourra pas avoir 2 fois la même question au cours d'une même session.
+			</p>
+			<p>
+				À la fin des 10 questions, le score devra être affiché
+			</p>
+			<p>
+				N'oubliez pas d'utiliser le plus possible les fonctions.
+			</p>
+			<h1>Projet "Répertoire téléphonique"</h1>
+			<p>Vous allez écrire un programme de gestion de répertoire téléphonique.</p>
+			<p>Cahier des charges</p>
+			<p>Ce programme devra proposer le menu suivant à l'utilisateur :</p>
+			<p>0-quitter<br>
+				1-écrire dans le répertoire<br>
+				2-rechercher dans le répertoire<br>
+				Votre choix ?<br>
+			</p>
+			<p>Si le choix est 0 : Le programme sera stoppé.</p>
+			<p>Si le choix est 1 :</p>
+			<p>L'utilisateur devra saisir un nom ou 0 s'il veut terminer la saisie (" Nom (0 pour terminer) : ") :</p>
+			<ul>
+				<li>L'utilisateur entre 0 => le programme devra le renvoyer vers le menu</li>
+				<li>L'utilisateur entre un nom => le programme devra lui demander de saisir le numéro de téléphone correspondant au nom.
+					Une fois le numéro saisi, le programme devra lui proposer d'entrer un nouveau nom (ou 0 pour terminer)...</li>
+			</ul>
+			<img src="img/nsi_prem_projet1_1.png"/>
+			<p><i><center>exemple de saisie d'un utilisateur (toto)</center></i></p>
+			<p>Si le choix est 2 :</p>
+			<p>L'utilisateur devra saisir le nom recherché (" Entrer un nom : ").</p>
+			<ul>
+				<li>Si le nom recherché est présent dans le répertoire, le programme devra afficher " Le numéro recherché est : " suivi du numéro de téléphone correspondant au nom saisi.</li>
+				<li>Si le nom recherché est absent du répertoire, le programme devra afficher  " Inconnu ".</li>
+			</ul>
+			<p>L'utilisateur est ensuite redirigé vers le menu principal.</p>
+			<img src="img/nsi_prem_projet1_2.png"/>
+			<p><i><center>recherche des utilisateurs (toto et titi)</center></i></p>
+			<p>
+				Voici une démonstation en vidéo :
+			</p>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/itSlzuGZHe8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<p>Les noms et numéros de téléphone devront être stockés dans un fichier texte (il faudra donc, dans un premier temps, apprendre à écrire dans un fichier texte).</p>
+			<p>Votre programme devra être composé au minimum de 2 fonctions : une fonction "lecture" et une fonction "ecriture".</p>
 		</div>
 		</div>
 	</body>
