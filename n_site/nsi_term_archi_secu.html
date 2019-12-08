@@ -209,6 +209,7 @@
 					grâce à une technique qui ne sera pas détaillée ici (le <a href="https://fr.wikipedia.org/wiki/Empoisonnement_du_cache_DNS" target="_blank">DNS spoofing</a>), un serveur "pirate" peut se faire passer pour un site sur lequel vous avez l'habitude de vous rendre en toute confiance :
 					imaginez vous voulez consulter vos comptes bancaires en ligne, vous saisissez l'adresse web de votre banque dans la barre d'adresse de votre navigateur favori, vous arrivez sur la page d'accueil d'un site en tout point identique au site de votre banque, en toute confiance, vous saisissez votre identifiant et votre mot de passe. C'est terminé un "pirate" va pouvoir récupérer
 					votre identifiant et votre mot de passe ! Pourquoi ? Vous avez saisi l'adresse web de votre banque comme d'habitude ! Oui, sauf que grâce à une attaque de type "DNS spoofing" vous avez été redirigé vers un site pirate, en tout point identique au site de votre banque. Dès vos identifiant et mot de passe saisis sur ce faux site, le pirate pourra les récupérer et se rendre avec sur le véritable site de votre banque.
+					À noter qu'il existe d'autres techniques que le DNS spoofing qui permettent de substituer un serveur à un autre, mais elles ne seront pas évoquées ici.
 				</li>
 			</ul>
 			<div class="centrer">
@@ -256,10 +257,10 @@
 			</p>
 			<p>
 				Pour éviter tout problème, il faut que le serveur puisse justifier de son "identité" ("voici la preuve que je suis bien le site de la banque B et
-				pas un site "pirate""). Pour se faire, chaque site désirant proposer des transactions HTTPS doit, périodiquement, demander (acheter !)
+				pas un site "pirate""). Pour se faire, chaque site désirant proposer des transactions HTTPS doit, périodiquement, demander (acheter dans la plupart des cas)
 				un certificat d'authentification
-				(sorte de carte d'identité pour un site internet) auprès d'un organisme habilité à fournir
-				ce genre de certificats. Comme dit plus haut, ce certificat permet au site de prouver son "identité" auprès des clients.
+				(sorte de carte d'identité pour un site internet) auprès d'une autorité habilitée à fournir
+				ce genre de certificats (chaque navigateur web possède une liste des autorités dont il accepte les certificats). Comme dit plus haut, ce certificat permet au site de prouver son "identité" auprès des clients.
 				Nous n'allons pas entrer dans les détails du fonctionnement de ces certificats, mais vous devez juste savoir que le serveur envoie ce certificat au client en même temps que sa clé publique (étape 2 du schéma ci-dessus).
 				En cas d'absence de certificat (ou d'envoi de certificat non conforme), le client stoppe immédiatement les échanges avec le serveur.
 				Il peut arriver de temps en temps que le responsable d'un site oublie de renouveler son certificat à temps (dépasse la date d'expiration), dans ce cas, le navigateur web côté client affichera une page de mise en garde avec un message du style "ATTENTION le certificat d'authentification du site XXX a expiré, il serait prudent de ne pas poursuivre vos échanges avec le site XXXX".
