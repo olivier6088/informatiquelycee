@@ -1,0 +1,137 @@
+<!doctype html>
+<!-- Auteur : David Roche @davR74130 -->
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Composants intégrés d'un système sur puce</title>
+		<link rel="stylesheet" href="css/css/vendor/bootstrap.min.css">
+		<link rel="stylesheet" href="css/css/flat-ui.min.css">
+		<link rel="stylesheet" href="highlight/styles/tomorrow-night.css">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="highlight/highlight.pack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+    <script src="./css/js/vendor/jquery.min.js"></script>
+    <script src="./css/js/flat-ui.min.js"></script>
+		<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		extensions: ["tex2jax.js"],
+		jax: ["input/TeX","output/HTML-CSS"],
+		tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+	});
+</script>
+		<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53303169-1"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+
+  		gtag('config', 'UA-53303169-1');
+	</script>
+	</head>
+	<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="navbar-brand">NSI terminale</span>
+					<span class="navbar-brand">Composants intégrés d'un système sur puce</span>
+        </div>
+      </div>
+    </nav>
+    <div class="container act">
+							<p>
+								Voici l'intérieur d'un PC :
+							</p>
+							<div class="centrer">
+								<img src="img/nsi_term_soc.png" alt="PC"/>
+							</div>
+							<p>
+								Principalement on remarque la carte mère qui accueille tous les éléments fondamentaux au bon fonctionnement d'un ordinateur : microprocesseur (CPU) (caché sous un système de refroidissement), barrettes de mémoire RAM, carte graphique (qui permet de gérer l'affichage).
+								On trouve aussi sur la carte mère les puces qui gèrent les interfaces réseau (Wifi et Ethernet) et bien d'autres choses...
+							</p>
+							<p>
+								On entend souvent dire que les téléphones portables (smartphones) sont de véritable ordinateur, ce qui est vrai. On peut s'interroger sur la taille d'un smartphone par rapport à la taille d'un PC (la carte mère d'un PC mesure environ 25 cm sur 30 cm, soit bien plus qu'un smartphone).
+								Pourtant on doit obligatoirement trouver dans un smartphone les mêmes composants que dans un PC : CPU, RAM, carte graphique et interfaces réseau (Wifi et Bluetooth dans le cas d'un smartphone) !
+							</p>
+							<p>
+								La solution ? Placer tous ces composants dans une puce unique d'une centaine de mm<sup>2</sup> :
+							</p>
+								<div class="centrer">
+									<img src="img/nsi_term_soc_2.png" alt="soc"/>
+									<figcaption>puce accueillant le CPU, la RAM...</figcaption>
+								</div>
+						<p>
+							Ces puces accueillant CPU, RAM, circuit graphique (GPU) (équivalent à la carte graphique dans un PC) et circuits radio (Wifi et Bluetooth), sont souvent appelées "système sur puce", "system on a chip" en anglais (abréviation "SoC").
+						</p>
+						<p>
+							Voici le schéma de circuit d'un SoC :
+						</p>
+						<div class="centrer">
+							<img src="img/nsi_term_soc_4.jpg" alt="schéma SoC"/>
+						</div>
+						<p>
+							Vous pouvez remarquer que l'on retrouve bien sur ce schéma un CPU et de la mémoire (on a différents types de mémoires, mais ce sujet ne sera pas abordé ici).
+						</p>
+						<p>
+						Outre leur taille, les Soc ont d'autres avantages par rapport aux systèmes "classiques" (carte mère + CPU + carte graphique...) :
+						</p>
+						<ul>
+							<li>
+								les SoC sont conçus pour consommer beaucoup moins d'énergie qu'un système classique (à puissance de calcul équivalente).
+							</li>
+							<li>
+								Cette consommation réduite permet dans la plupart des cas de s'affranchir de la présence de système de refroidissement actif comme les ventilateurs (voir l'image du PC ci-dessus). Un système équipé de SoC est donc silencieux.
+							</li>
+							<li>
+								Vu les distances réduites entre, par exemple, le CPU et la mémoire, les données circulent beaucoup plus vites, ce qui permet d'améliorer les performances. En effet, dans les systèmes "classiques" les bus (si nécessaire voir le cours de première : <a href="nsi_prem_von_neu.html" >Modèle d'architecture de von Neumann</a> à propos des bus) sont souvent des "goulots d'étranglement" en termes de performances à cause de la vitesse de circulation des données.
+							</li>
+						</ul>
+						<p>
+							On trouve aussi ce système de SoC sur des nano-ordinateurs comme le Rasberry Pi :
+						</p>
+						<div class="centrer">
+							<img src="img/nsi_term_soc_3.png" alt="Rasberry Pi version 4"/>
+							<figcaption>Rasberry Pi version 4</figcaption>
+						</div>
+						<p>
+							Dans sa version 4, le Rasberry Pi est équipé du Soc BCM2711 de la société Broadcom
+						</p>
+						<h4>À faire vous-même 1</h4>
+						<p>
+							Faites des recherches sur le Soc BCM2711, notez les principales caractéristiques de ce SoC.
+						</p>
+						<hr />
+						<p>
+							Voici les noms des SoC utilisés par quelques produits succès :
+						</p>
+						<ul>
+							<li>
+								Apple iPhone 11 : SoC A13 Bionic
+							</li>
+							<li>
+								Samsung Galaxy S11 : SoC Exynos 990
+							</li>
+							<li>
+								Nintendo Switch :  SoC Nvidia Tegra
+							</li>
+						</ul>
+						<p>
+							Rien qu'à l'évocation des noms cités ci-dessus, vous vous doutez bien que le marché des SoC a aujourd'hui un poids économique très important. On commence même à trouver des ordinateurs portables équipés de SoC à la place des cartes mères "classiques". Les SoC commencent doucement, mais surement à rattraper les systèmes "classiques" en termes de puissance (pour les systèmes "classiques" d'entrées et de moyennes gammes).
+						</p>
+						<hr />
+						<img style="margin-bottom: 15px;" src="img/cc.png"/ />
+						<p>
+							Auteur : David Roche
+						</p>
+	</div>
+	</body>
+</html>
