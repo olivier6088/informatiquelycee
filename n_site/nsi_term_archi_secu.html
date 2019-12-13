@@ -233,13 +233,13 @@
 					le client effectue une requête HTTPS vers le serveur, en retour le serveur envoie sa clé publique (KpuS) au client
 				</li>
 				<li>
-					le client "fabrique" une clé K (qui sera utilisé pour chiffrer les futurs échanges), chiffre cette clé K et envoie la version chiffrée de la clé K au serveur
+					le client "fabrique" une clé K (qui sera utilisé pour chiffrer les futurs échanges), chiffre cette clé K avec KpuS et envoie la version chiffrée de la clé K au serveur
 				</li>
 				<li>
 					le serveur reçoit la version chiffrée de la clé K et la déchiffre en utilisant sa clé privée (KprS). À partir de ce moment-là, le client et le serveur sont en possession de la clé K
 				</li>
 				<li>
-					le client commence à échanger des données en les chiffrant et en les déchiffrant à l'aide de la clé K (chiffrement symétrique).
+					le client et le serveur commencent à échanger des données en les chiffrant et en les déchiffrant à l'aide de la clé K (chiffrement symétrique).
 				</li>
 			</ul>
 			<p>

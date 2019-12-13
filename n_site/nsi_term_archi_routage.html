@@ -3,7 +3,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Routage</title>
+		<title>Protocoles de routage</title>
 		<link rel="stylesheet" href="css/css/vendor/bootstrap.min.css">
 		<link rel="stylesheet" href="css/css/flat-ui.min.css">
 		<link rel="stylesheet" href="highlight/styles/tomorrow-night.css">
@@ -12,6 +12,16 @@
 		<script>hljs.initHighlightingOnLoad();</script>
     <script src="./css/js/vendor/jquery.min.js"></script>
     <script src="./css/js/flat-ui.min.js"></script>
+		<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		extensions: ["tex2jax.js"],
+		jax: ["input/TeX","output/HTML-CSS"],
+		tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+	});
+</script>
+		<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53303169-1"></script>
 	<script>
@@ -32,15 +42,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <span class="navbar-brand">Internet</span>
-					<span class="navbar-brand">Routage des paquets</span>
+          <span class="navbar-brand">NSI terminale</span>
+					<span class="navbar-brand">Protocoles de routage</span>
         </div>
       </div>
     </nav>
     <div class="container act">
-			<p>Pour bien suivre ce cours il est nécessaire de maitriser les bases sur les réseaux (réseau local, adresse IP, adresse réseau...)
+			<p>Pour bien suivre ce cours, il est nécessaire de maitriser les bases sur les réseaux (réseau local, adresse IP, adresse réseau...)
 			N'hésitez pas à vous replonger dans le <a href="nsi_prem_intro_reseau.html" target="_blank">cours de première</a> si nécessaire.</p>
-			<p>Les réseaux locaux peuvent être reliés entre eux par l'intermédiaire de routeurs</p>
+			<p>Les réseaux locaux peuvent être reliés entre eux par l'intermédiaire de routeurs. Il ne faut jamais perdre de vue qu'Internet résulte de l'interconnexion de réseaux par des routeurs.</p>
 			<div class="centrer">
 				<img src="img/DiagRes.png" alt="reseau"/>
 				<figcaption>plusieurs réseaux locaux reliés entre eux</figcaption>
@@ -92,44 +102,235 @@
 			<p>
 				On pourrait penser que le chemin "Routeur F → Routeur E" est plus rapide et donc préférable au chemin "Routeur F → Routeur H", cela est sans doute vrai, mais imaginez qu’il y ait un problème technique entre le Routeur F et le Routeur E,
 					l’existence du chemin "Routeur F → Routeur H" permettra tout de même d’établir une communication entre M13 et M9.
-					Parfois, on entend certains politiques ou journalistes évoquer « la coupure d’internet »,
-					peut être comprendrez-vous mieux maintenant que cela n’a aucun sens, car même si une autorité quelconque décidait de couper une partie des infrastructures,
-					les paquets pourraient passer par un autre chemin.
 			</p>
 						<h4>À faire vous-même 2</h4>
 						<p>Déterminer un chemin possible permettant d’établir une connexion entre la machine M4 et M14.</p>
 						<hr>
-						<p>On peut se poser la question : comment les switchs ou les routeurs procèdent pour amener les paquets à bon port. Sans entrer dans les détails, car cela dépasse notre objectif, vous devez tout de même savoir qu’ils utilisent les adresses IP des ordinateurs.</p>
-						<p>Nous avons vu qu’une adresse IP était de la forme a.b.c.d (exemple : 192.168.1.5). Une partie de l’adresse IP permet d’identifier le réseau auquel appartient la machine et l’autre partie de l’adresse IP permet d’identifier la machine sur ce réseau.</p>
-						<p>Exemple : Soit un ordinateur M4 ayant pour adresse IP 192.168.2.1 Dans cette adresse IP  "192.168.2" permet d’identifier le réseau (on dit que la machine M4 appartient au réseau ayant pour adresse 192.168.2.0) et "1" permet d’identifier la machine sur le réseau
-							(plus précisément sur le réseau 192.168.2.0). M4, M5 et M6 sont sur le même réseau,
-							l’adresse IP de M5 devra donc commencer par "192.168.2" (adresse IP possible pour M5 : 192.168.2.2). En revanche M7 n’est pas sur le même réseau que M4, M5 et M6, la partie réseau de son adresse IP ne pourra pas être "192.168.2" (IP possible pour M7 : 192.168.3.1).</p>
-						<p>En analysant la partie réseau des adresses IP des machines souhaitant rentrer en communication, les switchs et les routeurs sont capables d’aiguiller un paquet dans la bonne direction. Imaginons que le switch R2 reçoive un paquet qui est destiné à l’ordinateur M7 (adresse IP de M7 : 192.168.3.1).
-							R2 "constate" que M7 n’est pas sur le même réseau que lui (R2 appartient au réseau d’adresse 192.168.2.0 alors que M7 appartient au réseau d’adresse 192.168.3.0), il envoie donc le paquet vers le routeur B...</p>
-						<h4>À faire vous-même 3</h4>
-						<p>En partant des exemples ci-dessus, donnez une adresse IP possible pour les ordinateurs suivants : M1, M6 et M8.</p>
-						<hr>
-						<p>Attention, les adresses IP (a.b.c.d) n’ont forcément pas les parties a, b et c consacrées à l’identification du réseau et la partie d consacrée à l’identification des machines sur le réseau. Dans les premières années d'Internet, les adresses ont été découpées en trois classes :</p>
-						<ul>
-								<li>Certaines adresses ont les parties a, b et c consacrées à l’identification du réseau et la partie d consacrée à l’identification des machines sur le réseau (on parle d'adresse IP de classe C)</li>
-								<li>Certaines adresses ont la partie a et b consacrées à l’identification du réseau et les parties c et d consacrées à l’identification des machines sur le réseau (on parle d'adresse IP de classe B)</li>
-								<li>Certaines adresses ont la partie a consacrée à l’identification du réseau et les parties b, c et d consacrées à l’identification des machines sur le réseau (on parle d'adresse IP de classe A)</li>
-						</ul>
-						<p>Nous avons donc :</p>
-						<ul>
-								<li>Réseau de classe A : adresse réseau : a.0.0.0 (avec a qui doit être compris entre 1 et 126)</li>
-								<li>Réseau de classe B : adresse réseau : a.b.0.0 (avec a qui doit être compris entre 128 et 191)</li>
-								<li>Réseau de classe C : adresse réseau : a.b.c.0 (avec a qui doit être compris entre 192 et 223)</li>
-						</ul>
-						<p>Cette partition étant peu flexible, elle a progressivement été remplacée par un découpage plus fin où la séparation réseaux/machine peut se trouver à l'interieur d'une partie, dépendant de ce que l’on appelle le « masque de sous-réseau », mais cette notion ne sera pas abordée ici.</p>
-						<h4>À faire vous-même 4</h4>
-						<p>Un réseau de classe C peut contenir au maximum combien de machines ? et un réseau de classe B ? (rappel : b, c et d sont compris entre 0 et 255).</p>
-						<hr>
+						<p>On peut se poser la question : comment les switchs ou les routeurs procèdent pour amener les paquets à bon port.</p>
+						<p>Nous avons vu l'année dernière que 2 machines appartenant au même réseau local doivent avoir la même adresse réseau (encore une fois, n'hésitez pas à relire le <a href="nsi_prem_intro_reseau.html" target="_blank">cours de première</a>).
+							Dans le schéma ci-dessus M1 et M4 n'ont pas la même adresse réseau (car elles n'appartiennent pas au même réseau local), si M1 cherche à entrer en communication avec M4, le switch R1 va constater que M4 n'appartient pas au réseau local (grâce à son adresse IP), R1 va donc envoyer le paquet de données vers le routeur A.
+							Cela sera donc au routeur A de gérer le "problème" : comment atteindre M4 ?
 						<p>
-							Chose très importante à toujours avoir à l'esprit, même une simple photo n'est pas "transportée" en une fois d'un ordinateur A vers un ordinateur B. Les données correspondantes à la photo sont "découpées" en plusieurs morceaux, chaque morceau étant transporté par l'intermédiaire d'un paquet IP.
-							Les paquets IP transportant les "morceaux de photo" n'empruntent pas tous le même "chemin" pour aller de l'ordinateur A vers l'ordinateur B. Par exemple, pour aller de l'ordinateur M14 à M7, certains paquets passeront par les routeurs G, F, H et C alors que d'autres paquets emprunteront le chemin G, F, E, D et C.
-							Une fois que tous les paquets sont arrivés à destination, l'image originale peut être reconstituée. Si un paquet se "perd" en route, au bout d'un moment, il peut être renvoyé par la machine émettrice (voir le protocole TCP), pourquoi pas en empruntant un autre "chemin".
+							Chaque routeur possède une table de routage. Une table de routage peut être vue comme un tableau qui va contenir des informations permettant au routeur d'envoyer le paquet de données dans la "bonne direction".
+
 						</p>
+						<p>
+							Soit le schéma suivant :
+						</p>
+						<div class="centrer">
+							<img src="img/nsi_term_archi_rout_1.png" alt="reseau"/>
+						</div>
+						<h4>À faire vous-même 3</h4>
+						<p>
+							Étudiez attentivement le schéma ci-dessus. Le choix des adresses IP des machines a été fait au "hasard" (ne cherchez pas une signification là où il n'y en a pas). En revanche, vérifiez que tout est cohérent : adresses machines avec adresses réseaux (les adresses réseaux sont notées à côté des différents switch (par exemple le switch R1 est utilisé dans le réseau d'adresse 172.168.0.0/16)).
+						</p>
+						<hr />
+						<p>
+							Vous avez sans doute remarqué que nous avons 2 routeurs :
+						</p>
+						<ul>
+							<li>
+								le routeur A qui possède 3 interfaces réseau que l'on nomme eth0, eth1 et eth2. Les adresses IP liées à ces interfaces réseau sont : 172.168.255.254/16 (eth0), 172.169.255.254/16 (eth2) et 192.168.7.1/24 (eth1)
+							</li>
+							<li>
+								le routeur G qui possède 2 interfaces réseau que l'on nomme eth0 et eth1. Les adresses IP liées à ces interfaces réseau sont : 10.255.255.254/8 (eth0) et 192.168.7.2/24 (eth1)
+							</li>
+						</ul>
+						<p>
+							Voici les informations présentes dans la table de routage de A :
+						</p>
+						<ul>
+							<li>
+								le routeur A est directement relié au réseau 172.168.0.0/16 par l'intermédiaire de son interface eth0
+							</li>
+							<li>
+								le routeur A est directement relié au réseau 172.169.0.0/16 par l'intermédiaire de son interface eth2
+							</li>
+							<li>
+								le routeur A est directement relié au réseau 192.168.7.0/24 par l'intermédiaire de son interface eth1 (le réseau 192.168.7.0/24 est un peu particulier car il est uniquement composé des routeurs A et G)
+							</li>
+							<li>
+								le routeur A n'est pas directement relié au réseau 10.0.0.0/8 mais par contre il "sait" que les paquets à destination de ce réseau doivent être envoyé à la machine d'adresse IP 192.168.7.2/24 (c'est à dire le routeur G qui lui est directement relié au réseau 10.0.0.0/8)
+							</li>
+						</ul>
+						<p>
+							On peut résumer tout cela avec le tableau suivant (table de routage simplifiée de A) :
+						</p>
+						<table>
+							<tr>
+								<th>
+									Réseau
+								</th>
+								<th>
+									Moyen de l'atteindre
+								</th>
+								<th>
+									Métrique
+								</th>
+							</tr>
+							<tr>
+								<td>
+									172.168.0.0/16
+								</td>
+								<td>
+									eth0
+								</td>
+								<td>
+									0
+								</td>
+
+							</tr>
+							<tr>
+								<td>
+									192.168.7.0/24
+								</td>
+								<td>
+									eth1
+								</td>
+								<td>
+									0
+								</td>
+
+							</tr>
+							<tr>
+								<td>
+									172.169.0.0/16
+								</td>
+								<td>
+									eth2
+								</td>
+								<td>
+									0
+								</td>
+							</tr>
+							<tr>
+								<td>
+									10.0.0.0/8
+								</td>
+								<td>
+									192.168.7.2/24
+								</td>
+								<td>
+									1
+								</td>
+							</tr>
+							</table>
+							<br />
+							<h4>À faire vous-même 4</h4>
+							<p>
+								Déterminez la table de routage du routeur G (ne pas tenir compte de la colonne métrique pour le moment)
+							</p>
+							<hr />
+							<p>
+								Dans des réseaux très complexes, chaque routeur aura une table de routage qui comportera de très nombreuses lignes (des dizaines voir des centaines...). En effet chaque routeur devra savoir vers quelle interface réseau il faudra envoyer un paquet afin qu'il puisse atteindre sa destination.
+								On peut trouver dans une table de routage plusieurs lignes pour une même destination, il peut en effet, à partir d'un routeur donné, exister plusieurs chemins possibles pour atteindre la destination. Dans le cas où il existe plusieurs chemins possibles pour atteindre la même destination, le routeur va choisir le "chemin le plus court". Pour choisir ce chemin le plus court,
+								le routeur va utiliser la métrique : plus la valeur de la métrique est petite, plus le chemin pour atteindre le réseau est "court". Un réseau directement lié à un routeur aura une métrique de 0.
+							</p>
+							<p>
+								Comment un routeur arrive à remplir sa table de routage ?
+							</p>
+							<p>
+								La réponse est simple pour les réseaux qui sont directement reliés au routeur (métrique = 0), mais comment cela se passe-t-il pour les autres réseaux (métrique supérieure à zéro) ?
+							</p>
+							<p>
+								Il existe 2 méthodes :
+							</p>
+							<ul>
+								<li>
+									le routage statique : chaque ligne doit être renseignée "à la main". Cette solution est seulement envisageable pour des très petits réseaux de réseaux
+								</li>
+								<li>
+									le routage dynamique : tout se fait "automatiquement", on utilise des protocoles qui vont permettre de "découvrir" les différentes routes automatiquement afin de pouvoir remplir la table de routage tout aussi automatiquement.
+								</li>
+							</ul>
+							<h4>Protocoles de routage</h4>
+							<p>
+								Un réseau de réseaux comportant des routeurs peut être modélisé par un graphe (si nécessaire revoir le cours sur les <a href="">graphes</a>): chaque routeur est un sommet et chaque liaison entre les routeurs ou entre un routeur et un switch est une arête.
+								Les algorithmes utilisés par les protocoles de routages sont donc des algorithmes issus de la théorie de graphes.
+							</p>
+							<p>
+								On trouve plusieurs protocoles de routage, nous allons en étudier deux : RIP (Routing Information Protocol) et OSPF (Open Shortest Path First).
+							</p>
+							<h4>
+								Le protocole RIP
+							</h4>
+							<p>
+								Au départ, les tables de routage contiennent uniquement les réseaux qui sont directement reliés au routeur (dans notre exemple ci-dessus, à l'origine, la table de routage de A contient uniquement les réseaux 172.168.0.0/16, 192.168.7.0/24 et 172.169.0.0/16).
+								Chaque routeur envoie périodiquement (toutes les 30 secondes) à tous ses voisins (routeurs adjacents) un message. Ce message contient la liste de tous les réseaux qu'il connait (dans l'exemple ci-dessus, le routeur A envoie un message au routeur G avec les informations suivantes : "je connais les réseaux 172.168.0.0/16, 192.168.7.0/24 et 172.169.0.0/16". De la même manière G envoie un message à A avec les informations suivantes : "je connais les réseaux 192.168.7.0/24 et 10.0.0.0/8").
+								À la fin de cet échange, les routeurs mettent à jour leur table de routage avec les informations reçues (dans l'exemple ci-dessus, le routeur A va pouvoir ajouter le réseau 10.0.0.0/8 à sa table de routage. Le routeur A "sait" maintenant qu'un paquet à destination du réseau 10.0.0.0/8 devra transiter par le routeur G). Pour renseigner la colonne "métrique", le protocole utilise le nombre de sauts, autrement dit, le nombre de routeurs qui doivent être traversés pour atteindre le réseau cible (dans la table de routage de A, on aura donc une métrique de 1 pour le réseau 10.0.0.0/8 car depuis A il est nécessaire de traverser le routeur G pour atteindre le réseau 10.0.0.0/8)
+							</p>
+							<p>
+								Le protocole RIP s'appuie sur l'algorithme de Bellman-Ford (algorithme qui permet de calculer les plus courts chemins dans un graphe, revoir si nécessaire le cours <a href="https://pixees.fr/informatiquelycee/n_site/nsi_term_algo_graphe.html" target="_blank">Algorithmes sur les graphes</a>).
+							</p>
+							<p>
+								Le protocole RIP est aujourd'hui très rarement utilisé dans les grandes infrastructures. En effet, il génère, du fait de l'envoi périodique de message, un trafic réseau important (surtout si les tables de routages contiennent beaucoup d'entrées). De plus, le protocole RIP est limité à 15 sauts (on traverse au maximum 15 routeurs pour atteindre sa destination). On lui préfère donc souvent le protocole OSPF.
+							</p>
+							<h4>À faire vous-même 5</h4>
+							<p>
+								Soit le réseau suivant :
+							</p>
+							<div class="centrer">
+								<img src="img/nsi_term_archi_rout_2.png" alt="reseau"/>
+							</div>
+							<p>
+								En vous basant sur le protocole RIP (métrique = nombre de sauts), déterminez la table de routage du routeur A
+							</p>
+							<p>
+								Quel est, d'après la table de routage construite ci-dessus, le chemin qui sera emprunté par un paquet pour aller d'une machine ayant pour adresse IP 172.18.1.1/16 à une machine ayant pour adresse IP 172.16.5.3/16 ?
+							</p>
+							<hr />
+							<h4>
+								Le protocole OSPF
+							</h4>
+							<p>
+								Comme dans le cas du protocole RIP, nous allons retrouver des échanges d'informations entre les routeurs (ces échanges sont plus "intelligents" dans le cas d'OSPF, ils permettent donc de réduire l'occupation du réseau). Nous n'allons pas rentrer dans les détails de ces échanges et nous allons principalement insister sur la métrique produite par OSPF. Le protocole OSPF, au contraire de RIP, n'utilise pas le "nombre de sauts nécessaire" pour établir la métrique, mais la notion de "coût des routes". Dans les messages échangés par les routeurs on trouve le coût de chaque liaison (plus le coût est grand et moins la liaison est intéressante). Quand on parle de "liaison" on parle simplement du câble qui relie un routeur à un autre routeur. Le protocole OSPF permet de connaitre le coût de chaque liaison entre routeurs, et donc, de connaitre le coût d'une route (en ajoutant le coût de chaque liaison traversée). On notera que pour effectuer ces calculs, le protocole OSPF s'appuie sur l'algorithme de Dijkstra (revoir si nécessaire le cours <a href="https://pixees.fr/informatiquelycee/n_site/nsi_term_algo_graphe.html" target="_blank">Algorithmes sur les graphes</a>) .
+							</p>
+							<p>
+								Mais sur quoi repose cette notion de coût ?
+							</p>
+							<p>
+								La notion de coût est directement liée au débit des liaisons entre les routeurs. Le débit correspond au nombre de bits de données qu'il est possible de faire passer dans un réseau par seconde. Le débit est donc donné en bits par seconde (bps), mais on trouve souvent des kilo bits par seconde (kbps) ou encore des méga bits par seconde (Mbps) => 1 kbps = 1000 bps et 1 Mbps = 1000 kbps.
+								Connaissant le débit d'une liaison, il est possible de calculer le coût d'une liaison à l'aide de la formule suivante :
+							</p>
+							<div class="centrer">
+								$coût = \frac{10^8}{débit}$
+							</div>
+							<p>
+								dans la formule ci-dessus le débit est en bits par seconde
+							</p>
+							<p>
+								Pour obtenir la métrique d'une route, il suffit d'additionner les coûts de chaque liaison (par exemple sir pour aller d'un réseau 1 à un réseau 2 on doit traverser une liaison de coût 1, puis une liaison de coût 10 et enfin une liaison de coût 1, la métrique de cette route sera de 1 + 10 + 1 = 12)
+							</p>
+							<p>
+								Évidemment, comme dans le cas de RIP, les routes ayant les métriques les plus faibles sont privilégiées.
+							</p>
+							<h4>À faire vous-même 6</h4>
+							<p>
+								Soit le réseau suivant :
+							</p>
+							<div class="centrer">
+								<img src="img/nsi_term_archi_rout_2.png" alt="reseau"/>
+							</div>
+							<p>
+								En vous basant sur le protocole OSPF (métrique = somme des coûts), déterminez la table de routage du routeur A
+							</p>
+							<p>
+								On donne les débits suivants :
+							</p>
+							<ul>
+								<li>
+									liaison routeur A - routeur B : 1 Mbps
+								</li>
+								<li>
+									liaison routeur A - routeur C : 10 Mbps
+								</li>
+								<li>
+									liaison routeur C - routeur B : 10 Mbps
+								</li>
+							</ul>
+							<p>
+								Quel est, d'après la table de routage construite ci-dessus, le chemin qui sera emprunté par un paquet pour aller d'une machine ayant pour adresse IP 172.18.1.1/16 à une machine ayant pour adresse IP 172.16.5.3/16 ?
+							</p>
 						<hr />
 						<img style="margin-bottom: 15px;" src="img/cc.png"/ />
 						<p>
