@@ -221,7 +221,10 @@ def recherche(txt, motif):
         j = j - 1
       if j&lt0:
         res.append(decalage)
-        decalage = decalage + (m-tab_car[ord(txt[decalage+m])] if decalage+m&ltn else 1)
+        if decalage+m&ltn :
+          decalage = decalage + m-tab_car[ord(txt[decalage+m])]
+        else :
+          decalage = decalage + 1
       else:
         decalage = decalage + max(1, j-tab_car[ord(txt[decalage+j])])
   return res
