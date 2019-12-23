@@ -1,0 +1,213 @@
+<!doctype html>
+<!-- Auteur : David Roche @davR74130 -->
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Projet : implémentation en Python des algorithmes sur les graphes</title>
+		<link rel="stylesheet" href="css/css/vendor/bootstrap.min.css">
+		<link rel="stylesheet" href="css/css/flat-ui.min.css">
+		<link rel="stylesheet" href="highlight/styles/tomorrow-night.css">
+		<link rel="stylesheet" href="css/style.css">
+    <script src="./css/js/vendor/jquery.min.js"></script>
+    <script src="./css/js/flat-ui.min.js"></script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53303169-1"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+
+  		gtag('config', 'UA-53303169-1');
+	</script>
+	</head>
+	<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="navbar-brand">NSI terminale</span>
+					<span class="navbar-brand">Projet : implémentation en Python des algorithmes sur les graphes</span>
+        </div>
+      </div>
+    </nav>
+    <div class="container act">
+			<h4>À faire vous-même 1</h4>
+			<p>
+				Soit le graphe suivant :
+			</p>
+			<div class="centrer">
+				<img src="img/nsi_term_projet_2_1.png" alt="graphe 1"/>
+				<figcaption>graphe 1</figcaption>
+			</div>
+			<p>
+				Proposez une implémentation de ce graphe en Python (graphe 1 dans la suite du projet)
+			</p>
+			<hr />
+			<h4>À faire vous-même 2</h4>
+			<p>
+				Soit l'algorithme de parcours en largeur d'abord :
+			</p>
+			<pre class="algo"><code >
+VARIABLE
+G : un graphe
+s : noeud (origine)
+u : noeud
+v : noeud
+f : file (initialement vide)
+
+//On part du principe que pour tout sommet u du graphe G, u.couleur = blanc à l'origine
+DEBUT
+s.couleur ← noir
+enfiler (s,f)
+tant que f non vide :
+	u ← defiler(f)
+	pour chaque sommet v adjacent au sommet u :
+		si v.couleur n'est pas noir :
+			v.couleur ← noir
+			enfiler(v,f)
+		fin si
+	fin pour
+fin tant que
+FIN
+			</code></pre>
+			<p>
+				Implémentez cet algorithme en Python. Vous testerez votre programme à l'aide du graphe 1. Il faudra que votre programme fournisse la liste des sommets parcourus en partant du sommet A (il faudra être attentif à l'ordre des sommets dans cette liste)
+			</p>
+			<hr />
+			<h4>À faire vous-même 3</h4>
+			<p>
+				Soit l'algorithme de parcours en profondeur d'abord (version non récursive):
+			</p>
+			<pre class="algo"><code >
+VARIABLE
+s : noeud (origine)
+G : un graphe
+u : noeud
+v : noeud
+p : pile (pile vide au départ)
+//On part du principe que pour tout sommet u du graphe G, u.couleur = blanc à l'origine
+DEBUT
+s.couleur ← noir
+piler(s,p)
+tant que p n'est pas vide :
+u ← depiler(p)
+pour chaque sommet v adjacent au sommet u :
+	si v.couleur n'est pas noir :
+		v.couleur ← noir
+		piler(v,p)
+	fin si
+fin pour
+fin tant que
+FIN
+			</code></pre>
+			<p>
+				Implémentez cet algorithme en Python. Vous testerez votre programme à l'aide du graphe 1. Il faudra que votre programme fournisse la liste des sommets parcourus en partant du sommet A (il faudra être attentif à l'ordre des sommets dans cette liste)
+			</p>
+			<h4>À faire vous-même 4</h4>
+			<p>
+				Soit l'algorithme de parcours en profondeur d'abord (version récursive):
+			</p>
+			<pre class="algo"><code >
+VARIABLE
+G : un graphe
+u : noeud
+v : noeud
+//On part du principe que pour tout sommet u du graphe G, u.couleur = blanc à l'origine
+DEBUT
+PARCOURS-PROFONDEUR(G,u) :
+  u.couleur ← noir
+  pour chaque sommet v adjacent au sommet u :
+    si v.couleur n'est pas noir :
+      PARCOURS-PROFONDEUR(G,v)
+    fin si
+  fin pour
+FIN
+			</code></pre>
+			<p>
+				Implémentez cet algorithme en Python. Vous testerez votre programme à l'aide du graphe 1. Il faudra que votre programme fournisse la liste des sommets parcourus en partant du sommet A (il faudra être attentif à l'ordre des sommets dans cette liste)
+			</p>
+			<hr />
+			<h4>À faire vous-même 5</h4>
+			<p>
+				Soit l'algorithme de détection des cycles :
+			</p>
+			<pre class="algo"><code >
+VARIABLE
+s : noeud (noeud quelconque)
+G : un graphe
+u : noeud
+v : noeud
+p : pile (vide au départ)
+//On part du principe que pour tout sommet u du graphe G, u.couleur = blanc à l'origine
+DEBUT
+CYCLE():
+  piler(s,p)
+  tant que p n'est pas vide :
+    u ← depiler(p)
+    pour chaque sommet v adjacent au sommet u :
+      si v.couleur n'est pas noir :
+        piler(v,p)
+      fin si
+    fin pour
+    si u est noir :
+      renvoie Vrai
+    sinon :
+      u.couleur ← noir
+    fin si
+  fin tant que
+  renvoie Faux
+FIN
+			</code></pre>
+			<p>
+				Implémentez cet algorithme en Python. Vous testerez votre programme à l'aide du graphe 1 et sur le graphe 2 (voir ci-dessous). Il faudra que votre fonction renvoie "vrai" si un cycle est présent et "faux" dans le cas contraire
+			</p>
+			<div class="centrer">
+				<img src="img/nsi_term_algo_graph_2.png" alt=""/>
+				<figcaption>graphe 2</figcaption>
+			</div>
+			<hr />
+			<h4>À faire vous-même 6</h4>
+			<p>
+				Soit l'algorithme de recherche de chaine entre 2 sommets :
+			</p>
+			<pre class="algo"><code >
+VARIABLE
+G : un graphe
+start : noeud (noeud de départ)
+end : noeud (noeud d'arrivé)
+u : noeud
+chaine : ensemble de noeuds (initialement vide)
+
+DEBUT
+TROUVE-CHAINE(G, start, end, chaine):
+  chaine = chaine ⋃ start //le symbol ⋃ signifie union, il permet d'ajouter le noeud start à l'ensemble chaine
+  si start est identique à end :
+    renvoie chaine
+  fin si
+  pour chaque sommet u adjacent au sommet start :
+    si u n'appartient pas à chaine :
+      nchemin = TROUVE-CHAINE(G, u, end, chaine)
+      si nchemin non vide :
+        renvoie nchemin
+      fin si
+    fin si
+	fin pour
+	renvoie NIL
+FIN
+			</code></pre>
+			<p>
+				Implémentez cet algorithme en Python. Vous testerez votre programme à l'aide du graphe 1 (sommet de départ A, sommet d'arrivée G). Il faudra que votre programme fournisse la liste des sommets qui constituent la chaine.
+			</p>
+			<hr />
+			<img style="margin-bottom: 15px;" src="img/cc.png"/ />
+			<p>
+				Auteur : David Roche
+			</p>
+		</div>
+	</body>
+</html>
