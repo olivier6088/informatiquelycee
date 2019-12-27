@@ -414,6 +414,39 @@ while run :
 pygame.quit()
 			</code></pre>
 			<hr />
+			<p>
+				Il est aussi possible de gérer des événements de type "clavier" :
+			</p>
+			<h4>À faire vous-même 11</h4>
+			<p>
+				Saisissez, analysez et testez ce code, observez la console lorsque vous appuyez sur les touches "Entrée", "Espace" et "A" (vous pouvez aussi constater qu'il ne se passe rien quand )
+			</p>
+			<pre><code class='python'>
+import pygame
+
+surf = pygame.display.set_mode((800,600))
+run = True
+while run :
+  for event in pygame.event.get():
+    if event.type == pygame.QUIT:
+      run = False
+    if event.type == pygame.KEYDOWN :
+      if event.key == pygame.K_SPACE :
+        print ("vous avez appuyé sur la touche espace")
+      elif event.key == pygame.K_a :
+        print ("vous avez appuyé sur la touche A")
+      elif event.key == pygame.K_RETURN :
+        print ("vous avez appuyé sur la touche Entrée")
+      else :
+        print ("vous avez appuyé sur une touche")
+  surf.fill((0,0,0))
+  pygame.display.flip()
+pygame.quit()
+			</code></pre>
+			<hr />
+			<p>
+				Vous trouverez la liste complète des touches dans la <a href="https://www.pygame.org/docs/ref/key.html" target="_blank">documentation officielle de pygame</a>.
+			</p>
 			<h3>Projet : jeu du morpion</h3>
 			<p>
 				Vous en savez suffisamment sur la bibliothèque pygame pour pouvoir vous lancer dans la conception d'un jeu du morpion.
@@ -424,6 +457,7 @@ pygame.quit()
 			<iframe width="560" height="315" src="https://www.youtube.com/embed/51AgnDp2xQs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			<p>
 				Les joueurs cliquent avec le bouton gauche de la souris pour ajouter les symboles (X ou O) dans les cases. Une fois la partie gagnée par un des deux joueurs, les 3 symboles alignés deviennent rouges. Une fois la partie gagnée, il est impossible d'ajouter de nouveaux symboles (X et O).
+				Un appui sur la touche "Entrée" doit permettre de reprendre le jeu à zéro.
 			</p>
 			<hr />
 			<img style="margin-bottom: 15px;" src="img/cc.png"/ />
