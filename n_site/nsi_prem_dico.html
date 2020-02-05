@@ -38,7 +38,7 @@
       </div>
     </nav>
     <div class="container act">
-			<p>Comme les listes, les dictionnaires permettent de "stocker" des données. Chaque élément d'un dictionnaire est composé de 2 parties, on parle de pairs "clé/valeur". Voici un exemple de dictionnaire :</p>
+			<p>Comme les listes, les dictionnaires permettent de "stocker" des données. Chaque élément d'un dictionnaire est composé de 2 parties, on parle de paires "clé/valeur". Voici un exemple de dictionnaire :</p>
 			<pre><code class='python'>
 mon_dico = {"nom": "Durand", "prenom": "Christophe", "date de naissance": "29/02/1981"}
 			</code></pre>
@@ -53,6 +53,18 @@ mon_dico["nom"] = "Durand"
 mon_dico["prenom"] = "Christophe"
 mon_dico["date de naissance"] = "29/02/1981"
 				</code></pre>
+				<p>
+				À noter qu'il est aussi possible d'écrire :
+				</p>
+				<pre><code class='python'>
+mon_dico = dict()
+mon_dico["nom"] = "Durand"
+mon_dico["prenom"] = "Christophe"
+mon_dico["date de naissance"] = "29/02/1981"
+				</code></pre>
+				<p>
+					(on remplace mon_dico = {} par mon_dico = dict())
+				</p>
 				<h4>À faire vous-même 1</h4>
 				<p><p>La variable "mon_dico" référence un dictionnaire. Il est possible d'afficher le contenu du dictionnaire référencé par la variable "mon_dico" en saisissant "mon_dico" dans la console. Faites le test après avoir exécuté le programme ci-dessous.</p>
 				<pre><code class='python'>
@@ -99,7 +111,7 @@ mes_fruits["pomme"] = mes_fruits["pomme"] - 1
 				<p>Il est possible de parcourir un dictionnaire à l'aide d'une boucle for. Ce parcours peut se faire selon les clés ou les valeurs.
 					Commençons par parcourir les clés à l'aide de la méthode "keys"</p>
 					<h4>À faire vous-même 6</h4>
-					<p>Tester le programme suivant :</p>
+					<p>Testez le programme suivant :</p>
 					<pre><code class='python'>
 mes_fruits = {"poire": 3, "pomme": 4, "orange": 2}
 print("liste des fruits :")
@@ -107,8 +119,19 @@ for fruit in mes_fruits.keys():
 	print(fruit)
 					</code></pre>
 					<hr>
-					<p>La méthode values() permet de parcourir le dictionnaire selon les valeurs</p>
+					<p>
+						À noter que le ".keys()" n'est pas obligatoire pour parcourir les clés :
+					</p>
 					<h4>À faire vous-même 7</h4>
+					<p>Testez le programme suivant :</p>
+					<pre><code class='python'>
+mes_fruits = {"poire": 3, "pomme": 4, "orange": 2}
+for d in mes_fruits:
+	print (d)
+					</code></pre>
+					<hr />
+					<p>La méthode values() permet de parcourir le dictionnaire selon les valeurs</p>
+					<h4>À faire vous-même 8</h4>
 					<p>Tester le programme suivant :</p>
 					<pre><code class='python'>
 mes_fruits = {"poire": 3, "pomme": 4, "orange": 2}
@@ -117,8 +140,8 @@ for qte in mes_fruits.values():
 					</code></pre>
 					<hr>
 					<p>Enfin, il est possible de parcourir un dictionnaire à la fois sur les clés et les valeurs en utilisant la méthode items().</p>
-					<h4>À faire vous-même 8</h4>
-					<p>Tester le programme suivant :</p>
+					<h4>À faire vous-même 9</h4>
+					<p>Testez le programme suivant :</p>
 					<pre><code class='python'>
 mes_fruits = {"poire": 3, "pomme": 4, "orange": 2}
 print ("Stock de fruits :")
