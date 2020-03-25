@@ -462,12 +462,122 @@ def dit_bonjour(nom, age):
 			</code></pre>
 			<p>Testez la fonction dit_bonjour à l'aide de la console (avec par exemple un dit_bonjour("toto", 14))</p>
 			<hr>
+			<h3>Variables locales et variables globales</h3>
+			<h4>À faire vous-même 22</h4>
+			<p>Analysez le programme suivant :</p>
+			<pre><code class='python'>
+	def fct():
+	  i=5
+	fct()
+			</code></pre>
+			<p>
+				Après avoir exécuté le programme ci-dessus, déterminez la valeur référencée par la variable i en utilisant la console.
+			</p>
+			<hr />
+			<p>
+				Comme vous avez pu le constater, nous avons eu droit à une erreur : "NameError: name 'i' is not defined".
+				Pourquoi cette erreur, la variable i est bien définie dans la fonction fct() et la fonction fct() est bien exécutée, où est donc le problème ?
+			</p>
+			<p>
+				En fait, la variable i est une variable dite locale : elle a été définie dans une fonction et elle "restera" dans cette fonction. Une fois que l'exécution de la fonction sera terminée, la variable i sera "détruite" (supprimée de la mémoire). Elle n'est donc pas accessible depuis "l'extérieur"
+				de la fonction (ce qui explique le message d'erreur que nous obtenons).
+			</p>
+			<p>
+				Autre exemple de cette notion de variable locale :
+			</p>
+			<h4>À faire vous-même 23</h4>
+			<p>Analysez le programme suivant :</p>
+			<pre><code class='python'>
+	i = 3
+	def fct():
+	  i=5
+	fct()
+			</code></pre>
+			<p>
+				Après avoir exécuté le programme ci-dessus, déterminez la valeur référencée par la variable i en utilisant la console.
+			</p>
+			<hr />
+			<p>
+				Cette fois pas d'erreur, mais à la fin de l'exécution de ce programme, la variable i référence la valeur 3. En faite dans cet exemple nous avons 2 variables i différentes : la variable i "globale" (celle qui a été définie en dehors de toute fonction) et la variable i "locale" (celle qui a été définie dans la fonction).
+				Ces 2 variables portent le même nom, mais sont différentes.
+			</p>
+			<p>
+				Une variable globale peut être "utilisée" à l'intérieur d'une fonction :
+			</p>
+			<h4>À faire vous-même 24</h4>
+			<p>Analysez et testez le programme suivant :</p>
+			<pre><code class='python'>
+	i = 3
+	def fct():
+	  print(i)
+	fct()
+			</code></pre>
+			<hr />
+			<p>
+				Quand on cherche à utiliser une variable dans une fonction, le système va d'abord chercher si cette variable se "trouve" dans l'espace local de la fonction, puis, s'il ne la trouve pas dans cet espace local, le système va aller rechercher la variable dans l'espace global.
+				Pour le "print(i)" situé dans la fonction le système ne trouve pas de variable i dans l'espace local de la fonction "fct", il passe donc à l'espace global et trouve la variable i (nous avons donc 3 qui s'affiche).
+				Il est important de bien comprendre que si le système avait trouvé une variable i dans l'espace local de la fonction, la "recherche" de la variable i se serait arrêtée là :
+			</p>
+			<h4>À faire vous-même 25</h4>
+			<p>Analysez et testez le programme suivant :</p>
+			<pre><code class='python'>
+	i = 3
+	def fct():
+	  i = 5
+	  print(i)
+	fct()
+			</code></pre>
+			<hr />
+				<h4>À faire vous-même 26</h4>
+				<p>Analysez et testez le programme suivant :</p>
+				<pre><code class='python'>
+	i = 3
+	def fct():
+	  i = i + 1
+	fct()
+				</code></pre>
+				<hr />
+				<p>
+					Nous avons une erreur "UnboundLocalError: local variable 'i' referenced before assignment"
+				</p>
+				<p>
+					Pour pouvoir modifier une variable globale dans une fonction, il faut utiliser l'instruction "global" :
+				</p>
+				<h4>À faire vous-même 27</h4>
+				<p>Analysez le programme suivant :</p>
+				<pre><code class='python'>
+	i = 3
+	def fct():
+	  global i
+	  i = i + 1
+	fct()
+				</code></pre>
+				<p>
+					Après avoir exécuté le programme ci-dessus, déterminez la valeur référencée par la variable i en utilisant la console.
+				</p>
+				<hr />
+				<p>
+					<strong>En faite, l'utilisation de "global" est une (très) mauvaise pratique, car cette utilisation peut entrainer des "effets de bord".</strong>
+				</p>
+				<h4>Effet de bord</h4>
+				<p>
+					On parle d'effet de bord quand une fonction modifie l'état d'une variable globale. Dans notre exemple ci-dessus la fonction fct modifie bien la valeur référencée par la variable i : avant l'exécution de fct, la variable i référence la valeur 5, après l'exécution de la fonction fct la variable i référence la valeur 6.
+					Nous avons donc bien un effet de bord.
+				</p>
+				<p>
+				 Les effets de bord c'est "mal" ! Mais pourquoi est-ce "mal" ?
+				</p>
+				<p>
+					Les effets de bords provoquent parfois des comportements non désirés par le programmeur (évidemment dans des programmes très complexes, pas dans des cas simplistes comme celui que nous venons de voir dans le "À faire vous-même 6"). Ils rendent aussi parfois
+					les programmes difficilement lisibles (difficilement compréhensibles). À cause des effets de bord, on risque de se retrouver avec des variables qui référenceront des valeurs qui n'étaient pas prévues par le programmeur. On dit aussi qu'à un instant donné, l'état futur des variables est difficilement prévisible à cause des effets de bord.
+					En résumé, on évitera autant que possible l'utilisation du "global".
+				</p>
 			<h3>les expressions et les booléens</h3>
 			<p>
 				Si quelqu'un vous dit que "4 est égal à 5", vous lui répondez quoi ? "c'est faux". Si maintenant la même personne vous dit que "7 est égal à 7", vous lui répondrez bien évidemment que "c'est vrai".
 			</p>
 			<p>En Python, ces deux «affirmations» ("4 est égal à 5" et "7 est égal à 7") s'écriront "4 == 5" et "7 == 7" (notez bien le double signe égal).</p>
-			<h4>À faire vous-même 22</h4>
+			<h4>À faire vous-même 28</h4>
 			<p>Dans la console, tapez :</p>
 			<pre><code class='python'>
 4 == 5
@@ -484,7 +594,7 @@ def dit_bonjour(nom, age):
 			<p>
 				ATTENTION : notez le double égal "==" qui permet de distinguer une expression et une affectation (référencement d'une valeur par une variable). Le fait de confondre le "simple égal" et le "double égal" est une erreur classique qu'il faut éviter.
 			</p>
-			<h4>À faire vous-même 23</h4>
+			<h4>À faire vous-même 29</h4>
 			<p>
 				Soit le programme suivant :
 			</p>
@@ -495,7 +605,7 @@ b = 7
 			<p>Quel est le résultat attendu après l'exécution de ce programme si vous saisissez dans la console "a==b" ?</p>
 			<hr>
 			<p>Il est possible d'utiliser aussi l'opérateur "différent de" !=</p>
-			<h4>À faire vous-même 24</h4>
+			<h4>À faire vous-même 30</h4>
 			<p>
 				Soit le programme suivant :
 			</p>
@@ -513,7 +623,7 @@ b = 7
 				<li>"supérieur ou égal à" &gt=</li>
 			</ul>
 			<p>À chaque fois ces opérateurs sont True (vrai) ou False (faux).</p>
-			<h4>À faire vous-même 25</h4>
+			<h4>À faire vous-même 31</h4>
 			<p>
 				Soit le programme suivant :
 			</p>
@@ -536,8 +646,8 @@ sinon:
 			</code></pre>
 			<p>Si "expression" est True alors "suite_instruction1" est exécuté et "suite_instruction2" est ignoré.</p>
 			<p>Sinon (sous-entendu que "expression" est False) "suite_instruction2" est exécuté et "suite_instruction1" est ignoré.</p>
-			<p>Notez l'indentation «suite_instruction1» et de « suite_instruction2»</p>
-			<h4>À faire vous-même 26</h4>
+			<p>Notez l'indentation "suite_instruction1" et de "suite_instruction2"</p>
+			<h4>À faire vous-même 32</h4>
 			<p>Soit le programme suivant :</p>
 			<pre><code class='python'>
 a = 4
@@ -553,12 +663,12 @@ print("En revanche, j'aime le Python.")
 			<p>Quel est le résultat attendu après l'exécution de ce programme ?</p>
 			<p>Vérifiez votre hypothèse en testant le programme.</p>
 			<hr>
-			<h4>À faire vous-même 27</h4>
+			<h4>À faire vous-même 33</h4>
 			<p>
 				Écrire une fonction qui prend en paramètre un age. Si age est supérieur ou égal à 18 ans, la fonction devra renvoyer la chaîne de caractères "Bonjour, vous êtes majeur.". Si age est inférieur à 18 ans, la fonction devra renvoyer "Bonjour, tu es mineur."
 			</p>
 			<hr>
-			<h4>À faire vous-même 28</h4>
+			<h4>À faire vous-même 34</h4>
 			<p>Soit le programme suivant :</p>
 			<pre><code class='python'>
 def annonce(num, prov, dest):
@@ -570,7 +680,7 @@ def annonce(num, prov, dest):
 			</code></pre>
 			<p>Quel est le résultat attendu après l'exécution de ce programme si vous saisissez dans la console annonce("4557", "Paris", "Marseille") ? Et si vous saisissez dans la console annonce("5768", "Bonneville", "0") ?  Vérifiez votre réponse en testant ce programme.</p>
 			<hr>
-			<h4>À faire vous-même 29</h4>
+			<h4>À faire vous-même 35</h4>
 			<p>Vous êtes gérant d'un magasin et vous désirez écrire un programme Python qui calculera automatiquement le montant de la facture des clients. Tout client qui achète au moins 5 fois le même article se voit octroyer une remise de 5 % (uniquement sur le montant de l'achat de cet article). Afin de simplifier le problème, on considère qu'un client n'achète qu'un seul type d'article.
 				Écrire une fonction qui prend en paramètre le prix unitaire de l'article et le nombre d'articles achetés. Cette fonction doit renvoyer le montant de la facture.</p>
 			<hr>
@@ -643,7 +753,7 @@ sinon:
 					<td>faux</td>
 				</tr>
 			</table>
-			<h4>À faire vous-même 30</h4>
+			<h4>À faire vous-même 36</h4>
 			<p>Soit le programme suivant :</p>
 			<pre><code class='python'>
 a = 5
@@ -671,7 +781,7 @@ while expression:
 suite programme
 			</code></pre>
 			<p>Tant que l'expression s'évalue à "True", les instructions à l'intérieur du bloc (partie indentée) seront exécutées.</p>
-			<h4>À faire vous-même 31</h4>
+			<h4>À faire vous-même 37</h4>
 			<p>Soit le programme suivant :</p>
 			<pre><code class='python'>
 i = 0
@@ -683,7 +793,7 @@ print("C'est terminé.")
 			<p>Quel est le résultat attendu après l'exécution de ce programme ?
 				Vérifiez votre réponse en testant le programme</p>
 			<hr>
-			<h4>À faire vous-même 32</h4>
+			<h4>À faire vous-même 38</h4>
 			<p>
 			Vous allez créer "un générateur automatique de punition" :
 			</p>
@@ -695,7 +805,7 @@ print("C'est terminé.")
 			<p>Je ne dois pas discuter en classe</p>
 			<p>Je ne dois pas discuter en classe</p>
 			<hr>
-			<h4>À faire vous-même 33</h4>
+			<h4>À faire vous-même 39</h4>
 			<p>
 				Écrire une fonction permettant d'afficher une table de multiplication.
 				Cette fonction devra prendre en paramètre la table désirée.
